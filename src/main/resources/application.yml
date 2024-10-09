@@ -1,0 +1,24 @@
+server:
+    tomcat:
+      threads:
+        max: 12
+
+spring:
+  threads:
+    virtual:
+      enabled: true
+
+app:
+  properties:
+    path:
+      countries: "python/finalCsv/countries.csv"
+      districts: "python/finalCsv/districts.csv"
+      cities: "python/finalCsv/cities.csv"
+
+      my_sql_dir: "C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Data\\data_modeling"
+
+    constants:
+      batchSize: 20000
+      number_of_persons: 10
+
+
