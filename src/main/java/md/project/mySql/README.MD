@@ -38,9 +38,15 @@ After connecting to the MySQL shell, run the following commands:
 \sql
 ```
 
-Note: Use absolute paths to avoid errors. 
+Enable local infile
+
+``` shell
+SET GLOBAL local_infile = 1;
+```
 
 The path to the schema.sql varies depending on your computer. Change the path accordingly.
+
+Note: Use absolute paths to avoid errors.
 
 ``` shell
 \source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º 

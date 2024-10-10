@@ -5,10 +5,11 @@
 - Create a new database
 - Click on the three dots
 - Click on settings
-- Set the following settings: (Increase the heap size if you have a lot of data tio avoid out of memory errors)
+- Set the following settings: Each setting already exists, just change the value
   - ```properties
     server.memory.heap.initial_size=4g
     server.memory.heap.max_size=4g
+    dbms.security.auth_enabled=false
     ```
 
 ## 2. Find the folder to the database
