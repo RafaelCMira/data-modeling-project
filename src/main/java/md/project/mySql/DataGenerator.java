@@ -411,18 +411,15 @@ public class DataGenerator implements CommandLineRunner {
         Path countries = Paths.get(mySqlDir, "countries.csv");
 
         if (Files.notExists(cities)) {
-            Files.createFile(cities);
-            System.out.println("File created: " + cities.getFileName());
+            Files.copy(Paths.get(citiesPath), cities);
         }
 
         if (Files.notExists(districts)) {
-            Files.createFile(districts);
-            System.out.println("File created: " + districts.getFileName());
+            Files.copy(Paths.get(districtsPath), districts);
         }
 
         if (Files.notExists(countries)) {
-            Files.createFile(countries);
-            System.out.println("File created: " + countries.getFileName());
+            Files.copy(Paths.get(countriesPath), countries);
         }
     }
 

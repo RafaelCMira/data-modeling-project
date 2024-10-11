@@ -986,7 +986,6 @@ Castelli$Córdoba$4
 Carlos Spegazzini$San Juan$4
 Río Tercero$Mendoza$4
 Navarro$Mendoza$4
-Santa María$Tierra del Fuego$4
 Rivadavia$Chubut$4
 Rivadavia$Córdoba$4
 General Belgrano$Jujuy$4
@@ -1358,7 +1357,6 @@ Highfields$Victoria$6
 Mandurah$Australian Capital Territory$6
 Caboolture$Western Australia$6
 Maitland$South Australia$6
-Maryborough$Northern Territory$6
 Adelaide River$South Australia$6
 Mount Barker$Tasmania$6
 Corinda$Victoria$6
@@ -1476,7 +1474,6 @@ Kempsey$Northern Territory$6
 Wodonga$South Australia$6
 Kalgoorlie$Victoria$6
 Port Augusta$Tasmania$6
-Richmond$Australian Capital Territory$6
 Mount Evelyn$South Australia$6
 Longreach$Australian Capital Territory$6
 Forbes$Queensland$6
@@ -3867,7 +3864,6 @@ Santa Luzia$Amazonas$13
 Costa Marques$Paraná$13
 Dores do Indaiá$Mato Grosso do Sul$13
 Feijó$Pernambuco$13
-Tabatinga$Maranhão$13
 Novo Horizonte$Goiás$13
 Caucaia$Paraná$13
 Pôrto Firme$Rio Grande do Sul$13
@@ -4080,7 +4076,6 @@ Terra de Areia$Pernambuco$13
 Itapiúna$Pará$13
 Irineópolis$Sergipe$13
 Juara$Paraíba$13
-Batalha$Piauí$13
 Calçoene$Rio Grande do Norte$13
 Alenquer$São Paulo$13
 Ilicínia$Paraná$13
@@ -6923,7 +6918,6 @@ Dangyang$Hebei$21
 Luanzhou$Yunnan$21
 Tangbian$Jiangsu$21
 Wancheng$Heilongjiang$21
-Xingcheng$Henan$21
 Shanhe$Macau SAR$21
 Gengzhuangqiaocun$Taiwan$21
 Yanguancun$Shanxi$21
@@ -6991,7 +6985,6 @@ Xiaoli$Shanxi$21
 Zhoujia$Ningxia Huizu$21
 Hailun$Guizhou$21
 Lingshou$Shanghai$21
-Datang$Ningxia Huizu$21
 Jiaozhou$Sichuan$21
 Kaifeng Chengguanzhen$Xinjiang$21
 Laiyang$Henan$21
@@ -7210,7 +7203,6 @@ Yakeshi$Gansu$21
 Chuangjian$Liaoning$21
 Bayan$Jilin$21
 Bangshang$Guizhou$21
-Longjia$Sichuan$21
 Xiluodu$Hubei$21
 Gandujie$Hainan$21
 Gaoyou$Hainan$21
@@ -7749,7 +7741,6 @@ Foshan$Henan$21
 Linyi$Heilongjiang$21
 Huaihua$Qinghai$21
 Longkeng$Heilongjiang$21
-Longquan$Liaoning$21
 Hexiwu$Hunan$21
 Wuwei$Chongqing$21
 Jinta$Hunan$21
@@ -8128,7 +8119,6 @@ Bosconia$Cundinamarca$22
 Muzo$Cauca$22
 Guamal$Casanare$22
 Juan de Acosta$Boyacá$22
-San Fernando$Boyacá$22
 Lloró$Cundinamarca$22
 Suárez$Meta$22
 Orito$Cesar$22
@@ -8553,7 +8543,6 @@ Pizarro$Santander$22
 Curumaní$Arauca$22
 Nobsa$Bolívar$22
 San Sebastián de Mariquita$Magdalena$22
-Riosucio$Quindío$22
 Chimá$Guainía$22
 Magangué$La Guajira$22
 Yolombó$Guainía$22
@@ -10411,7 +10400,6 @@ Saint-Vallier$Aube$37
 Bourgoin-Jallieu$Auvergne-Rhône-Alpes$37
 Cernay$Alpes-Maritimes$37
 Fontainebleau$Aveyron$37
-Grigny$Corse$37
 Valenton$Indre-et-Loire$37
 Bois-Colombes$Haut-Rhin$37
 Lorgues$Paris$37
@@ -12503,7 +12491,6 @@ Nidderau$Hessen$39
 Ginsheim-Gustavsburg$Mecklenburg-Vorpommern$39
 Magdeburg$Hamburg$39
 Spremberg$Schleswig-Holstein$39
-Frankenberg$Bremen$39
 Mannheim$Schleswig-Holstein$39
 Michendorf$Brandenburg$39
 Schönaich$Hamburg$39
@@ -12613,7 +12600,6 @@ Pirmasens$Schleswig-Holstein$39
 Königsbrunn$Baden-Württemberg$39
 Mittenwalde$Brandenburg$39
 Kleinblittersdorf$Hessen$39
-Neustadt$Brandenburg$39
 Mittegroßefehn$Saarland$39
 Gerstungen$Berlin$39
 Schwandorf$Hamburg$39
@@ -14871,7 +14857,6 @@ Irukanni$Chandigarh$45
 Bārāsat$Chandigarh$45
 Kusumbe$Meghalaya$45
 Khānpur$Delhi$45
-Dharmāpuri$Delhi$45
 Somarasampettai$Ladakh$45
 Adigaratti$Punjab$45
 Raksaha$Jharkhand$45
@@ -16172,7 +16157,6 @@ Bhatkhori$Odisha$45
 Rudarpur$Mizoram$45
 Tindwāra$Ladakh$45
 Mangasamudram$Odisha$45
-Sendamangalam$Uttar Pradesh$45
 Usia$Punjab$45
 Nalgonda$Uttarakhand$45
 Sansa$Karnataka$45
@@ -16654,7 +16638,6 @@ Kuttūr$Meghalaya$45
 Pottanikād$Puducherry$45
 Mahādeopur$Chandigarh$45
 Goner$Bihar$45
-Islāmpur$Lakshadweep$45
 Lālganj$Lakshadweep$45
 Maniamkulam$Manipur$45
 Panamarattuppatti$Puducherry$45
@@ -16901,7 +16884,6 @@ Kurdi$Arunachal Pradesh$45
 Doranāla$Punjab$45
 Mugdampalli$Manipur$45
 Milattūr$Andhra Pradesh$45
-Chettipālaiyam$Chandigarh$45
 Rāmdurg$Ladakh$45
 Valavanūr$Karnataka$45
 Husepur$Goa$45
@@ -17659,7 +17641,6 @@ Kedgaon$Ladakh$45
 Sultānpur$Bihar$45
 Goālpāra$Karnataka$45
 Mēmunda$Chandigarh$45
-Shāhpur$West Bengal$45
 Chinna Ganjām$Andhra Pradesh$45
 Masakkavundanchettipālaiyam$Himachal Pradesh$45
 Devikāpuram$Jammu and Kashmir$45
@@ -18291,7 +18272,6 @@ Sankhavaram$Uttarakhand$45
 Nāsik$Ladakh$45
 Sisia$Andaman and Nicobar Islands$45
 Harihans$Haryana$45
-Puttūr$Sikkim$45
 Kurumbapālaiyam$Tamil Nadu$45
 Jalor$Gujarat$45
 Majurwa$Bihar$45
@@ -18449,7 +18429,6 @@ Panamaram$Rajasthan$45
 Kothri Kalān$Uttar Pradesh$45
 Pallarimangalam$Tamil Nadu$45
 Sukurhutu$Maharashtra$45
-Shāhpur$West Bengal$45
 Lakri$Punjab$45
 Yeola$Manipur$45
 Samesi$Jammu and Kashmir$45
@@ -18653,7 +18632,6 @@ Padinjārebāgam$Karnataka$45
 Barod$Odisha$45
 Vellore$Rajasthan$45
 Chandla$Tamil Nadu$45
-Khānāpur$Uttarakhand$45
 Chingleput$Jammu and Kashmir$45
 Bhado Khara$West Bengal$45
 Borgaon$Chhattisgarh$45
@@ -18665,7 +18643,6 @@ Palaiya Āyakkudi$Karnataka$45
 Phulwār$Uttar Pradesh$45
 Bishenpur$Dadra and Nagar Haveli and Daman and Diu$45
 Mānāvadar$Karnataka$45
-Dharampur$West Bengal$45
 Sholinghur$Andaman and Nicobar Islands$45
 Sirsilla$Manipur$45
 Pattanakkād$Arunachal Pradesh$45
@@ -19123,7 +19100,6 @@ Bādkulla$Puducherry$45
 Nāhan$Tripura$45
 Attibele$Jammu and Kashmir$45
 Mankal$Jharkhand$45
-Madanpur$Madhya Pradesh$45
 Narsimlāpet$Tripura$45
 Tiruvambadi$Andaman and Nicobar Islands$45
 Paramagudi$Punjab$45
@@ -19697,7 +19673,6 @@ Kalanaur$Andhra Pradesh$45
 Gidi$Rajasthan$45
 Charābidya$Goa$45
 Pulgaon$Rajasthan$45
-Fatehpur$Jharkhand$45
 Quilāndi$Himachal Pradesh$45
 Anaikal$Maharashtra$45
 Hire Megalageri$Lakshadweep$45
@@ -19953,7 +19928,6 @@ Salīmpur$Jammu and Kashmir$45
 Ajas$Jharkhand$45
 Dārāsuram$Kerala$45
 Bela$Madhya Pradesh$45
-Neykkārappatti$Himachal Pradesh$45
 Hanumana$Goa$45
 Villasāgar$Andhra Pradesh$45
 Warora$Delhi$45
@@ -23703,7 +23677,6 @@ Nanjō$Ōsaka Prefecture$52
 Iwanuma$Ōsaka Prefecture$52
 Ibaraki$Saga Prefecture$52
 Tajimi$Kanagawa Prefecture$52
-Ofunato$Nagano Prefecture$52
 Kaminokawa$Nagasaki Prefecture$52
 Morohongō$Shiga Prefecture$52
 Sakurai$Iwate Prefecture$52
@@ -24199,7 +24172,6 @@ Amboavory$Toliara Province$56
 Ambodimanga II$Fianarantsoa Province$56
 Ifanadiana$Antananarivo Province$56
 Ambongamarina$Toamasina Province$56
-Vohipeno$Toamasina Province$56
 Ambohipihaonana$Toliara Province$56
 Mandritsara$Toliara Province$56
 Ambolidibe Atsinanana$Mahajanga Province$56
@@ -24209,7 +24181,6 @@ Antsahavaribe$Toamasina Province$56
 Ambinanindrano$Toamasina Province$56
 Antanananivo$Antananarivo Province$56
 Betatao$Fianarantsoa Province$56
-Sahamadio$Mahajanga Province$56
 Tsarahonenana$Fianarantsoa Province$56
 Miorimivalana$Antananarivo Province$56
 Antanimora Atsinanana$Toliara Province$56
@@ -24235,7 +24206,6 @@ Sahatavy$Antananarivo Province$56
 Mandrosonoro$Toamasina Province$56
 Ankazondandy$Toliara Province$56
 Androrangavola$Toamasina Province$56
-Fiadanana$Mahajanga Province$56
 Alarobia$Toamasina Province$56
 Inanantonana$Antananarivo Province$56
 Ambalatany$Toliara Province$56
@@ -24272,7 +24242,6 @@ Ampasimpotsy-Gara$Fianarantsoa Province$56
 Katsepy$Antananarivo Province$56
 Ambatomainty$Toliara Province$56
 Fenoarivo$Toliara Province$56
-Fenoarivo$Toliara Province$56
 Ikongo$Antsiranana Province$56
 Talata Ampano$Antsiranana Province$56
 Morombe$Toliara Province$56
@@ -24291,7 +24260,6 @@ Ankarana-Miraihina$Mahajanga Province$56
 Boriziny$Toliara Province$56
 Behisatse$Mahajanga Province$56
 Iharan̈a$Fianarantsoa Province$56
-Tsaratanana$Antsiranana Province$56
 Ankisabe$Fianarantsoa Province$56
 Ambohitrimanjaka$Toamasina Province$56
 Sahatona-Tamboharivo$Antsiranana Province$56
@@ -24363,7 +24331,6 @@ Vatananto$Antsiranana Province$56
 Mahabo-Mananivo$Antsiranana Province$56
 Ifarantsa$Antananarivo Province$56
 Ambatoharanana$Toamasina Province$56
-Miarinarivo$Antananarivo Province$56
 Ambohimiadana$Antananarivo Province$56
 Ranohira$Fianarantsoa Province$56
 Amborompotsy$Antsiranana Province$56
@@ -24519,7 +24486,6 @@ Tsiatajavona-Ankaratra$Antananarivo Province$56
 Antsoso$Antsiranana Province$56
 Ambohimierambe-Andranofito$Fianarantsoa Province$56
 Ambesisika$Mahajanga Province$56
-Vohilava$Antananarivo Province$56
 Amboasary$Antananarivo Province$56
 Soanenga$Fianarantsoa Province$56
 Soatanana$Toamasina Province$56
@@ -24556,7 +24522,6 @@ Antsirabe$Antsiranana Province$56
 Antsatramidola$Mahajanga Province$56
 Tsitondroina$Antananarivo Province$56
 Andribavontsona$Mahajanga Province$56
-Antsahavaribe$Toamasina Province$56
 Zoma-Bealoka$Antananarivo Province$56
 Mahabo$Toamasina Province$56
 Manampaneva$Fianarantsoa Province$56
@@ -24591,11 +24556,9 @@ Ampefy$Toamasina Province$56
 Mahazony$Antananarivo Province$56
 Belazao$Mahajanga Province$56
 Befeta$Antsiranana Province$56
-Mandritsara$Toliara Province$56
 Alatsinainy-Bakaro$Fianarantsoa Province$56
 Ambohidanerana$Toliara Province$56
 Morarano$Fianarantsoa Province$56
-Tsararano$Mahajanga Province$56
 Alakamisy Itenina$Antananarivo Province$56
 Antakotako$Antsiranana Province$56
 Antsahabe$Mahajanga Province$56
@@ -24604,7 +24567,6 @@ Andohajango$Fianarantsoa Province$56
 Marojala$Antananarivo Province$56
 Ankasakasabe$Antsiranana Province$56
 Fanambana$Mahajanga Province$56
-Mahazoarivo$Antananarivo Province$56
 Manantenina$Antsiranana Province$56
 Fotadrevo$Toliara Province$56
 Andramy$Mahajanga Province$56
@@ -24669,7 +24631,6 @@ Antanamalaza$Antsiranana Province$56
 Mandabe$Toliara Province$56
 Tanjombato$Toliara Province$56
 Miadanandriana$Mahajanga Province$56
-Ambohimandroso$Fianarantsoa Province$56
 Ambanja$Fianarantsoa Province$56
 Ampasimbe$Mahajanga Province$56
 Mahatsinjony$Toliara Province$56
@@ -24706,7 +24667,6 @@ Ambatomarina$Antananarivo Province$56
 Fenoarivobe$Antananarivo Province$56
 Ambahita$Fianarantsoa Province$56
 Ambatomena$Toamasina Province$56
-Miandrarivo$Toamasina Province$56
 Ambalanirana$Antsiranana Province$56
 Andranomeva$Mahajanga Province$56
 Sahavato$Fianarantsoa Province$56
@@ -24830,7 +24790,6 @@ Vasiana$Antsiranana Province$56
 Analapatsy$Mahajanga Province$56
 Tsarabaria$Fianarantsoa Province$56
 Ambalavero$Toamasina Province$56
-Morafeno$Fianarantsoa Province$56
 Alakamisy Anativato$Toamasina Province$56
 Ambotaka$Mahajanga Province$56
 Beronono$Antsiranana Province$56
@@ -24904,7 +24863,6 @@ Itaosy$Toliara Province$56
 Ambodiangezoka$Toliara Province$56
 Vatolatsaka$Toliara Province$56
 Ambaliha$Toamasina Province$56
-Ambatomainty$Toliara Province$56
 Mavorano$Mahajanga Province$56
 Talata-Vohimena$Toliara Province$56
 Kirano$Antananarivo Province$56
@@ -25824,7 +25782,6 @@ San Felipe$Morelos$60
 Perote$Chihuahua$60
 Peñamiller$Sinaloa$60
 Villanueva$Querétaro$60
-Tuxpan$Tlaxcala$60
 Hueyotlipan$Oaxaca$60
 Chapala$Michoacán de Ocampo$60
 Ixtapan de la Sal$Colima$60
@@ -26824,7 +26781,6 @@ Ayt Mohamed$Chefchaouen$64
 Wislane$Rehamna$64
 Timahdit$El Jadida$64
 Oulad Salmane$Driouch$64
-Sidi Azzouz$Youssoufia$64
 Kenafif$Ouarzazate$64
 Dar Si Aissa$Khémisset$64
 Moulay Abdallah$Midelt$64
@@ -29342,7 +29298,6 @@ El Salvador$Metro Manila$76
 Pigcawayan$Camarines Sur$76
 Hamtic$Northern Mindanao$76
 Canlaon$Bohol$76
-San Miguel$Sorsogon$76
 Pinabacdao$Bicol$76
 Roxas$Sultan Kudarat$76
 San Joaquin$Bohol$76
@@ -29467,7 +29422,6 @@ Linamon$Sorsogon$76
 Alcantara$Davao del Sur$76
 Baao$Rizal$76
 Cagayan de Oro$Isabela$76
-Carmen$South Cotabato$76
 Candon$Siquijor$76
 Bignay$Biliran$76
 Padre Burgos$Albay$76
@@ -29527,7 +29481,6 @@ Santa Magdalena$Apayao$76
 City of Parañaque$Western Visayas$76
 Barotac Viejo$Kalinga$76
 Inopacan$Bicol$76
-Aurora$Autonomous Region in Muslim Mindanao$76
 Inabanga$Negros Occidental$76
 Siocon$Agusan del Norte$76
 Bacoor$Zamboanga Sibugay$76
@@ -29899,7 +29852,6 @@ Bayang$Ilocos$76
 Pozorrubio$Abra$76
 Mainit$Cebu$76
 Pagudpud$Ilocos Norte$76
-Esperanza$Camarines Norte$76
 Tatarikan$Camarines Norte$76
 Rosario$Albay$76
 Tabontabon$Ilocos Norte$76
@@ -38379,7 +38331,6 @@ West Park$Northern Mariana Islands$100
 Durham$Arizona$100
 Roseville$American Samoa$100
 Shoreview$Georgia$100
-Montgomery$Kentucky$100
 Kulpsville$Maine$100
 Hanahan$Arizona$100
 Bridgeport$Louisiana$100
@@ -39064,7 +39015,6 @@ Calverton$Puerto Rico$100
 Punta Gorda$American Samoa$100
 Arvin$Michigan$100
 Forest Park$Mississippi$100
-Monroe$Ohio$100
 Lenoir$Georgia$100
 Grafton$Vermont$100
 Holtsville$New Mexico$100
@@ -39188,7 +39138,6 @@ Lithia Springs$Ohio$100
 Grandville$Hawaii$100
 Sulphur Springs$Hawaii$100
 Bee Cave$Minnesota$100
-Washington$Missouri$100
 Presque Isle$Pennsylvania$100
 Nixa$Oregon$100
 Eugene$Puerto Rico$100
@@ -39319,7 +39268,6 @@ New Brighton$Connecticut$100
 Saraland$Nebraska$100
 Hollymead$Massachusetts$100
 Oyster Bay$Wyoming$100
-Ashland$Delaware$100
 Eastmont$Utah$100
 Union Hill-Novelty Hill$Idaho$100
 Wilmington$California$100
@@ -39516,7 +39464,6 @@ Webster Groves$Rhode Island$100
 Victor$Virginia$100
 South Elgin$Louisiana$100
 Pleasant Hill$Northern Mariana Islands$100
-Montgomery$Kentucky$100
 Rosemont$Massachusetts$100
 Antrim$Guam$100
 Longmeadow$West Virginia$100
@@ -40084,7 +40031,6 @@ Hutchinson$Maryland$100
 Sheboygan$Oklahoma$100
 Chelsea$Guam$100
 Cape Girardeau$Missouri$100
-Somerset$Arizona$100
 Fort Lee$Florida$100
 Arkansas City$Wake Island$100
 Lincoln Park$South Dakota$100
@@ -40194,13 +40140,11 @@ Hillsborough$North Carolina$100
 Maricopa$Arkansas$100
 West Vero Corridor$Louisiana$100
 Clay$Iowa$100
-Brookhaven$Kentucky$100
 Eagan$South Carolina$100
 London$Ohio$100
 Geneseo$Colorado$100
 Lanham$Michigan$100
 Franklin$Indiana$100
-Woodmere$Minnesota$100
 Woonsocket$Howland Island$100
 Berwick$Texas$100
 Newport$Kentucky$100
@@ -40349,7 +40293,6 @@ Milpitas$Navassa Island$100
 Haddonfield$United States Virgin Islands$100
 Highland City$Indiana$100
 Upper Arlington$Palmyra Atoll$100
-Franklin$Howland Island$100
 Central Islip$West Virginia$100
 Oakton$Kentucky$100
 Port Washington$California$100
@@ -40420,7 +40363,6 @@ Rantoul$Maryland$100
 Madera$United States Minor Outlying Islands$100
 Cascades$Hawaii$100
 New Rochelle$Howland Island$100
-Brunswick$New York$100
 Cedar Hills$Kentucky$100
 Baraboo$Northern Mariana Islands$100
 Fairmount$Howland Island$100
@@ -40580,7 +40522,6 @@ East Renton Highlands$Idaho$100
 Cherry Hill$New Mexico$100
 Doral$Maryland$100
 San Gabriel$District of Columbia$100
-Washington$Ohio$100
 Valley Falls$Louisiana$100
 Garden Acres$Rhode Island$100
 Woodward$Rhode Island$100
@@ -40599,7 +40540,6 @@ North Middleton$Kentucky$100
 Maili$Palmyra Atoll$100
 Wyndham$New Hampshire$100
 Westerville$Idaho$100
-Harrison$Alabama$100
 Owensboro$Vermont$100
 Valdosta$Howland Island$100
 New Baltimore$United States Minor Outlying Islands$100
@@ -41117,7 +41057,6 @@ Royal Oak$Hawaii$100
 Smyrna$Baker Island$100
 Linthicum$Missouri$100
 Middle Island$United States Virgin Islands$100
-Westchester$Kingman Reef$100
 Pleasant View$Michigan$100
 Oak Park$New Hampshire$100
 Vidalia$Oklahoma$100
@@ -41370,7 +41309,6 @@ La Habra$North Carolina$100
 Tuckahoe$Maryland$100
 Forest Acres$Utah$100
 Loudoun Valley Estates$Louisiana$100
-Fairview$Kentucky$100
 De Witt$Baker Island$100
 Port Orange$Louisiana$100
 New Albany$Jarvis Island$100
@@ -41553,7 +41491,6 @@ Bargersville$California$100
 Latham$New Hampshire$100
 Drexel Heights$Baker Island$100
 Everett$Texas$100
-Middletown$Navassa Island$100
 Kingston$Minnesota$100
 Colesville$Iowa$100
 Bend$Michigan$100
@@ -41748,7 +41685,6 @@ New Bern$Maine$100
 Rialto$Iowa$100
 Fair Oaks$Idaho$100
 Middleton$Oregon$100
-Hopewell$Rhode Island$100
 Shawnee$Jarvis Island$100
 Franklin Park$Johnston Atoll$100
 Clinton$Maryland$100
@@ -41882,7 +41818,6 @@ Lewisville$Alabama$100
 Southport$Minnesota$100
 El Cajon$Johnston Atoll$100
 Jurupa Valley$Wake Island$100
-Springfield$California$100
 Greenville$New York$100
 Jefferson$West Virginia$100
 Hopkinsville$Hawaii$100
@@ -42129,7 +42064,6 @@ Plumstead$Oklahoma$100
 Lower Moreland$Kansas$100
 Waimalu$Pennsylvania$100
 Stoughton$Michigan$100
-Whitehall$Wyoming$100
 East Cleveland$Northern Mariana Islands$100
 Destin$Montana$100
 Coral Hills$Kingman Reef$100
@@ -42143,7 +42077,6 @@ Danville$North Carolina$100
 Glenshaw$South Dakota$100
 Huntington$Indiana$100
 Chili$Utah$100
-Englewood$Maine$100
 Mehlville$Palmyra Atoll$100
 Meridian$Guam$100
 Warrenville$United States Minor Outlying Islands$100
@@ -42264,7 +42197,6 @@ Fort Smith$Wyoming$100
 East Stroudsburg$Arizona$100
 Abilene$Mississippi$100
 Pierre$Missouri$100
-Jacksonville$Florida$100
 Clarksburg$Palmyra Atoll$100
 Kemp Mill$Nebraska$100
 New Iberia$Kansas$100
@@ -42274,7 +42206,6 @@ Frankfort$New Jersey$100
 Hastings$Oregon$100
 Rochester$Puerto Rico$100
 Logan$District of Columbia$100
-Lansing$Alabama$100
 Harrison$Connecticut$100
 Independence$Georgia$100
 Bixby$Jarvis Island$100
@@ -42293,7 +42224,6 @@ East Norriton$Kansas$100
 Stockbridge$Ohio$100
 Mount Olive$Minnesota$100
 Ruskin$West Virginia$100
-Independence$Kansas$100
 Easton$Minnesota$100
 Waldorf$Wisconsin$100
 Helena Valley Southeast$West Virginia$100
@@ -42353,7 +42283,6 @@ Montgomery Village$Jarvis Island$100
 Grover Beach$Maine$100
 Roswell$Alabama$100
 Ross$Nebraska$100
-Bedford$Maine$100
 Stonegate$Wake Island$100
 Long Beach$Tennessee$100
 Hawaiian Paradise Park$New Jersey$100
@@ -42368,7 +42297,6 @@ West Little River$Washington$100
 Jennings$Louisiana$100
 Alamosa$Midway Atoll$100
 Butte$Florida$100
-Miami$Montana$100
 Alafaya$Iowa$100
 Waconia$Iowa$100
 Falls$Midway Atoll$100
@@ -42388,7 +42316,6 @@ Montgomeryville$New Jersey$100
 Hamilton$South Carolina$100
 Webb City$Puerto Rico$100
 San Anselmo$Utah$100
-Goshen$Jarvis Island$100
 University Place$South Dakota$100
 Greenville$Maryland$100
 Beverly Hills$Louisiana$100
@@ -42608,7 +42535,6 @@ Lakewood Ranch$District of Columbia$100
 Martinez$Maryland$100
 Sugarland Run$Montana$100
 Grantsville$Michigan$100
-Germantown$Northern Mariana Islands$100
 Westminster$New York$100
 Stow$United States Virgin Islands$100
 Arden Hills$New Mexico$100
@@ -42637,13 +42563,11 @@ Needham$Wake Island$100
 Franklin Square$Wake Island$100
 Pullman$Navassa Island$100
 Tanaina$West Virginia$100
-Jackson$Maryland$100
 Fishers$Texas$100
 Rogers$Iowa$100
 Warwick$Iowa$100
 Marrero$Vermont$100
 Eidson Road$Wake Island$100
-Lafayette$Delaware$100
 Hyrum$American Samoa$100
 Country Club$Rhode Island$100
 Mount Holly$California$100
@@ -42709,7 +42633,6 @@ Largo$Alaska$100
 Salisbury$Montana$100
 Mendota$Alabama$100
 Mountain View$Indiana$100
-Quincy$Howland Island$100
 Edinburg$Mississippi$100
 Johns Creek$Michigan$100
 Laramie$American Samoa$100
@@ -42739,7 +42662,6 @@ Andrews$Navassa Island$100
 Bangor$Midway Atoll$100
 Midvale$North Dakota$100
 Kendall West$Mississippi$100
-Henderson$Navassa Island$100
 Charlton$Kingman Reef$100
 Pike Road$Navassa Island$100
 Pasadena$Massachusetts$100
@@ -42789,7 +42711,6 @@ Springville$Utah$100
 Slidell$Navassa Island$100
 East Brandywine$Puerto Rico$100
 Harrison$Oklahoma$100
-Marysville$Guam$100
 Manorville$Pennsylvania$100
 San Luis$South Dakota$100
 Napa$Idaho$100
@@ -42804,7 +42725,6 @@ Pell City$American Samoa$100
 Falmouth$New York$100
 Des Moines$Tennessee$100
 Douglasville$Massachusetts$100
-Wilmington$Indiana$100
 Andover$South Carolina$100
 Fair Oaks Ranch$Washington$100
 Decatur$American Samoa$100
@@ -42901,7 +42821,6 @@ Fort Myers$Washington$100
 Brunswick$Minnesota$100
 Cicero$Florida$100
 Portland$Washington$100
-Portsmouth$Wake Island$100
 Ingleside$Midway Atoll$100
 Rochester$Maryland$100
 Greece$Texas$100
@@ -42920,7 +42839,6 @@ Sunrise$Wyoming$100
 Fredonia$North Dakota$100
 Vineyard$United States Virgin Islands$100
 Las Vegas$New Hampshire$100
-Wildwood$Arkansas$100
 Elk Grove Village$Oklahoma$100
 Capitola$South Carolina$100
 Spring Valley$New York$100

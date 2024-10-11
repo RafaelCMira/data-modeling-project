@@ -23,7 +23,7 @@ const options = {
     fieldsOptionallyEnclosed: false,
     fieldsTerminatedBy: '$',
     linesTerminatedBy: '\n',
-    bytesPerChunk: '2M',
+    bytesPerChunk: '4M',
     threads: '10',
     maxRate: '0',
     showProgress: true

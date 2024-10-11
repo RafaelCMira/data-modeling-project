@@ -1,5 +1,18 @@
 # How to load SQL data
 
+
+## 0. Configure MySQL server
+
+- Go to the MySQL installation folder
+- Open the my.ini file
+- Change the following properties:
+    ```properties
+  innodb_log_buffer_size=256M
+  innodb_buffer_pool_size=4G
+    ```
+- Save the file
+- Restart the MySQL server
+
 ## 1. Create the Database in MySQL
 
 - Open MySQL Workbench
@@ -18,6 +31,41 @@
 - Open the project in IntelliJ IDEA
 - Run.
 
+## 3. Clean the .csv files (remove duplicates)
+
+- Install wsl (Windows Subsystem for Linux) if you don't have it installed
+- Go to the folder where the .csv files are located
+- Open a wsl (bash) terminal
+- Check if dos2unix is installed
+    ``` shell
+    dos2unix --version
+    ```
+  - If not installed, install it
+      ``` shell
+      sudo apt update
+      ```
+      ``` shell
+      sudo apt install dos2unix
+      ```
+
+- Copy the clean.sh file to the folder where the .csv files are located
+- Convert the clean.sh file to unix format
+    ``` shell
+    dos2unix clean.sh
+    ```
+- Run the clean.sh file
+    ``` shell
+    bash clean.sh
+    ```
+  - If can't run the file, give it permission
+    ``` shell
+    chmod +x clean.sh
+    ```
+    ``` shell
+    bash clean.sh
+    ```
+  
+
 ## 3. Connect to mysql shell
 
 - Open the terminal
@@ -30,7 +78,7 @@
     \use data_modeling
     ```
 
-## 4. Create the schema (Or Reset the schema)
+## 4. Create the schema (Or Reset the schema) (schema.sql)
 
 After connecting to the MySQL shell, run the following commands:
 
@@ -53,7 +101,7 @@ Note: Use absolute paths to avoid errors.
 Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\schema.sql"
 ```
 
-## 5. Load the data into the schema
+## 5. Load the data into the schema (bulkInsert.js)
 
 Run the following commands:
 
@@ -69,3 +117,10 @@ The path to the bulkInsert.js varies depending on your computer. Change the path
 \source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\bulkInsert.js"
 ```
 
+## 6. Create the constraints (constraints.sql)
+
+Run the following commands:
+
+``` shell
+\source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\constraints.sql"
+```
