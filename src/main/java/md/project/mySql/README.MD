@@ -97,8 +97,7 @@ The path to the schema.sql varies depending on your computer. Change the path ac
 Note: Use absolute paths to avoid errors.
 
 ``` shell
-\source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º 
-Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\schema.sql"
+\source "<path_to_schema.sql>"
 ```
 
 ## 5. Load the data into the schema (bulkInsert.js)
@@ -114,7 +113,7 @@ Note: Use absolute paths to avoid errors.
 The path to the bulkInsert.js varies depending on your computer. Change the path accordingly.
 
 ``` shell
-\source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\bulkInsert.js"
+\source "<path_to_bulkInsert.js>"
 ```
 
 ## 6. Create the constraints (constraints.sql)
@@ -122,5 +121,5 @@ The path to the bulkInsert.js varies depending on your computer. Change the path
 Run the following commands:
 
 ``` shell
-\source "C:\Users\Rafael\Documents\Universidade\2024_2025\1º Semestre\MD\trabalho\repo\data-modelling\src\main\java\com\example\data_modelling\rdbms\constraints.sql"
+\source "<path_to_constraints.sql>"
 ```
