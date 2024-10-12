@@ -7,8 +7,8 @@
 - Click on settings
 - Set the following settings: Each setting already exists, just change the value
   - ```properties
-    server.memory.heap.initial_size=4g
-    server.memory.heap.max_size=4g
+    server.memory.heap.initial_size=8g
+    server.memory.heap.max_size=8g
     dbms.security.auth_enabled=false
     ```
 
