@@ -27,7 +27,7 @@
 
 
 ## 4. Install the APOC extended plugin
-- Download the APOC extended JAR from https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases
+- Download the APOC extended JAR from https://github.com/neo4j-contrib/neo4j-apoc-procedures/releases/tag/5.23.0
 - Place the JAR in the plugins folder of the database 
   - `C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\dbms-b52b7ca0-0d4f-4dbb-afa9-b9235e466017\plugins`
 -  Create a file named `apoc.conf` in the conf folder `C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\dbms-b52b7ca0-0d4f-4dbb-afa9-b9235e466017\conf`
