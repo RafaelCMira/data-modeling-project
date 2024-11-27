@@ -30,36 +30,36 @@ DROP TABLE IF EXISTS forum;
 
 -- region ENTITIES
 CREATE TABLE continent (
-    continent_id INTEGER,
+    continent_id BIGINT,
     name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE country (
-    country_id INTEGER,
+    country_id BIGINT,
     name VARCHAR(50) NOT NULL,
-    continent_id
+    continent_id BIGINT
 );
 
 CREATE TABLE city (
-    city_id INTEGER
+    city_id BIGINT
     name VARCHAR(50) NOT NULL,
-    country_id INTEGER
+    country_id BIGINT
 );
 
 CREATE TABLE university (
-    university_id INTEGER,
+    university_id BIGINT,
     name VARCHAR(50) NOT NULL,
     city_id INTEGER
 );
 
 CREATE TABLE company (
-    company_id INTEGER,
+    company_id BIGINT,
     name VARCHAR(50) NOT NULL,
-    country_id INTEGER
+    country_id BIGINT
 );
 
 CREATE TABLE person (
-    person_id INTEGER,
+    person_id BIGINT,
     first_name VARCHAR(50) NOT NULL,
     last_name VARCHAR(50) NOT NULL,
     gender  VARCHAR(6) NOT NULL,
@@ -67,45 +67,44 @@ CREATE TABLE person (
     browser_used VARCHAR(20) NOT NULL,
     location_ip VARCHAR(20) NOT NULL,
     created_at TIMESTAMP NOT NULL,
-    city_id INTEGER,
+    city_id BIGINT,
 );
 
 CREATE TABLE tag (
-    tag_id INTEGER,
+    tag_id BIGINT,
     name VARCHAR(50) NOT NULL,
-    tag_class_id INTEGER
+    tag_class_id BIGINT
 );
 
 CREATE TABLE tag_class (
-    tag_class_id INTEGER,
+    tag_class_id BIGINT,
     name VARCHAR(50) NOT NULL
 );
 
 CREATE TABLE message (
-    message_id INTEGER,
+    message_id BIGINT,
     browser_used VARCHAR(20) NOT NULL,
     location_ip VARCHAR(20) NOT NULL,
-    content VARCHAR(1000) NOT NULL,
-    `length` INTEGER NOT NULL,
+    content VARCHAR(1000),
+    `length` INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL,
-    country_id INTEGER,
-    person_id INTEGER
+    country_id BIGINT,
+    person_id BIGINT
 );
 
 CREATE TABLE post (
-    language VARCHAR(5) NOT NULL,
-    image_file VARCHAR(50) NOT NULL,
-    message_id INTEGER,
-    forum_id INTEGER
+    language VARCHAR(5),
+    message_id BIGINT,
+    forum_id BIGINT
 );
 
 CREATE TABLE comment (
-    message_id INTEGER
-    reply_to_message_id INTEGER
+    message_id BIGINT,
+    parent_id BIGINT,
 );
 
 CREATE TABLE forum (
-    forum_id INTEGER,
+    forum_id BIGINT,
     title VARCHAR(50) NOT NULL,
     created_at TIMESTAMP NOT NULL
 )
@@ -157,7 +156,7 @@ CREATE TABLE forum_members (
     created_at TIMESTAMP NOT NULL
 );
 
-CREATE TABLE moderates (
+CREATE TABLE forum_moderator (
     forum_id INTEGER,
     person_id INTEGER
 );
@@ -235,8 +234,8 @@ ALTER TABLE forum_tags
 ALTER TABLE forum_members
     ADD CONSTRAINT forum_members_pk PRIMARY KEY (forum_id, person_id);
 
-ALTER TABLE moderates
-    ADD CONSTRAINT moderates_pk PRIMARY KEY (forum_id);
+ALTER TABLE forum_moderator
+    ADD CONSTRAINT forum_moderator_pk PRIMARY KEY (forum_id);
 
 ALTER TABLE has_interest
     ADD CONSTRAINT has_interest_pk PRIMARY KEY (person_id, tag_id);
@@ -273,7 +272,7 @@ ALTER TABLE post
 
 ALTER TABLE comment
     ADD CONSTRAINT comment_message_fk FOREIGN KEY (message_id) REFERENCES message(message_id),
-    ADD CONSTRAINT comment_reply_to_message_fk FOREIGN KEY (reply_to_message_id) REFERENCES message(message_id);
+    ADD CONSTRAINT comment_message_parent_fk FOREIGN KEY (parent_id) REFERENCES message(message_id);
 -- endregion
 
 -- region RELATIONS
@@ -309,9 +308,9 @@ ALTER TABLE forum_members
     ADD CONSTRAINT forum_members_forum_fk FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
     ADD CONSTRAINT forum_members_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
 
-ALTER TABLE moderates
-    ADD CONSTRAINT moderates_forum_fk FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
-    ADD CONSTRAINT moderates_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
+ALTER TABLE forum_moderator
+    ADD CONSTRAINT forum_moderator_forum_fk FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
+    ADD CONSTRAINT forum_moderator_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
 
 ALTER TABLE has_interest
     ADD CONSTRAINT has_interest_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id),
