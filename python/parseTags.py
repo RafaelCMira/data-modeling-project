@@ -9,9 +9,9 @@ tag_df = df.rename(
     }
 )
 
-tag_df = tag_df[["tag_id", "name", "tag_class_id"]]
+tag_final_df = tag_df[["tag_id", "name", "tag_class_id"]]
 
-tag_df.to_csv("company.csv", sep="|", index=False)
+tag_final_df.to_csv("tag.csv", sep="|", index=False)
 
 
 df = pd.read_csv("tag_class.csv", sep="|")
@@ -19,9 +19,10 @@ df = pd.read_csv("tag_class.csv", sep="|")
 tag_class_df = df.rename(
     columns={
         "id": "tag_class_id",
+        "SubclassOfTagClassId": "subclass_of",
     }
 )
 
-tag_class_df = tag_class_df[["tag_class_id", "name"]]
+tag_class_df = tag_class_df[["tag_class_id", "name", "subclass_of"]]
 
 tag_class_df.to_csv("tag_class.csv", sep="|", index=False)

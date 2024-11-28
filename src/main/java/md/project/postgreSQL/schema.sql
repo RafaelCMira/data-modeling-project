@@ -78,7 +78,8 @@ CREATE TABLE tag (
 
 CREATE TABLE tag_class (
     tag_class_id BIGINT,
-    name VARCHAR(50) NOT NULL
+    name VARCHAR(50) NOT NULL,
+    subclass_of BIGINT
 );
 
 CREATE TABLE message (
@@ -112,58 +113,53 @@ CREATE TABLE forum (
 
 -- region RELATIONS
 CREATE TABLE knows (
-    person_id1 INTEGER,
-    person_id2 INTEGER,
+    person_id1 BIGINT,
+    person_id2 BIGINT,
     created_at TIMESTAMP NOT NULL
 );
 
-CREATE TABLE subclass_of (
-    tag_class_id1 INTEGER,
-    tag_class_id2 INTEGER
-);
-
 CREATE TABLE studies (
-    person_id INTEGER,
-    university_id INTEGER,
+    person_id BIGINT,
+    university_id BIGINT,
     class_year SMALLINT NOT NULL
 );
 
 CREATE TABLE works (
-    person_id INTEGER,
-    company_id INTEGER,
+    person_id BIGINT,
+    company_id BIGINT,
     work_from SMALLINT NOT NULL
 );
 
 CREATE TABLE likes (
-    person_id INTEGER,
-    message_id INTEGER,
+    person_id BIGINT,
+    message_id BIGINT,
     created_at TIMESTAMP NOT NULL
 );
 
 CREATE TABLE message_tags (
-    message_id INTEGER,
-    tag_id INTEGER
+    message_id BIGINT,
+    tag_id BIGINT
 );
 
 CREATE TABLE forum_tags (
-    forum_id INTEGER,
-    tag_id INTEGER
+    forum_id BIGINT,
+    tag_id BIGINT
 );
 
 CREATE TABLE forum_members (
-    forum_id INTEGER,
-    person_id INTEGER,
+    forum_id BIGINT,
+    person_id BIGINT,
     created_at TIMESTAMP NOT NULL
 );
 
 CREATE TABLE forum_moderator (
-    forum_id INTEGER,
-    person_id INTEGER
+    forum_id BIGINT,
+    person_id BIGINT
 );
 
 CREATE TABLE has_interest (
-    person_id INTEGER,
-    tag_id INTEGER
+    person_id BIGINT,
+    tag_id BIGINT
 );
 
 -- endregion
@@ -262,6 +258,9 @@ ALTER TABLE person
 ALTER TABLE tag
     ADD CONSTRAINT tag_tag_class_fk FOREIGN KEY (tag_class_id) REFERENCES tag_class(tag_class_id);
 
+ALTER TABLE tag_class
+    ADD CONSTRAINT tag_class_subclass_of_fk FOREIGN KEY (subclass_of) REFERENCES tag_class(tag_class_id);
+
 ALTER TABLE message
     ADD CONSTRAINT message_country_fk FOREIGN KEY (country_id) REFERENCES country(country_id),
     ADD CONSTRAINT message_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
@@ -279,10 +278,6 @@ ALTER TABLE comment
 ALTER TABLE knows
     ADD CONSTRAINT knows_person1_fk FOREIGN KEY (person_id1) REFERENCES person(person_id),
     ADD CONSTRAINT knows_person2_fk FOREIGN KEY (person_id2) REFERENCES person(person_id);
-
-ALTER TABLE subclass_of
-    ADD CONSTRAINT subclass_of_tag_class1_fk FOREIGN KEY (tag_class_id1) REFERENCES tag_class(tag_class_id),
-    ADD CONSTRAINT subclass_of_tag_class2_fk FOREIGN KEY (tag_class_id2) REFERENCES tag_class(tag_class_id);
 
 ALTER TABLE studies
     ADD CONSTRAINT studies_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id),
