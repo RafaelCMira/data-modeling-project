@@ -1,6 +1,17 @@
 import pandas as pd
+import os
 
-df = pd.read_csv("forums.csv", sep="|")
+base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Forum"
+
+# Find the CSV file in the specified folder
+csv_file = None
+for file in os.listdir(base_path):
+    if file.endswith(".csv"):
+        csv_file = os.path.join(base_path, file)
+        break
+
+
+df = pd.read_csv(csv_file, sep="|")
 
 forum_df = df.rename(
     columns={
@@ -10,21 +21,13 @@ forum_df = df.rename(
     }
 )
 
-forum_final_df = forum_df[
+forum_df = forum_df[
     [
         "forum_id",
         "title",
         "created_at",
-    ]
-]
-
-forum_final_df.to_csv("forum.csv", sep="|", index=False)
-
-forum_moderator_final_df = forum_df[
-    [
-        "forum_id",
         "person_id",
     ]
 ]
 
-forum_moderator_final_df.to_csv("forum_moderator.csv", sep="|", index=False)
+forum_df.to_csv("forum.csv", sep="|", index=False)

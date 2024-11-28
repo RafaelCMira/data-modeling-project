@@ -107,7 +107,8 @@ CREATE TABLE comment (
 CREATE TABLE forum (
     forum_id BIGINT,
     title VARCHAR(50) NOT NULL,
-    created_at TIMESTAMP NOT NULL
+    created_at TIMESTAMP NOT NULL,
+    person_id BIGINT
 )
 -- endregion
 
@@ -150,11 +151,6 @@ CREATE TABLE forum_members (
     forum_id BIGINT,
     person_id BIGINT,
     created_at TIMESTAMP NOT NULL
-);
-
-CREATE TABLE forum_moderator (
-    forum_id BIGINT,
-    person_id BIGINT
 );
 
 CREATE TABLE has_interest (
@@ -230,9 +226,6 @@ ALTER TABLE forum_tags
 ALTER TABLE forum_members
     ADD CONSTRAINT forum_members_pk PRIMARY KEY (forum_id, person_id);
 
-ALTER TABLE forum_moderator
-    ADD CONSTRAINT forum_moderator_pk PRIMARY KEY (forum_id);
-
 ALTER TABLE has_interest
     ADD CONSTRAINT has_interest_pk PRIMARY KEY (person_id, tag_id);
 -- endregion
@@ -272,6 +265,9 @@ ALTER TABLE post
 ALTER TABLE comment
     ADD CONSTRAINT comment_message_fk FOREIGN KEY (message_id) REFERENCES message(message_id),
     ADD CONSTRAINT comment_message_parent_fk FOREIGN KEY (parent_id) REFERENCES message(message_id);
+
+ALTER TABLE forum
+    ADD CONSTRAINT forum_moderator_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
 -- endregion
 
 -- region RELATIONS
@@ -302,10 +298,6 @@ ALTER TABLE forum_tags
 ALTER TABLE forum_members
     ADD CONSTRAINT forum_members_forum_fk FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
     ADD CONSTRAINT forum_members_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
-
-ALTER TABLE forum_moderator
-    ADD CONSTRAINT forum_moderator_forum_fk FOREIGN KEY (forum_id) REFERENCES forum(forum_id),
-    ADD CONSTRAINT forum_moderator_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id);
 
 ALTER TABLE has_interest
     ADD CONSTRAINT has_interest_person_fk FOREIGN KEY (person_id) REFERENCES person(person_id),

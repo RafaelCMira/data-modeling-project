@@ -1,6 +1,16 @@
 import pandas as pd
+import os
 
-df = pd.read_csv("persons.csv", sep="|")
+base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Person"
+
+# Find the CSV file in the specified folder
+csv_file = None
+for file in os.listdir(base_path):
+    if file.endswith(".csv"):
+        csv_file = os.path.join(base_path, file)
+        break
+
+df = pd.read_csv(csv_file, sep="|")
 
 person_df = df.rename(
     columns={
