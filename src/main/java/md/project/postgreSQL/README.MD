@@ -111,9 +111,6 @@ C:\Program Files\PostgreSQL\17\data
   ### 2.  Memory and Disk Settings
     ```properties
     maintenance_work_mem = 1GB # Increases memory for index creation and maintenance tasks
-    work_mem = 512MB # Memory used for sorting and hash tables
-    shared_buffers = 256MB
-    autovacuum = off # Prevents autovacuum processes from slowing down inserts
     ```
 
   ### 3. Checkpoint Settings
@@ -129,6 +126,43 @@ C:\Program Files\PostgreSQL\17\data
 
 
 ## 2. Load SQL data in parallel
+
+- Run ths ps1 script 'datagen.ps1' to generate the data files
+
+- Run the python script to clean the data files
+``` bash
+python clean_data.py
+```
+
+- Options for loading the data:
+  - **Option 1:** Use the COPY command in pgAdmin (works)
+    - Place the csv files in the 'C:\temp' directory
+    - Run the command in the query tool
+      ``` sql
+      COPY continent FROM 'C:/temp/continent.csv' WITH (FORMAT csv, DELIMITER '|', NULL '', HEADER);
+      ```
+  - **Option 2:** Do the same but using the psql in powershell (works)
+    - Place the csv files in the 'C:\temp' directory
+    - Connect to the database
+      ``` bash
+      $env:PGPASSWORD="your_password"
+      psql -U postgres -d test 
+      ```
+    - Run the command in the query tool
+      ``` sql
+      COPY continent FROM 'C:/temp/continent.csv' WITH (FORMAT csv, DELIMITER '|', NULL '', HEADER);
+      ```
+  - **Option 3:** Do the same but in wsL (works)
+    - Place the csv files in the 'C:\temp' directory
+    - Connect to the database
+      ``` bash
+      PGPASSWORD=root psql -h winhost -p 5432 -U postgres -d test
+      ```
+    - Run the command in the query tool
+      ``` sql
+      COPY continent FROM 'C:/temp/continent.csv' WITH (FORMAT csv, DELIMITER '|', NULL '', HEADER);
+      ```
+
 
 
 
