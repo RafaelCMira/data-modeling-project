@@ -150,7 +150,16 @@ C:\Program Files\PostgreSQL\17\data
 -   Run the datagen.ps1 script to run the LDBC SNB datagen docker image
 -   Run the python script to clean the csv files and place them in the temp folder
 
-## 2. Load SQL data in parallel
+## 3. Create schema
+
+-   Run the schema.sql script to create the tables
+
+```bash
+$env:PGPASSWORD="your_password"
+psql -U postgres -d test -f "C:/temp/schema.sql"
+```
+
+## 4. Load SQL data in parallel
 
 -   Options for loading the data:
     -   **Option 1:** Use the COPY command in pgAdmin (works)
@@ -181,55 +190,37 @@ C:\Program Files\PostgreSQL\17\data
             COPY continent FROM 'C:/temp/continent.csv' WITH (FORMAT csv, DELIMITER '|', NULL '', HEADER);
             ```
 
-## 3. Create constraints and indexes
+## 5. Create constraints and indexes
 
--   For indexes, use the following command:
+-   Run the constraints.sql script to create the constraints and indexes
 
-```sql
-CREATE INDEX CONCURRENTLY <idx_name> ON <table_name> <(column_name)>;
+```bash
+$env:PGPASSWORD="your_password"
+psql -U postgres -d test -f "C:/temp/constraints.sql"
 ```
 
--   For constraints, use the following command:
-
-```sql
-ALTER TABLE <table_name> ADD CONSTRAINT <pk_name> PRIMARY KEY <(column_name)> DEFERRABLE INITIALLY DEFERRED;
-
-ALTER TABLE <table_name> ADD CONSTRAINT <fk_name> FOREIGN KEY <(column_name)> REFERENCES <table_name> <(column_name)> DEFERRABLE INITIALLY DEFERRED;
-```
-
-## 4. ANALYZE the tables to update the statistics
+## 6. ANALYZE the tables to update the statistics
 
 -   Run the following command to update the statistics for the tables:
 
 ```sql
-ANALYZE <table_name>;
+ANALYZE;
 ```
 
-## 5. Reset the Postgres configuration to the default settings.
+## 7. Reset the Postgres configuration to the default settings.
 
 -   Open the postgresql.conf file
 -   Change the following properties: **TODO:** check the default values and update this section
 
-    ### 1. Enable Write-Ahead Logging (WAL) overhead
-
-    ```properties
-    fsync = on
-    synchronous_commit = on # Enables waiting for disk writes, improving data durability
-    ```
-
-    ### 2. Memory and Disk Settings
+    ### 1. Memory and Disk Settings
 
     ```properties
     maintenance_work_mem = 64MB # Default value
-    work_mem = 4MB # Default value
-    shared_buffers = 128MB # Default value
-    autovacuum = on # Enables autovacuum processes
     ```
 
-    ### 3. Checkpoint Settings
+    ### 2. Checkpoint Settings
 
     ```properties
     max_wal_size = 1GB # Default value
     checkpoint_timeout = 5min # Default value
-    checkpoint_completion_target = 0.5 # Default value
     ```
