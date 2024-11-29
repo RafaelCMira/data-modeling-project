@@ -2,28 +2,27 @@
 
 --region DROP SCHEMA
 DROP TABLE IF EXISTS knows;
-DROP TABLE IF EXISTS subclass_of;
 DROP TABLE IF EXISTS studies;
 DROP TABLE IF EXISTS works;
 DROP TABLE IF EXISTS likes;
 DROP TABLE IF EXISTS message_tags;
 DROP TABLE IF EXISTS forum_tags;
 DROP TABLE IF EXISTS forum_members;
-DROP TABLE IF EXISTS moderates;
 DROP TABLE IF EXISTS has_interest;
 
 DROP TABLE IF EXISTS comment;
 DROP TABLE IF EXISTS post;
 DROP TABLE IF EXISTS message;
-DROP TABLE IF EXISTS tag_class;
+DROP TABLE IF EXISTS forum;
 DROP TABLE IF EXISTS tag;
-DROP TABLE IF EXISTS person;
+DROP TABLE IF EXISTS tag_class;
 DROP TABLE IF EXISTS company;
 DROP TABLE IF EXISTS university;
+DROP TABLE IF EXISTS person;
 DROP TABLE IF EXISTS city;
 DROP TABLE IF EXISTS country;
 DROP TABLE IF EXISTS continent;
-DROP TABLE IF EXISTS forum;
+
 --endregion
 
 -- Create schema
@@ -109,7 +108,7 @@ CREATE TABLE forum (
     title VARCHAR(50) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     person_id BIGINT
-)
+);
 -- endregion
 
 -- region RELATIONS

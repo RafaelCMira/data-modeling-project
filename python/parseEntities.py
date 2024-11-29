@@ -1,6 +1,8 @@
 import pandas as pd
 import os
 
+output_directory = r"C:\temp"
+
 # region Place
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\Place"
 
@@ -20,12 +22,14 @@ city_df = df[df["type"] == "City"].rename(
 )
 city_df = city_df[["city_id", "name", "country_id"]]
 city_df["country_id"] = city_df["country_id"].astype(int)
-city_df.to_csv("city.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "city.csv")
+city_df.to_csv(output_file, sep="|", index=False)
 
 # For continent.csv: where type is 'Continent'
 continent_df = df[df["type"] == "Continent"].rename(columns={"id": "continent_id"})
 continent_df = continent_df[["continent_id", "name"]]
-continent_df.to_csv("continent.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "continent.csv")
+continent_df.to_csv(output_file, sep="|", index=False)
 
 # For country.csv: where type is 'Country'
 country_df = df[df["type"] == "Country"].rename(
@@ -33,7 +37,8 @@ country_df = df[df["type"] == "Country"].rename(
 )
 country_df = country_df[["country_id", "name", "continent_id"]]
 country_df["continent_id"] = country_df["continent_id"].astype(int)
-country_df.to_csv("country.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "country.csv")
+country_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Organisation
@@ -53,14 +58,16 @@ company_df = df[df["type"] == "Company"].rename(
     columns={"id": "company_id", "LocationPlaceId": "country_id"}
 )
 company_df = company_df[["company_id", "name", "country_id"]]
-company_df.to_csv("company.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "company.csv")
+company_df.to_csv(output_file, sep="|", index=False)
 
 # For university.csv: where type is 'University'
 university_df = df[df["type"] == "University"].rename(
     columns={"id": "university_id", "LocationPlaceId": "city_id"}
 )
 university_df = university_df[["university_id", "name", "city_id"]]
-university_df.to_csv("university.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "university.csv")
+university_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Forum
@@ -92,7 +99,8 @@ forum_df = forum_df[
     ]
 ]
 
-forum_df.to_csv("forum.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "forum.csv")
+forum_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Tags
@@ -114,8 +122,8 @@ tag_df = df.rename(
 )
 
 tag_final_df = tag_df[["tag_id", "name", "tag_class_id"]]
-
-tag_final_df.to_csv("tag.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "tag.csv")
+tag_final_df.to_csv(output_file, sep="|", index=False)
 
 
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\TagClass"
@@ -144,7 +152,8 @@ tag_class_df["subclass_of"] = pd.to_numeric(
     tag_class_df["subclass_of"], errors="coerce"
 ).astype("Int64")
 
-tag_class_df.to_csv("tag_class.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "tag_class.csv")
+tag_class_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Messages
@@ -179,7 +188,8 @@ post_final_df = post_df[
     ]
 ]
 
-post_final_df.to_csv("post.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "post.csv")
+post_final_df.to_csv(output_file, sep="|", index=False)
 
 
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Comment"
@@ -216,7 +226,8 @@ comment_final_df = comment_df[
     ]
 ]
 
-comment_final_df.to_csv("comment.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "comment.csv")
+comment_final_df.to_csv(output_file, sep="|", index=False)
 
 
 post_df = post_df[
@@ -261,7 +272,8 @@ messages_df = messages_df[
     ]
 ]
 
-messages_df.to_csv("messages.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "messageS.csv")
+messages_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Persons
@@ -302,5 +314,6 @@ person_df = person_df[
     ]
 ]
 
-person_df.to_csv("person.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "person.csv")
+person_df.to_csv(output_file, sep="|", index=False)
 # endregion

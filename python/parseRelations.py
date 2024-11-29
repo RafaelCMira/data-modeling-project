@@ -1,9 +1,10 @@
 import pandas as pd
 import os
 
+output_directory = r"C:\temp"
+
 
 # region knows
-
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Person_knows_Person"
 
 csv_file = None
@@ -30,7 +31,8 @@ df = df[
     ]
 ]
 
-df.to_csv("knows.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "knows.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
@@ -61,12 +63,12 @@ df = df[
     ]
 ]
 
-df.to_csv("studies.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "studies.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
 # region works
-
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Person_workAt_Company"
 
 csv_file = None
@@ -93,7 +95,8 @@ df = df[
     ]
 ]
 
-df.to_csv("works.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "works.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
@@ -149,7 +152,8 @@ post_df = post_df[
 
 df = pd.concat([comment_df, post_df])
 
-df.to_csv("message_tags.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "message_tags.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
@@ -179,7 +183,8 @@ df = df[
     ]
 ]
 
-df.to_csv("forum_tags.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "forum_tags.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
@@ -210,12 +215,12 @@ df = df[
     ]
 ]
 
-df.to_csv("forum_members.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "forum_members.csv")
+df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 
 # # region has_interest
-
 base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Person_hasInterest_Tag"
 
 csv_file = None
@@ -240,7 +245,8 @@ df = df[
     ]
 ]
 
-df.to_csv("has_interest.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "has_interest.csv")
+df.to_csv(output_file, sep="|", index=False)
 # # endregion
 
 
@@ -292,5 +298,6 @@ df = df[
     ]
 ]
 
-df.to_csv("likes.csv", sep="|", index=False)
+output_file = os.path.join(output_directory, "likes.csv")
+df.to_csv(output_file, sep="|", index=False)
 # # endregion
