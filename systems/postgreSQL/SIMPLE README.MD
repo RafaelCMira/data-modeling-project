@@ -76,11 +76,11 @@ This script will clean the data, create the schema, load the data, create the co
 -   Run the doesAll.ps1 script
 
     ```bash
-    .\doesAll.ps1 -pgPassword <"password"> -datasetFolder <"ldbc_output_composite_merged-default_3">
+    .\doesAll.ps1 -pgPassword <"password"> -datasetFolder <"ldbc_output_composite_merged-default_0_3"> >> "output_machine2.txt"
     ```
 
 ## 4. Reset the Postgres configuration to the default settings.
 
+-   Check the postgresql_defaults.conf file in the repo for the default values
 -   Open the postgresql.conf file
 -   Restore the default values for the properties changed in step 1
--   Check the postgresql_defaults.conf file in the repo for the default values

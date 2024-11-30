@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Entities scripts completed in 6.019983 seconds.
+Relations scripts completed in 4.3794847 seconds.
+schema.sql completed in 0.1732793 seconds.
+bulkInserts.sql completed in 9.1735338 seconds.
+constraints.sql completed in 4.3651844 seconds.
+ANALYZE completed in 1.3426484 seconds.
+-------------------------------------------------------------------------------
