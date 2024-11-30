@@ -16,6 +16,8 @@ if (-not $datasetFolder) {
 
 Write-Output "-------------------------------------------------------------------------------"
 
+Write-Output "$datasetFolder"
+
  # 1. Runs the py scripts
 $entitiesTime = Measure-Command {
     python "../python/parseEntities.py" --dataset_folder $datasetFolder
