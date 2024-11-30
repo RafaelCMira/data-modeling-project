@@ -3,17 +3,29 @@ import os
 
 output_directory = r"C:\temp"
 
-# region Place
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\Place"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
+dataset_folder = r"\ldbc_output_composite_merged-default"
 
 
-df = pd.read_csv(csv_file, sep="|")
+def get_file(base_path):
+    csv_file = None
+
+    path = os.path.join(
+        r"C:",
+        dataset_folder,
+        r"graphs\csv\bi\composite-merged-fk\initial_snapshot",
+        base_path.lstrip("\\"),
+    )
+
+    print(path)
+
+    for file in os.listdir(path):
+        if file.endswith(".csv"):
+            csv_file = os.path.join(path, file)
+            break
+    return csv_file
+
+
+df = pd.read_csv(get_file(r"\static\Place"), sep="|")
 
 
 # For city.csv: where type is 'City'
@@ -42,16 +54,7 @@ country_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Organisation
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\Organisation"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-
-df = pd.read_csv(csv_file, sep="|")
+df = pd.read_csv(get_file(r"\static\Organisation"), sep="|")
 
 # For company.csv: where type is 'Company'
 company_df = df[df["type"] == "Company"].rename(
@@ -71,16 +74,7 @@ university_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Forum
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Forum"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-
-df = pd.read_csv(csv_file, sep="|")
+df = pd.read_csv(get_file(r"\dynamic\Forum"), sep="|")
 
 forum_df = df.rename(
     columns={
@@ -104,15 +98,7 @@ forum_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Tags
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\Tag"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-df = pd.read_csv(csv_file, sep="|")
+df = pd.read_csv(get_file(r"\static\Tag"), sep="|")
 
 tag_df = df.rename(
     columns={
@@ -126,17 +112,7 @@ output_file = os.path.join(output_directory, "tag.csv")
 tag_final_df.to_csv(output_file, sep="|", index=False)
 
 
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\static\TagClass"
-
-# Find the CSV file in the specified folder
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-
-df = pd.read_csv(csv_file, sep="|")
+df = pd.read_csv(get_file(r"\static\TagClass"), sep="|")
 
 tag_class_df = df.rename(
     columns={
@@ -157,16 +133,7 @@ tag_class_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Messages
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Post"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-
-post_df = pd.read_csv(csv_file, sep="|")
+post_df = pd.read_csv(get_file(r"\dynamic\Post"), sep="|")
 
 post_df = post_df.rename(
     columns={
@@ -192,15 +159,7 @@ output_file = os.path.join(output_directory, "post.csv")
 post_final_df.to_csv(output_file, sep="|", index=False)
 
 
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Comment"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-comment_df = pd.read_csv(csv_file, sep="|")
+comment_df = pd.read_csv(get_file(r"\dynamic\Comment"), sep="|")
 
 comment_df = comment_df.rename(
     columns={
@@ -272,21 +231,13 @@ messages_df = messages_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "messageS.csv")
+output_file = os.path.join(output_directory, "messages.csv")
 messages_df.to_csv(output_file, sep="|", index=False)
 # endregion
 
 # region Persons
 
-base_path = r"C:\ldbc_output_composite_merged-default\graphs\csv\bi\composite-merged-fk\initial_snapshot\dynamic\Person"
-
-csv_file = None
-for file in os.listdir(base_path):
-    if file.endswith(".csv"):
-        csv_file = os.path.join(base_path, file)
-        break
-
-df = pd.read_csv(csv_file, sep="|")
+df = pd.read_csv(get_file(r"\dynamic\Person"), sep="|")
 
 person_df = df.rename(
     columns={
