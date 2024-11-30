@@ -210,17 +210,5 @@ ANALYZE;
 ## 7. Reset the Postgres configuration to the default settings.
 
 -   Open the postgresql.conf file
--   Change the following properties: **TODO:** check the default values and update this section
-
-    ### 1. Memory and Disk Settings
-
-    ```properties
-    maintenance_work_mem = 64MB # Default value
-    ```
-
-    ### 2. Checkpoint Settings
-
-    ```properties
-    max_wal_size = 1GB # Default value
-    checkpoint_timeout = 5min # Default value
-    ```
+-   Restore the default values for the properties changed in step 1
+-   Check the postgresql_defaults.conf file in the repo for the default values
