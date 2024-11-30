@@ -132,14 +132,26 @@ C:\Program Files\PostgreSQL\17\data
     This will only be important to create the indexes and foreign keys after the data is loaded
 
     ```properties
-    maintenance_work_mem = 1GB # Increases memory for index creation and maintenance tasks
+    shared_buffers = 1GB # Increases memory for caching data
+    work_mem = 2047MB # Note: with 2GB fails so use MB, Increases memory for sorting operations
+    maintenance_work_mem = 2GB # Increases memory for index creation and maintenance tasks
     ```
 
     ### 2. Checkpoint Settings
 
     ```properties
-    max_wal_size = 2GB # Increases the WAL threshold to avoid frequent checkpoints
+    max_wal_size = 4GB # Increases the WAL threshold to avoid frequent checkpoints
     checkpoint_timeout = 10min # Increases the checkpoint interval to reduce disk I/O
+    ```
+
+    ## 3. WAL (Write-Ahead Logging)
+
+    ```properties
+    max_wal_senders = 0 # Disables WAL replication to speed up data loading
+    wal_level = minimal # Reduces the amount of WAL generated during data loading
+    synchronous_commit = off # Disables fsync to speed up data loading
+    full_page_writes = off # Disables full-page writes to speed up data loading
+    wal_buffers = 128MB # Increases the WAL buffer size to speed up data loading
     ```
 
 -   Save the file

@@ -41,19 +41,19 @@ CREATE TABLE country (
 
 CREATE TABLE city (
     city_id BIGINT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     country_id BIGINT
 );
 
 CREATE TABLE university (
     university_id BIGINT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(250) NOT NULL,
     city_id INTEGER
 );
 
 CREATE TABLE company (
     company_id BIGINT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(100) NOT NULL,
     country_id BIGINT
 );
 
@@ -71,7 +71,7 @@ CREATE TABLE person (
 
 CREATE TABLE tag (
     tag_id BIGINT,
-    name VARCHAR(50) NOT NULL,
+    name VARCHAR(150) NOT NULL,
     tag_class_id BIGINT
 );
 
@@ -85,7 +85,7 @@ CREATE TABLE message (
     message_id BIGINT,
     browser_used VARCHAR(20) NOT NULL,
     location_ip VARCHAR(20) NOT NULL,
-    content VARCHAR(1000),
+    content TEXT,
     length INTEGER NOT NULL DEFAULT 0,
     created_at TIMESTAMP NOT NULL,
     country_id BIGINT,
@@ -105,7 +105,7 @@ CREATE TABLE comment (
 
 CREATE TABLE forum (
     forum_id BIGINT,
-    title VARCHAR(50) NOT NULL,
+    title VARCHAR(150) NOT NULL,
     created_at TIMESTAMP NOT NULL,
     person_id BIGINT
 );

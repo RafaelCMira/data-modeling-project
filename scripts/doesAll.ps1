@@ -1,38 +1,50 @@
-# 1. Runs th py scripts
+param (
+    [string]$pgPassword,
+    [string]$datasetFolder
+)
 
-cd "../python"
+if (-not $pgPassword) {
+    Write-Error "Please provide the PostgreSQL password as an argument."
+    exit 1
+}
 
-python "parseEntities.py"
-python "parseRelations.py"
+if (-not $datasetFolder) {
+    Write-Error "Please provide the dataset folder as an argument."
+    exit 1
+}
 
-# 2. Copies the sql files to "C:\temp" directory
 
-cd "../systems/postgreSQL"
+# 1. Runs the py scripts
 
-Copy-Item "schema.sql" "C:\temp"
-Copy-Item "bulkInserts.sql" "C:\temp"
-Copy-Item "constraints.sql" "C:\temp"
+python "../python/parseEntities.py" --dataset_folder $datasetFolder
+python "../python/parseRelations.py" --dataset_folder $datasetFolder
 
-# # 3. Runs this commands:
+# # 2. Copies the sql files to "C:\temp" directory
 
-# $env:PGPASSWORD="your_password"
+Copy-Item "../systems/postgreSQL/schema.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/bulkInserts.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/constraints.sql" "C:\temp"
 
-# $schemaTime = Measure-Command {
-#     psql -U postgres -d test -f "C:/temp/schema.sql"
-# }
-# Write-Output "schema.sql completed in $($schemaTime.TotalSeconds) seconds."
+# 3. Runs this commands:
 
-# $bulkInsertsTime = Measure-Command {
-#     psql -U postgres -d test -f "C:/temp/bulkInserts.sql"
-# }
-# Write-Output "bulkInserts.sql completed in $($bulkInsertsTime.TotalSeconds) seconds."
+$env:PGPASSWORD=$pgPassword
 
-# $constraintsTime = Measure-Command {
-#     psql -U postgres -d test -f "C:/temp/constraints.sql"
-# }
-# Write-Output "constraints.sql completed in $($constraintsTime.TotalSeconds) seconds."
+$schemaTime = Measure-Command {
+    psql -U postgres -d test -f "C:/temp/schema.sql"
+}
+Write-Output "schema.sql completed in $($schemaTime.TotalSeconds) seconds."
 
-# $analyzeTime = Measure-Command {
-#     psql -U postgres -d test -c "ANALYZE;"
-# }
-# Write-Output "ANALYZE completed in $($analyzeTime.TotalSeconds) seconds."
+$bulkInsertsTime = Measure-Command {
+    psql -U postgres -d test -f "C:/temp/bulkInserts.sql"
+}
+Write-Output "bulkInserts.sql completed in $($bulkInsertsTime.TotalSeconds) seconds."
+
+$constraintsTime = Measure-Command {
+    psql -U postgres -d test -f "C:/temp/constraints.sql"
+}
+Write-Output "constraints.sql completed in $($constraintsTime.TotalSeconds) seconds."
+
+$analyzeTime = Measure-Command {
+    psql -U postgres -d test -c "ANALYZE;"
+}
+Write-Output "ANALYZE completed in $($analyzeTime.TotalSeconds) seconds."

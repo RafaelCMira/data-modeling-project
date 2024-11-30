@@ -1,9 +1,17 @@
 import pandas as pd
 import os
+import argparse
+
+# Parse command-line arguments
+parser = argparse.ArgumentParser(description="Process some integers.")
+parser.add_argument(
+    "--dataset_folder", type=str, required=True, help="Path to the dataset folder"
+)
+args = parser.parse_args()
 
 output_directory = r"C:\temp"
 
-dataset_folder = r"\ldbc_output_composite_merged-default"
+dataset_folder = args.dataset_folder
 
 
 def get_file(base_path):
@@ -11,7 +19,7 @@ def get_file(base_path):
 
     path = os.path.join(
         r"C:",
-        dataset_folder,
+        "\\" + dataset_folder,
         r"graphs\csv\bi\composite-merged-fk\initial_snapshot",
         base_path.lstrip("\\"),
     )
