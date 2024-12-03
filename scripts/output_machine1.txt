@@ -1,8 +1,9 @@
 -------------------------------------------------------------------------------
-Entities scripts completed in 6.019983 seconds.
-Relations scripts completed in 4.3794847 seconds.
-schema.sql completed in 0.1732793 seconds.
-bulkInserts.sql completed in 9.1735338 seconds.
-constraints.sql completed in 4.3651844 seconds.
-ANALYZE completed in 1.3426484 seconds.
+ldbc_output_composite_merged-default_0_3
+Entities scripts completed in 6.8469714 seconds.
+Relations scripts completed in 4.3805796 seconds.
+schema.sql completed in 0.310702 seconds.
+bulkInserts.sql completed in 9.1164726 seconds.
+constraints.sql completed in 4.0209597 seconds.
+ANALYZE completed in 1.2593262 seconds.
 -------------------------------------------------------------------------------
