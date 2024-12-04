@@ -1,24 +1,31 @@
 param (
+    [string]$user,
     [string]$pgPassword,
     [string]$datasetFolder,
     [string]$neo4jDB,
     [string]$outputFile = "output.txt"  # Optional parameter for the output file
 )
 
+if(-not $user) {
+    Write-Error "Please provide the windows user as an argument. -user <user>"
+    exit 1
+}
+
 if (-not $pgPassword) {
-    Write-Error "Please provide the PostgreSQL password as an argument."
+    Write-Error "Please provide the PostgreSQL password as an argument. -pgPassword <password>"
     exit 1
 }
 
 if (-not $datasetFolder) {
-    Write-Error "Please provide the dataset folder as an argument."
+    Write-Error "Please provide the dataset folder as an argument.  -datasetFolder <folder>"
     exit 1
 }
 
 if (-not $neo4jDB) {
-    Write-Error "Please provide the Neo4j DB path as an argument."
+    Write-Error "Please provide the Neo4j DB path as an argument. -neo4jDB <db>"
     exit 1
 }
+
 
 Write-Output "-------------------------------------------------------------------------------"
 
@@ -65,21 +72,21 @@ $analyzeTime = Measure-Command {
 Write-Output "ANALYZE completed in $($analyzeTime.TotalSeconds) seconds."
 
 # 4. Configure Neo4j
-Copy-Item "../systems/neo4j/load_data.cypher" "C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\import"
+Copy-Item "../systems/neo4j/load_data.cypher" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\import"
 
-Copy-Item "../systems/neo4j/utils/apoc5plus-5.20.0.jar" "C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
-Copy-Item "../systems/neo4j/utils/apoc-5.23.0-extended.jar" "C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
+Copy-Item "../systems/neo4j/utils/apoc5plus-5.20.0.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
+Copy-Item "../systems/neo4j/utils/apoc-5.23.0-extended.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
 
-Copy-Item "../systems/neo4j/utils/apoc.conf" "C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf"
+Copy-Item "../systems/neo4j/utils/apoc.conf" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf"
 
-$confFile = "C:\Users\Rafael\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf\neo4j.conf"
+$confFile = "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf\neo4j.conf"
 
 # Read the existing configuration file
 $config = Get-Content -Path $confFile
 
 # Update or add the properties
-$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=4g'
-$config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.heap.max_size=4g'
+$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=6g'
+$config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.heap.max_size=6g'
 $config = $config -replace '#server.memory.pagecache.size=.*', 'server.memory.pagecache.size=4g'
 $config = $config -replace 'dbms.security.auth_enabled=true', 'dbms.security.auth_enabled=false'
 $config = $config -replace 'server.directories.import=import', '#server.directories.import=import'
