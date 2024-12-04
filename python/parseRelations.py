@@ -33,6 +33,11 @@ def get_file(base_path):
     return csv_file
 
 
+def write_file(df, file_name):
+    output_file = os.path.join(output_directory, file_name)
+    df.to_csv(output_file, sep="|", index=False)
+
+
 # region knows
 df = pd.read_csv(get_file(r"\dynamic\Person_knows_Person"), sep="|")
 
@@ -52,8 +57,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "knows.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "knows.csv")
 # endregion
 
 
@@ -76,8 +80,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "studies.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "studies.csv")
 # endregion
 
 
@@ -100,8 +103,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "works.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "works.csv")
 # endregion
 
 
@@ -140,8 +142,7 @@ post_df = post_df[
 
 df = pd.concat([comment_df, post_df])
 
-output_file = os.path.join(output_directory, "message_tags.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "message_tags.csv")
 # endregion
 
 
@@ -162,8 +163,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "forum_tags.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "forum_tags.csv")
 # endregion
 
 
@@ -186,8 +186,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "forum_members.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "forum_members.csv")
 # endregion
 
 
@@ -208,8 +207,7 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "has_interest.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "has_interest.csv")
 # # endregion
 
 
@@ -244,6 +242,5 @@ df = df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "likes.csv")
-df.to_csv(output_file, sep="|", index=False)
+write_file(df, "likes.csv")
 # # endregion

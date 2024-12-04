@@ -66,18 +66,27 @@ C:\Program Files\PostgreSQL\17\data
 -   Run the datagen.ps1 script to run the LDBC SNB datagen docker image
 
     ```bash
-    .\datagen.ps1
+    .\datagen.ps1 -sf 0.3
     ```
 
 ## 4. Run the doesAll.ps1 script
 
-This script will clean the data, create the schema, load the data, create the constraints and indexes, and update the statistics.
+This script will:
 
--   Run the doesAll.ps1 script
+-   Clean the csv files
 
-    ```bash
-    .\doesAll.ps1 -pgPassword <"password"> -datasetFolder <"ldbc_output_composite_merged-default_0_3"> >> "output_machine2.txt"
-    ```
+-   `PostgreSQL`:
+
+    -   Create the schema
+    -   Load the data
+    -   Create the constraints and indexes
+    -   Update the statistics.
+
+-   `Neo4j`: configure the database.
+
+```bash
+.\doesAll.ps1 -pgPassword "password" -datasetFolder "ldbc_output_composite_merged-default_0_3" -neo4jDB "dbms-23424-1234123-234234-sada2dasd3qqf" >> "output_machine2.txt"
+```
 
 ## 4. Reset the Postgres configuration to the default settings.
 

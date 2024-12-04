@@ -2,9 +2,8 @@ import pandas as pd
 import os
 import argparse
 
-
 # Parse command-line arguments
-parser = argparse.ArgumentParser(description="Process some integers.")
+parser = argparse.ArgumentParser()
 parser.add_argument(
     "--dataset_folder", type=str, required=True, help="Path to the dataset folder"
 )
@@ -34,6 +33,11 @@ def get_file(base_path):
     return csv_file
 
 
+def write_file(df, file_name):
+    output_file = os.path.join(output_directory, file_name)
+    df.to_csv(output_file, sep="|", index=False)
+
+
 df = pd.read_csv(get_file(r"\static\Place"), sep="|")
 
 
@@ -43,14 +47,12 @@ city_df = df[df["type"] == "City"].rename(
 )
 city_df = city_df[["city_id", "name", "country_id"]]
 city_df["country_id"] = city_df["country_id"].astype(int)
-output_file = os.path.join(output_directory, "city.csv")
-city_df.to_csv(output_file, sep="|", index=False)
+write_file(city_df, "city.csv")
 
 # For continent.csv: where type is 'Continent'
 continent_df = df[df["type"] == "Continent"].rename(columns={"id": "continent_id"})
 continent_df = continent_df[["continent_id", "name"]]
-output_file = os.path.join(output_directory, "continent.csv")
-continent_df.to_csv(output_file, sep="|", index=False)
+write_file(continent_df, "continent.csv")
 
 # For country.csv: where type is 'Country'
 country_df = df[df["type"] == "Country"].rename(
@@ -58,8 +60,7 @@ country_df = df[df["type"] == "Country"].rename(
 )
 country_df = country_df[["country_id", "name", "continent_id"]]
 country_df["continent_id"] = country_df["continent_id"].astype(int)
-output_file = os.path.join(output_directory, "country.csv")
-country_df.to_csv(output_file, sep="|", index=False)
+write_file(country_df, "country.csv")
 # endregion
 
 # region Organisation
@@ -70,16 +71,14 @@ company_df = df[df["type"] == "Company"].rename(
     columns={"id": "company_id", "LocationPlaceId": "country_id"}
 )
 company_df = company_df[["company_id", "name", "country_id"]]
-output_file = os.path.join(output_directory, "company.csv")
-company_df.to_csv(output_file, sep="|", index=False)
+write_file(company_df, "company.csv")
 
 # For university.csv: where type is 'University'
 university_df = df[df["type"] == "University"].rename(
     columns={"id": "university_id", "LocationPlaceId": "city_id"}
 )
 university_df = university_df[["university_id", "name", "city_id"]]
-output_file = os.path.join(output_directory, "university.csv")
-university_df.to_csv(output_file, sep="|", index=False)
+write_file(university_df, "university.csv")
 # endregion
 
 # region Forum
@@ -102,8 +101,7 @@ forum_df = forum_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "forum.csv")
-forum_df.to_csv(output_file, sep="|", index=False)
+write_file(forum_df, "forum.csv")
 # endregion
 
 # region Tags
@@ -117,8 +115,7 @@ tag_df = df.rename(
 )
 
 tag_final_df = tag_df[["tag_id", "name", "tag_class_id"]]
-output_file = os.path.join(output_directory, "tag.csv")
-tag_final_df.to_csv(output_file, sep="|", index=False)
+write_file(tag_final_df, "tag.csv")
 
 
 df = pd.read_csv(get_file(r"\static\TagClass"), sep="|")
@@ -137,8 +134,7 @@ tag_class_df["subclass_of"] = pd.to_numeric(
     tag_class_df["subclass_of"], errors="coerce"
 ).astype("Int64")
 
-output_file = os.path.join(output_directory, "tag_class.csv")
-tag_class_df.to_csv(output_file, sep="|", index=False)
+write_file(tag_class_df, "tag_class.csv")
 # endregion
 
 # region Messages
@@ -156,6 +152,23 @@ post_df = post_df.rename(
     }
 )
 
+neo4j_post_df = post_df[
+    [
+        "message_id",
+        "browser_used",
+        "location_ip",
+        "content",
+        "length",
+        "language",
+        "created_at",
+        "country_id",
+        "person_id",
+        "forum_id",
+    ]
+]
+
+write_file(neo4j_post_df, "neo4j_post.csv")
+
 post_final_df = post_df[
     [
         "language",
@@ -164,9 +177,7 @@ post_final_df = post_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "post.csv")
-post_final_df.to_csv(output_file, sep="|", index=False)
-
+write_file(post_final_df, "post.csv")
 
 comment_df = pd.read_csv(get_file(r"\dynamic\Comment"), sep="|")
 
@@ -187,6 +198,22 @@ comment_df["parent_id"] = comment_df["ParentPostId"].fillna(
 
 comment_df["parent_id"] = comment_df["parent_id"].astype("Int64")
 
+neo4j_comment_df = comment_df[
+    [
+        "message_id",
+        "browser_used",
+        "location_ip",
+        "content",
+        "length",
+        "created_at",
+        "country_id",
+        "person_id",
+        "parent_id",
+    ]
+]
+
+write_file(neo4j_comment_df, "neo4j_comment.csv")
+
 comment_final_df = comment_df[
     [
         "message_id",
@@ -194,9 +221,7 @@ comment_final_df = comment_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "comment.csv")
-comment_final_df.to_csv(output_file, sep="|", index=False)
-
+write_file(comment_final_df, "comment.csv")
 
 post_df = post_df[
     [
@@ -240,8 +265,7 @@ messages_df = messages_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "message.csv")
-messages_df.to_csv(output_file, sep="|", index=False)
+write_file(messages_df, "message.csv")
 # endregion
 
 # region Persons
@@ -274,6 +298,5 @@ person_df = person_df[
     ]
 ]
 
-output_file = os.path.join(output_directory, "person.csv")
-person_df.to_csv(output_file, sep="|", index=False)
+write_file(person_df, "person.csv")
 # endregion
