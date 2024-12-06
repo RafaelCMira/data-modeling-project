@@ -93,7 +93,6 @@ MATCH (tag_class_2:TagClass {tag_class_id: toInteger(row.subclass_of)})
 CREATE (tag_class_1)-[:SUBCLASS_OF]->(tag_class_2);
 
 
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/person.csv" AS row FIELDTERMINATOR "|"
 RETURN row',
@@ -107,7 +106,7 @@ RETURN row',
     person_location_ip: row.location_ip,
     person_created_at: datetime(row.created_at)
 })',
-{batchSize: 40000, parallel: true}
+{batchSize: 50000, parallel: true}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -124,7 +123,6 @@ YIELD batches, total
 RETURN batches, total;
 
 
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/studies.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
@@ -134,7 +132,6 @@ CREATE (person)-[:STUDIES_AT {class_year: toInteger(row.class_year)}]->(universi
 )
 YIELD batches, total
 RETURN batches, total;
-
 
 
 CALL apoc.periodic.iterate(
@@ -159,8 +156,6 @@ YIELD batches, total
 RETURN batches, total;
 
 
-
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/forum.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'CREATE (f:Forum {
@@ -172,8 +167,6 @@ CALL apoc.periodic.iterate(
 )
 YIELD batches, total
 RETURN batches, total;
-
-
 
 
 CALL apoc.periodic.iterate(
@@ -198,14 +191,12 @@ YIELD batches, total
 RETURN batches, total;
 
 
-
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/forum_tags.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
 MATCH (tag:Tag {tag_id: toInteger(row.tag_id)})
 CREATE (tag)-[:TAG_OF]->(forum);',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -216,11 +207,10 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
  MATCH (tag:Tag {tag_id: toInteger(row.tag_id)})
  CREATE (person)-[:HAS_INTEREST]->(tag);',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;
-
 
 
 CALL apoc.periodic.iterate(
@@ -257,14 +247,12 @@ YIELD batches, total
 RETURN batches, total;
 
 
-
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/neo4j_comment.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (comment:Comment {message_id: toInteger(row.message_id)})
- MATCH (message:Message {parent_id: toInteger(row.parent_id)})
+ MATCH (message:Message {message_id: toInteger(row.parent_id)})
  CREATE (comment)-[:REPLY_OF]->(message);',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -275,11 +263,10 @@ CALL apoc.periodic.iterate(
 'MATCH (post:Post {message_id: toInteger(row.message_id)})
  MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
  CREATE (post)-[:POSTED_IN]->(forum);',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;
-
 
 
 CALL apoc.periodic.iterate(
@@ -287,7 +274,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
  MATCH (country:Country {country_id: toInteger(row.country_id)})
  CREATE (message)-[:LOCATED_IN]->(country);',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -320,7 +307,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
 MATCH (person:Person {person_id: toInteger(row.person_id)})
 CREATE (message)-[:LIKED_BY {created_at: datetime(row.created_at)}]->(person)',
-{batchSize: 100000, parallel: false}
+{batchSize: 50000, parallel: false}
 )
 YIELD batches, total
 RETURN batches, total;

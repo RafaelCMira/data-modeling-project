@@ -2,8 +2,7 @@ param (
     [string]$user,
     [string]$pgPassword,
     [string]$datasetFolder,
-    [string]$neo4jDB,
-    [string]$outputFile = "output.txt"  # Optional parameter for the output file
+    [string]$neo4jDB
 )
 
 if(-not $user) {
@@ -29,7 +28,9 @@ if (-not $neo4jDB) {
 
 Write-Output "-------------------------------------------------------------------------------"
 
-Write-Output "$datasetFolder"
+Write-Output "User: $user"
+
+Write-Output "Dataset: $datasetFolder"
 
  # 1. Runs the py scripts
 $entitiesTime = Measure-Command {
@@ -85,9 +86,9 @@ $confFile = "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf\neo4j.
 $config = Get-Content -Path $confFile
 
 # Update or add the properties
-$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=6g'
-$config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.heap.max_size=6g'
-$config = $config -replace '#server.memory.pagecache.size=.*', 'server.memory.pagecache.size=4g'
+$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=8g'
+$config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.heap.max_size=8g'
+$config = $config -replace '#server.memory.pagecache.size=.*', 'server.memory.pagecache.size=3g'
 $config = $config -replace 'dbms.security.auth_enabled=true', 'dbms.security.auth_enabled=false'
 $config = $config -replace 'server.directories.import=import', '#server.directories.import=import'
 $config = $config -replace 'dbms.security.procedures.unrestricted=jwt.security.*', 'dbms.security.procedures.unrestricted=jwt.security.*,apoc.*'
