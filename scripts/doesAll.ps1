@@ -86,7 +86,7 @@ $confFile = "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf\neo4j.
 $config = Get-Content -Path $confFile
 
 # Update or add the properties
-$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=8g'
+$config = $config -replace '#server.memory.heap.initial_size=.*', 'server.memory.heap.initial_size=4g'
 $config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.heap.max_size=8g'
 $config = $config -replace '#server.memory.pagecache.size=.*', 'server.memory.pagecache.size=3g'
 $config = $config -replace 'dbms.security.auth_enabled=true', 'dbms.security.auth_enabled=false'
