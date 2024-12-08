@@ -1,17 +1,14 @@
 WITH friends AS (
-    SELECT p2.person_id
+    SELECT k1.person_id2 as person_id
     FROM knows k1
-	    JOIN person p1 ON k1.person_id1 = p1.person_id
-	    JOIN person p2 ON k1.person_id2 = p2.person_id
-    WHERE p1.person_id = 4398046513221 AND p2.person_id <> 4398046513221
+    WHERE k1.person_id1 = 4398046513221
 
     UNION
 
-    SELECT p3.person_id
+    SELECT k2.person_id2 as person_id
     FROM knows k1
 	    JOIN knows k2 ON k1.person_id2 = k2.person_id1
-	    JOIN person p3 ON k2.person_id2 = p3.person_id
-    WHERE k1.person_id1 = 4398046513221 AND p3.person_id <> 4398046513221
+    WHERE k1.person_id1 = 4398046513221
 )
 ,
 excluded_friends AS (

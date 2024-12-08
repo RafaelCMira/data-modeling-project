@@ -2,24 +2,21 @@
 WITH RECURSIVE knows_path AS (
     -- Base case: direct neighbors
     SELECT
-        p1.person_id AS start_person_id,
-        p2.person_id AS connected_person_id,
+        k1.person_id1 AS start_person_id,
+        k1.person_id2 AS connected_person_id,
         1 AS distance
-    FROM knows k
-    JOIN person p1 ON k.person_id1 = p1.person_id
-    JOIN person p2 ON k.person_id2 = p2.person_id
-    WHERE p1.person_id = 3648
+    FROM knows k1
+    WHERE k1.person_id1 = 3648
     
     UNION ALL
     
     -- Recursive case: expand the path
     SELECT
         kp.start_person_id,
-        p2.person_id AS connected_person_id,
+        k.person_id2 AS connected_person_id,
         kp.distance + 1
     FROM knows_path kp
-    JOIN knows k ON kp.connected_person_id = k.person_id1
-    JOIN person p2 ON k.person_id2 = p2.person_id
+    	JOIN knows k ON kp.connected_person_id = k.person_id1
     WHERE kp.distance < 4
 )
 -- Filter to get the shortest path for each connected person
@@ -45,12 +42,12 @@ SELECT
     ARRAY_AGG(DISTINCT co.name) AS workplaces,
     ARRAY_AGG(DISTINCT u.name) AS places_of_study
 FROM shortest_path sp
-JOIN person p ON sp.connected_person_id = p.person_id
-JOIN city c ON p.city_id = c.city_id
-LEFT JOIN works wa ON p.person_id = wa.person_id
-LEFT JOIN company co ON wa.company_id = co.company_id
-LEFT JOIN studies sa ON p.person_id = sa.person_id
-LEFT JOIN university u ON sa.university_id = u.university_id
+	JOIN person p ON sp.connected_person_id = p.person_id
+	JOIN city c ON p.city_id = c.city_id
+	LEFT JOIN works wa ON p.person_id = wa.person_id
+	LEFT JOIN company co ON wa.company_id = co.company_id
+	LEFT JOIN studies sa ON p.person_id = sa.person_id
+	LEFT JOIN university u ON sa.university_id = u.university_id
 WHERE p.first_name = 'Arjun'
 GROUP BY
     p.person_id,
@@ -73,24 +70,21 @@ LIMIT 20;
 WITH RECURSIVE knows_path AS (
     -- Base case: direct neighbors
     SELECT
-        p1.person_id AS start_person_id,
-        p2.person_id AS connected_person_id,
+        k1.person_id1 AS start_person_id,
+        k1.person_id2 AS connected_person_id,
         1 AS distance
-    FROM knows k
-    JOIN person p1 ON k.person_id1 = p1.person_id
-    JOIN person p2 ON k.person_id2 = p2.person_id
-    WHERE p1.person_id = 3648
+    FROM knows k1
+    WHERE k1.person_id1 = 3648
     
     UNION ALL
     
     -- Recursive case: expand the path
     SELECT
         kp.start_person_id,
-        p2.person_id AS connected_person_id,
+        k.person_id2 AS connected_person_id,
         kp.distance + 1
     FROM knows_path kp
-    JOIN knows k ON kp.connected_person_id = k.person_id1
-    JOIN person p2 ON k.person_id2 = p2.person_id
+    	JOIN knows k ON kp.connected_person_id = k.person_id1
     WHERE kp.distance < 5
 )
 -- Filter to get the shortest path for each connected person
@@ -143,24 +137,21 @@ LIMIT 20;
 WITH RECURSIVE knows_path AS (
     -- Base case: direct neighbors
     SELECT
-        p1.person_id AS start_person_id,
-        p2.person_id AS connected_person_id,
+        k1.person_id1 AS start_person_id,
+        k1.person_id2 AS connected_person_id,
         1 AS distance
-    FROM knows k
-    JOIN person p1 ON k.person_id1 = p1.person_id
-    JOIN person p2 ON k.person_id2 = p2.person_id
-    WHERE p1.person_id = 3648
+    FROM knows k1
+    WHERE k1.person_id1 = 3648
     
     UNION ALL
     
     -- Recursive case: expand the path
     SELECT
         kp.start_person_id,
-        p2.person_id AS connected_person_id,
+        k.person_id2 AS connected_person_id,
         kp.distance + 1
     FROM knows_path kp
-    JOIN knows k ON kp.connected_person_id = k.person_id1
-    JOIN person p2 ON k.person_id2 = p2.person_id
+    	JOIN knows k ON kp.connected_person_id = k.person_id1
     WHERE kp.distance < 6
 )
 -- Filter to get the shortest path for each connected person
