@@ -77,6 +77,8 @@ Copy-Item "../systems/neo4j/load_data.cypher" "C:\Users\$user\.Neo4jDesktop\rela
 
 Copy-Item "../systems/neo4j/utils/apoc5plus-5.20.0.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
 Copy-Item "../systems/neo4j/utils/apoc-5.23.0-extended.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
+Copy-Item "../systems/neo4j/utils/graph-data-science-2.9.0.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
+
 
 Copy-Item "../systems/neo4j/utils/apoc.conf" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf"
 
@@ -91,7 +93,7 @@ $config = $config -replace '#server.memory.heap.max_size=.*', 'server.memory.hea
 $config = $config -replace '#server.memory.pagecache.size=.*', 'server.memory.pagecache.size=3g'
 $config = $config -replace 'dbms.security.auth_enabled=true', 'dbms.security.auth_enabled=false'
 $config = $config -replace 'server.directories.import=import', '#server.directories.import=import'
-$config = $config -replace 'dbms.security.procedures.unrestricted=jwt.security.*', 'dbms.security.procedures.unrestricted=jwt.security.*,apoc.*'
+$config = $config -replace 'dbms.security.procedures.unrestricted=jwt.security.*', 'dbms.security.procedures.unrestricted=jwt.security.*,apoc.*,gds.*'
 
 # Write the updated configuration back to the file
 $config | Set-Content -Path $confFile
