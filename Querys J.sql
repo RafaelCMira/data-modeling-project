@@ -16,7 +16,7 @@ friend_messages AS (
         m.person_id
     FROM message m
     INNER JOIN friends f ON f.friend_id = m.person_id
-    WHERE m.created_at < '2012-10-16 12:24:36.099'
+    WHERE m.created_at < '2012-10-01 10:11:15.099'
 )
 SELECT
     fm.message_id,
@@ -135,4 +135,4 @@ FROM comment c
 JOIN message m ON c.message_id = m.message_id
 JOIN message original_message ON c.parent_id = original_message.message_id
 JOIN person p ON m.person_id = p.person_id
-WHERE c.parent_id = 687194970420; 
+WHERE c.parent_id = 687194970420;
