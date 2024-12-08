@@ -36,7 +36,7 @@ foaf AS (
     SELECT DISTINCT k2.person_id2 AS foaf_id
 	FROM knows k1
 	JOIN knows k2 ON k1.person_id2 = k2.person_id1
-	WHERE k1.person_id1 = 1931 AND k2.person_id2 != 1931
+	WHERE k1.person_id1 = 4398046513970 AND k2.person_id2 != 4398046513970
 ),
 filtered_foaf AS (
     SELECT p.person_id AS foaf_id, p.first_name, p.last_name, p.birthday, p.gender, p.city_id
@@ -48,53 +48,34 @@ filtered_foaf AS (
 start_person_interests AS (
     SELECT tag_id
     FROM has_interest
-    WHERE person_id = 1931
+    WHERE person_id = 4398046513970
 ),
 foaf_posts AS (
     SELECT m.person_id AS foaf_id, m.message_id, mt.tag_id
     FROM message m
+	join post p on m.message_id = p.message_id
     LEFT JOIN message_tags mt ON m.message_id = mt.message_id
 ),
 tagged_posts AS (
     SELECT fp.foaf_id,
-           SUM(CASE WHEN fp.tag_id IS NOT NULL THEN 1 ELSE 0 END) AS common,
-           SUM(CASE WHEN fp.tag_id IS NULL THEN 1 ELSE 0 END) AS uncommon
+           SUM(CASE WHEN fp.tag_id IN (SELECT tag_id FROM start_person_interests) THEN 1 ELSE 0 END) AS common,
+           SUM(CASE WHEN fp.tag_id NOT IN (SELECT tag_id FROM start_person_interests) THEN 1 ELSE 0 END) AS uncommon
     FROM foaf_posts fp
-    LEFT JOIN start_person_interests spi
-        ON fp.tag_id = spi.tag_id
     GROUP BY fp.foaf_id
 )
 SELECT ff.foaf_id, 
        ff.first_name, 
        ff.last_name, 
-       ff.birthday, 
+       /*ff.birthday, 
        ff.gender, 
-       c.name AS city_name, 
+       c.name AS city_name, */
        COALESCE(tp.common, 0) - COALESCE(tp.uncommon, 0) AS commonInterestScore
 FROM filtered_foaf ff
 LEFT JOIN tagged_posts tp
     ON ff.foaf_id = tp.foaf_id
 LEFT JOIN city c
     ON ff.city_id = c.city_id
-ORDER BY ff.first_name DESC;
-
-
-
-WITH
-foaf AS (
-    SELECT DISTINCT k2.person_id2 AS foaf_id
-	FROM knows k1
-	JOIN knows k2 ON k1.person_id2 = k2.person_id1
-	WHERE k1.person_id1 = 1931 AND k2.person_id2 != 1931
-),
-filtered_foaf AS (
-    SELECT p.person_id AS foaf_id, p.first_name, p.last_name, p.birthday, p.gender, p.city_id
-    FROM person p
-    JOIN foaf f ON p.person_id = f.foaf_id
-    WHERE (EXTRACT(DAY FROM p.birthday) >= 21 AND EXTRACT(MONTH FROM p.birthday) = 2)
-       OR (EXTRACT(DAY FROM p.birthday) < 22 AND EXTRACT(MONTH FROM p.birthday) = 2 + 1)
-) select * from filtered_foaf
-
+ORDER BY commonInterestScore DESC, ff.foaf_id;
 
 --Recent messages of a person
 WITH last_10_messages AS (

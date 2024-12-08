@@ -5,8 +5,8 @@ RETURN m.message_id, m.message_content, m.message_created_at, f.person_id, f.per
 ORDER BY m.message_created_at DESC
 
 //Friend recommendation (ainda n funciona)
-MATCH (interestTag:Tag)<-[:HAS_INTEREST]-(n:Person {person_id: 1931})-[:KNOWS]->(f:Person)-[:KNOWS]->(foaf:Person)
-WHERE foaf <> n AND NOT (n)-[:KNOWS]->(foaf)
+MATCH (interestTag:Tag)<-[:HAS_INTEREST]-(n:Person {person_id: 4398046513970})-[:KNOWS*2..2]->(foaf:Person)
+WHERE foaf <> n //AND NOT (n)-[:KNOWS]->(foaf)
   AND date(foaf.person_birthday).month = 2
   AND date(foaf.person_birthday).day >= 21
   OR (
@@ -14,7 +14,7 @@ WHERE foaf <> n AND NOT (n)-[:KNOWS]->(foaf)
       AND date(foaf.person_birthday).day < 22
   )
 
-WITH  foaf, n, collect(interestTag) AS interestTags
+WITH  distinct foaf, n, collect(interestTag) AS interestTags
 
 OPTIONAL MATCH (foaf)<-[:POSTED_BY]-(p:Post)<-[:TAG_OF]-(postTag:Tag)
 
@@ -26,6 +26,8 @@ WITH foaf, common, uncommon, (common - uncommon) AS commonInterestScore, interes
 
 MATCH (foaf)-[:LOCATED_IN]->(city:City)
 RETURN foaf.person_id, foaf.person_first_name, foaf.person_last_name, commonInterestScore, common, uncommon, foaf.person_gender, city.name
+ORDER BY commonInterestScore DESC, foaf.person_id
+
 
 //Replies of a message
 MATCH (m:Message {message_id: 687194970420})<-[:REPLY_OF]-(m1:Message)
