@@ -21,7 +21,7 @@ WHERE NOT EXISTS {
     WHERE uncommonTag IN personTags
 }
 
-WITH p, foaf, common, (common - COUNT(DISTINCT  uncommonPost)) AS commonInterestScore
+WITH p, foaf, common, (common - COUNT(DISTINCT uncommonPost)) AS commonInterestScore
 MATCH (foaf)-[:LOCATED_IN]->(city:City)
 RETURN
     foaf.person_id AS foafId,

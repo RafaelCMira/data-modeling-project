@@ -4,10 +4,6 @@ MATCH p = shortestPath(
 )
 RETURN [n IN nodes(p) | n.person_id] AS person_ids
 
-
-
-
-
 // Find the K shortest paths between two people
 CALL gds.graph.project(
     'myGraph',
@@ -19,7 +15,6 @@ CALL gds.graph.project(
         }
     }
 )
-
 
 MATCH (p:Person {person_id: 1796})
 RETURN id(p) AS sourceNodeId;

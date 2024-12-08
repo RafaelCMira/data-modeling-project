@@ -1,5 +1,6 @@
-MATCH (p:Person {person_id:1874})-[:KNOWS]->(f:Person)<-[:POSTED_BY]-(m:Message)
-WHERE m.message_created_at < datetime("2012-10-01")
+WITH 1874 AS personIdParam, datetime("2012-10-01") AS dateParam
+MATCH (p:Person {person_id:personIdParam})-[:KNOWS]->(f:Person)<-[:POSTED_BY]-(m:Message)
+WHERE m.message_created_at < dateParam
 RETURN 
     f.person_id,
     f.person_first_name,

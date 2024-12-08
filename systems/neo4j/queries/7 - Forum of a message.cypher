@@ -7,8 +7,8 @@ LIMIT 5;
 
 
 // 8 comments to get to a post: message_id: 1168231108163
-
-MATCH (message:Message {message_id: 1168231108163})
+WITH 1168231108163 AS messageIdParam
+MATCH (message:Message {message_id: messageIdParam})
 OPTIONAL MATCH path = (message)-[:REPLY_OF*]->(post:Post)
 WITH 
     message, 

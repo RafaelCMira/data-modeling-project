@@ -1,5 +1,6 @@
-MATCH path = (start:Person {person_id: 3648})-[:KNOWS*1..4]->(p:Person)
-WHERE p.person_first_name = "Arjun" AND p.person_id <> 3648
+WITH 3648 AS personIdParam, "Arjun" AS personFirstNameParam 
+MATCH path = (start:Person {person_id: personIdParam})-[:KNOWS*1..4]->(p:Person)
+WHERE p.person_first_name = personFirstNameParam AND p.person_id <> personIdParam
 WITH p, min(length(path)) AS distance
 OPTIONAL MATCH (p)-[:WORKS_AT]->(company:Company)
 WITH p, distance, collect(company.name) AS workplaces

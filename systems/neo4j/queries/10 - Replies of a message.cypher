@@ -1,4 +1,6 @@
-MATCH (creator:Person)<-[:POSTED_BY]-(m:Message {message_id: 1030792170251})<-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]->(replyAuthor:Person)
+
+WITH 1030792170251 AS messageIdParam
+MATCH (creator:Person)<-[:POSTED_BY]-(m:Message {message_id: messageIdParam})<-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]->(replyAuthor:Person)
 RETURN 
     c.message_id as ReplyId,
     c.message_content as content,

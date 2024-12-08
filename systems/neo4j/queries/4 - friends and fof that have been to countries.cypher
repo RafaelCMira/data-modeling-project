@@ -28,23 +28,28 @@ LIMIT 100;
 // $countryXName = "India"
 // $countryYName = "China"
 // startDate = "2012-09-01"
-MATCH (start:Person {person_id: 4398046513221})-[:KNOWS*1..2]->(otherPerson:Person)
-WHERE otherPerson.person_id <> 4398046513221
-  AND NOT (otherPerson)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(:Country {name: "China"})
-  AND NOT (otherPerson)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(:Country {name: "India"})
+WITH 4398046513221 AS personIdParam, "India" AS countryXNameParam, "China" AS countryYNameParam, datetime("2012-11-01") AS startDateParam, duration({days: 15}) AS durationParam
+MATCH (start:Person {person_id: personIdParam})-[:KNOWS*1..2]->(otherPerson:Person)
+WHERE otherPerson.person_id <> personIdParam
+  AND NOT (otherPerson)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(:Country {name: countryXNameParam})
+  AND NOT (otherPerson)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(:Country {name: countryYNameParam})
 
-WITH DISTINCT otherPerson
+WITH DISTINCT otherPerson, countryXNameParam, countryYNameParam, startDateParam, durationParam
 MATCH (otherPerson)<-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]->(country:Country)
-WHERE country.name = "India"
-    AND message.message_created_at >= datetime("2012-11-01")
-    AND message.message_created_at < datetime("2012-11-01") + duration({days: 15})
+WHERE country.name = countryYNameParam
+    AND message.message_created_at >= startDateParam
+    AND message.message_created_at < startDateParam + durationParam
 WITH 
     otherPerson, 
-    COUNT(message) AS xCount
+    COUNT(message) AS xCount,
+    countryXNameParam,
+    countryYNameParam,
+    startDateParam,
+    durationParam
 MATCH (otherPerson)<-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]->(country:Country)
-WHERE country.name = "China"
-    AND message.message_created_at >= datetime("2012-11-01")
-    AND message.message_created_at < datetime("2012-11-01") + duration({days: 15})
+WHERE country.name = countryXNameParam
+    AND message.message_created_at >= startDateParam
+    AND message.message_created_at < startDateParam + durationParam
 WITH 
     otherPerson, 
     xCount, 
