@@ -3,7 +3,6 @@ MATCH (p:Person {person_id: personIdParam})-[:KNOWS*2..2]->(foaf:Person)
 WHERE
     (foaf.person_birthday.month = monthParam AND foaf.person_birthday.day >= 21) OR
     (foaf.person_birthday.month = (monthParam % 12) + 1 AND foaf.person_birthday.day < 22)
-    AND NOT (p)-[:KNOWS]-(foaf)
 
 // Collect the start person's tags of interest
 WITH p, foaf
@@ -31,6 +30,5 @@ RETURN
     commonInterestScore,
     foaf.person_gender AS foafGender,
     city.name AS cityName
-ORDER BY commonInterestScore DESC, foafId ASC,
+ORDER BY commonInterestScore DESC, foafId ASC
 LIMIT 10;
-

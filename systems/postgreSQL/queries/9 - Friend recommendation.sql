@@ -64,4 +64,4 @@ FROM filtered_foaf f
 	LEFT JOIN common_posts cp USING(foaf_id)
 	LEFT JOIN uncommon_posts up USING(foaf_id)
 ORDER BY common_interest_score DESC, f.foaf_id ASC
-;
+LIMIT 10;
