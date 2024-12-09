@@ -1,3 +1,8 @@
+match(n:Person)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(c:Country{name:'United_States'})
+return n
+LIMIT 500;
+
+
 WITH 3648 AS personIdParam, "Arjun" AS personFirstNameParam 
 MATCH path = (start:Person {person_id: personIdParam})-[:KNOWS*1..4]->(p:Person)
 WHERE p.person_first_name = personFirstNameParam AND p.person_id <> personIdParam

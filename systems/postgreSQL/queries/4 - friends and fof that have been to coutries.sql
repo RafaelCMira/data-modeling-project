@@ -27,7 +27,7 @@ messages_in_xCountry AS (
 	    JOIN country ct ON m.country_id = ct.country_id
     WHERE 
 		ct.name = 'India' 
-		AND m.created_at BETWEEN '2012-11-01' AND '2012-11-16'
+		AND m.created_at BETWEEN '2012-11-01 00:00:00' AND '2012-11-01 00:00:00'::TIMESTAMP + INTERVAL '15 days'
     GROUP BY m.person_id
 ),
 messages_in_yCountry AS (
@@ -38,7 +38,7 @@ messages_in_yCountry AS (
 	    JOIN country ct ON m.country_id = ct.country_id
     WHERE 
 		ct.name = 'China' 
-		AND m.created_at BETWEEN '2012-11-01' AND '2012-11-16'
+		AND m.created_at BETWEEN '2012-11-01' AND '2012-11-01 00:00:00'::TIMESTAMP + INTERVAL '15 days'
     GROUP BY m.person_id
 )
 SELECT
@@ -52,5 +52,6 @@ FROM excluded_friends ef
 	JOIN person p ON ef.person_id = p.person_id
 	JOIN messages_in_xCountry mx ON (ef.person_id = mx.person_id AND COALESCE(mx.xCount, 0) > 0)
 	JOIN messages_in_yCountry my ON (ef.person_id = my.person_id AND COALESCE(my.yCount, 0) > 0)
-ORDER BY count DESC, ef.person_id ASC;
+ORDER BY count DESC, ef.person_id ASC
+LIMIT 20;
 

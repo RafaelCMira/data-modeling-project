@@ -62,4 +62,5 @@ RETURN
     xCount,
     yCount,
     (xCount + yCount) AS count
-ORDER BY count DESC, id ASC;
+ORDER BY count DESC, id ASC
+LIMIT 20;
