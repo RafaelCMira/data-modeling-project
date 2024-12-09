@@ -1,4 +1,3 @@
-
 WITH 1030792170251 AS messageIdParam
 MATCH (creator:Person)<-[:POSTED_BY]-(m:Message {message_id: messageIdParam})<-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]->(replyAuthor:Person)
 RETURN 
