@@ -1,3 +1,11 @@
+// How to get the commnent based on the replies count
+MATCH(c:Comment)<-[r:REPLY_OF]-(:Comment)
+WITH c, count(r) as replies
+WHERE replies > 4 AND replies < 6
+RETURN c, replies
+LIMIT 1;
+
+
 WITH 1030792170251 AS messageIdParam
 MATCH (creator:Person)<-[:POSTED_BY]-(m:Message {message_id: messageIdParam})<-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]->(replyAuthor:Person)
 RETURN 

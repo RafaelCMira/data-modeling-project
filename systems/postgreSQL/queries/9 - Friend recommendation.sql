@@ -5,7 +5,6 @@ WITH foaf AS (
 	    JOIN knows k2 ON k1.person_id2 = k2.person_id1
     WHERE k1.person_id1 = 4398046513970
 ),
--- Filter foaf by Birthdays
 filtered_foaf AS (
     SELECT 
         p.person_id AS foaf_id, 
@@ -18,16 +17,14 @@ filtered_foaf AS (
     WHERE (
         EXTRACT(MONTH FROM p.birthday) = 1 AND EXTRACT(DAY FROM p.birthday) >= 21
     ) OR (
-        EXTRACT(MONTH FROM p.birthday) = (1 % 12) + 1 AND EXTRACT(DAY FROM p.birthday) < 22
+        EXTRACT(MONTH FROM p.birthday) = ((1 + 1) % 12)  AND EXTRACT(DAY FROM p.birthday) < 22
     )
 ),
--- Collect Tags of Interest
 person_tags AS (
     SELECT t.tag_id
     FROM has_interest t
     WHERE t.person_id = 4398046513970
 ),
--- Calculate Common Posts
 common_posts AS (
     SELECT
         f.foaf_id,
@@ -39,7 +36,6 @@ common_posts AS (
     WHERE mt.tag_id IN (SELECT tag_id FROM person_tags)
     GROUP BY f.foaf_id
 ),
--- Calculate Uncommon Posts
 uncommon_posts AS (
     SELECT
         f.foaf_id,
@@ -55,10 +51,13 @@ uncommon_posts AS (
     )
     GROUP BY f.foaf_id
 )
--- Combine Results and Return
 SELECT
     f.foaf_id,
-    COALESCE(cp.common_count, 0) - COALESCE(up.uncommon_count, 0) AS common_interest_score
+    f.first_name,
+    f.last_name,
+    COALESCE(cp.common_count, 0) - COALESCE(up.uncommon_count, 0) AS common_interest_score,
+    f.gender,
+    c.name
 FROM filtered_foaf f
 	JOIN city c USING(city_id)
 	LEFT JOIN common_posts cp USING(foaf_id)

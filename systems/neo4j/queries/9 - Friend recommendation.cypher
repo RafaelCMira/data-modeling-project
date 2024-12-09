@@ -2,7 +2,7 @@ WITH 1 AS monthParam, 4398046513970 AS personIdParam
 MATCH (p:Person {person_id: personIdParam})-[:KNOWS*2..2]->(foaf:Person)
 WHERE
     (foaf.person_birthday.month = monthParam AND foaf.person_birthday.day >= 21) OR
-    (foaf.person_birthday.month = (monthParam % 12) + 1 AND foaf.person_birthday.day < 22)
+    (foaf.person_birthday.month = ((monthParam + 1) % 12) AND foaf.person_birthday.day < 22)
 
 // Collect the start person's tags of interest
 WITH p, foaf
