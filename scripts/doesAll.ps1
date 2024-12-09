@@ -48,6 +48,8 @@ Write-Output "Relations scripts completed in $($relationsTime.TotalSeconds) seco
 Copy-Item "../systems/postgreSQL/schema.sql" "C:\temp"
 Copy-Item "../systems/postgreSQL/bulkInserts.sql" "C:\temp"
 Copy-Item "../systems/postgreSQL/constraints.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/createEdges.sql" "C:\temp"
+
 
 # 3. Inserts the data into PostgreSQL:
 $env:PGPASSWORD=$pgPassword
@@ -67,6 +69,8 @@ $constraintsTime = Measure-Command {
 }
 Write-Output "constraints.sql completed in $($constraintsTime.TotalSeconds) seconds."
 
+psql -U postgres -d test -f "C:/temp/createEdges.sql"
+
 $analyzeTime = Measure-Command {
     psql -U postgres -d test -c "ANALYZE;"
 }
@@ -78,7 +82,6 @@ Copy-Item "../systems/neo4j/load_data.cypher" "C:\Users\$user\.Neo4jDesktop\rela
 Copy-Item "../systems/neo4j/utils/apoc5plus-5.20.0.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
 Copy-Item "../systems/neo4j/utils/apoc-5.23.0-extended.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
 Copy-Item "../systems/neo4j/utils/graph-data-science-2.9.0.jar" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\plugins"
-
 
 Copy-Item "../systems/neo4j/utils/apoc.conf" "C:\Users\$user\.Neo4jDesktop\relate-data\dbmss\$neo4jDB\conf"
 
