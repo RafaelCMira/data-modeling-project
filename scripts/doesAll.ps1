@@ -45,10 +45,10 @@ Write-Output "Relations scripts completed in $($relationsTime.TotalSeconds) seco
 
 
 # 2. Copies the sql files to "C:\temp" directory
-Copy-Item "../systems/postgreSQL/schema.sql" "C:\temp"
-Copy-Item "../systems/postgreSQL/bulkInserts.sql" "C:\temp"
-Copy-Item "../systems/postgreSQL/constraints.sql" "C:\temp"
-Copy-Item "../systems/postgreSQL/createEdges.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/sql/schema.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/sql/bulkInserts.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/sql/constraints.sql" "C:\temp"
+Copy-Item "../systems/postgreSQL/sql/createEdges.sql" "C:\temp"
 
 
 # 3. Inserts the data into PostgreSQL:
@@ -70,6 +70,11 @@ $constraintsTime = Measure-Command {
 Write-Output "constraints.sql completed in $($constraintsTime.TotalSeconds) seconds."
 
 psql -U postgres -d test -f "C:/temp/createEdges.sql"
+
+$constraintsTime = Measure-Command {
+    psql -U postgres -d test -f "C:/temp/createEdges.sql"
+}
+Write-Output "createEdges.sql completed in $($constraintsTime.TotalSeconds) seconds."
 
 $analyzeTime = Measure-Command {
     psql -U postgres -d test -c "ANALYZE;"

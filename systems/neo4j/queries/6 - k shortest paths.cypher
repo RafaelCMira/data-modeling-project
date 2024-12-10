@@ -5,7 +5,7 @@ CALL gds.graph.project(
     {
         KNOWS: {
             type: 'KNOWS',
-            orientation: 'UNDIRECTED' // Use 'NATURAL' for directed relationships
+            orientation: 'UNDIRECTED'
         }
     }
 );
