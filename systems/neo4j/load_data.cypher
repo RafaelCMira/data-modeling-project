@@ -117,7 +117,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
 MATCH (city:City {city_id: toInteger(row.city_id)})
 CREATE (person)-[:LOCATED_IN]->(city);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -128,7 +128,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
 MATCH (university:University {university_id: toInteger(row.university_id)})
 CREATE (person)-[:STUDIES_AT {class_year: toInteger(row.class_year)}]->(university);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -139,7 +139,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
 MATCH (company:Company {company_id: toInteger(row.company_id)})
 CREATE (person)-[:WORKS_AT {work_from: toInteger(row.work_from)}]->(company);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -150,7 +150,7 @@ CALL apoc.periodic.iterate(
 'MATCH (p1:Person {person_id: toInteger(row.person_id1)})
  MATCH (p2:Person {person_id: toInteger(row.person_id2)})
  CREATE (p1)-[:KNOWS {created_at: datetime(row.created_at)}]->(p2)',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -174,7 +174,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
  MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
  CREATE (person)-[:MODERATOR_OF]->(forum);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total; 
@@ -185,7 +185,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
  MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
  CREATE (person)-[:MEMBER_OF {created_at: datetime(row.created_at)}]->(forum)',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -196,7 +196,7 @@ CALL apoc.periodic.iterate(
 'MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
 MATCH (tag:Tag {tag_id: toInteger(row.tag_id)})
 CREATE (tag)-[:TAG_OF]->(forum);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -207,7 +207,7 @@ CALL apoc.periodic.iterate(
 'MATCH (person:Person {person_id: toInteger(row.person_id)})
  MATCH (tag:Tag {tag_id: toInteger(row.tag_id)})
  CREATE (person)-[:HAS_INTEREST]->(tag);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -252,7 +252,7 @@ CALL apoc.periodic.iterate(
 'MATCH (comment:Comment {message_id: toInteger(row.message_id)})
  MATCH (message:Message {message_id: toInteger(row.parent_id)})
  CREATE (comment)-[:REPLY_OF]->(message);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -263,7 +263,7 @@ CALL apoc.periodic.iterate(
 'MATCH (post:Post {message_id: toInteger(row.message_id)})
  MATCH (forum:Forum {forum_id: toInteger(row.forum_id)})
  CREATE (post)-[:POSTED_IN]->(forum);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -274,7 +274,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
  MATCH (country:Country {country_id: toInteger(row.country_id)})
  CREATE (message)-[:LOCATED_IN]->(country);',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -285,7 +285,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
  MATCH (person:Person {person_id: toInteger(row.person_id)})
  CREATE (message)-[:POSTED_BY]->(person);',
-{batchSize: 100000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -296,7 +296,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
  MATCH (tag:Tag {tag_id: toInteger(row.tag_id)})
  CREATE (tag)-[:TAG_OF]->(message);',
-{batchSize: 100000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
@@ -307,7 +307,7 @@ CALL apoc.periodic.iterate(
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
 MATCH (person:Person {person_id: toInteger(row.person_id)})
 CREATE (message)-[:LIKED_BY {created_at: datetime(row.created_at)}]->(person)',
-{batchSize: 50000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
