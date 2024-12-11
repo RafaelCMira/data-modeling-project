@@ -33,13 +33,50 @@ def get_file(base_path):
     return csv_file
 
 
+def get_csv(base_path, target_file_name):
+    csv_file = None
+
+    # Construct the full directory path
+    path = os.path.join(
+        r"C:",
+        "\\" + dataset_folder,
+        r"graphs\csv\bi\composite-merged-fk\initial_snapshot",
+        base_path.lstrip("\\"),
+    )
+
+    print(f"Searching in path: {path}")
+
+    for file in os.listdir(path):
+        if file == target_file_name:
+            csv_file = os.path.join(path, file)
+            break
+
+    return csv_file
+
+
+def read_and_combine_csvs(base_path, file_names):
+
+    if file_names is None:
+        df = pd.read_csv(get_file(base_path), sep="|")
+    else:
+        dataframes = []
+
+        for file_name in file_names:
+            file_path = get_csv(base_path, file_name)
+            df = pd.read_csv(file_path, sep="|")
+            dataframes.append(df)
+
+        combined_df = pd.concat(dataframes, ignore_index=True)
+        return combined_df
+
+
 def write_file(df, file_name):
     output_file = os.path.join(output_directory, file_name)
     df.to_csv(output_file, sep="|", index=False)
 
 
+# region Place
 df = pd.read_csv(get_file(r"\static\Place"), sep="|")
-
 
 # For city.csv: where type is 'City'
 city_df = df[df["type"] == "City"].rename(
@@ -179,7 +216,18 @@ post_final_df = post_df[
 
 write_file(post_final_df, "post.csv")
 
-comment_df = pd.read_csv(get_file(r"\dynamic\Comment"), sep="|")
+comment_df = None
+
+if dataset_folder == "ldbc_output_composite_merged-default_3":
+    comment_files = [
+        "part-00000-d2516fd1-8428-4cb6-b721-07290f94c9ed-c000.csv",
+        "part-00001-d2516fd1-8428-4cb6-b721-07290f94c9ed-c000.csv",
+        "part-00002-d2516fd1-8428-4cb6-b721-07290f94c9ed-c000.csv",
+    ]
+
+    comment_df = read_and_combine_csvs(r"\dynamic\Comment", comment_files)
+else:
+    comment_df = pd.read_csv(get_file(r"\dynamic\Comment"), sep="|")
 
 comment_df = comment_df.rename(
     columns={

@@ -3,12 +3,12 @@ param (
 )
 
 # Validate the sf
-$validScaleFactors = @(0.3, 1, 3, 10)
+$validScaleFactors = @(0.3, 1, 3)
 if (-not $sf) {
     Write-Error "Please provide the sf as an argument."
     exit 1
 } elseif ($sf -notin $validScaleFactors) {
-    Write-Error "Invalid sf. Valid values are: 0.3, 1, 3, 10."
+    Write-Error "Invalid sf. Valid values are: 0.3, 1, 3."
     exit 1
 }
 
@@ -17,9 +17,8 @@ switch ($sf) {
     0.3 { $OutputDir = "C:\ldbc_output_composite_merged-default_0_3" }
     1 { $OutputDir = "C:\ldbc_output_composite_merged-default_1" }
     3 { $OutputDir = "C:\ldbc_output_composite_merged-default_3" }
-    10 { $OutputDir = "C:\ldbc_output_composite_merged-default_10" }
     default {
-        Write-Error "Invalid sf. Valid values are: 0.3, 1, 3, 10."
+        Write-Error "Invalid sf. Valid values are: 0.3, 1, 3."
         exit 1
     }
 }

@@ -1,7 +1,7 @@
 param (
     [string]$user,
     [string]$pgPassword,
-    [string]$datasetFolder,
+    [string]$dataset,
     [string]$neo4jDB
 )
 
@@ -15,8 +15,12 @@ if (-not $pgPassword) {
     exit 1
 }
 
-if (-not $datasetFolder) {
-    Write-Error "Please provide the dataset folder as an argument.  -datasetFolder <folder>"
+$validDatasetValues = @("0.3", "1", "3")
+if (-not $dataset) {
+    Write-Error "Please provide the dataset as an argument."
+    exit 1
+} elseif ($dataset -notin $validDatasetValues) {
+    Write-Error "Invalid dataset. Valid values are: 0.3, 1, 3."
     exit 1
 }
 
@@ -30,7 +34,9 @@ Write-Output "------------------------------------------------------------------
 
 Write-Output "User: $user"
 
-Write-Output "Dataset: $datasetFolder"
+Write-Output "Dataset: $dataset"
+
+$datasetFolder = "ldbc_output_composite_merged-default_$dataset"
 
  # 1. Runs the py scripts
 $entitiesTime = Measure-Command {
@@ -68,8 +74,6 @@ $constraintsTime = Measure-Command {
     psql -U postgres -d test -f "C:/temp/constraints.sql"
 }
 Write-Output "constraints.sql completed in $($constraintsTime.TotalSeconds) seconds."
-
-psql -U postgres -d test -f "C:/temp/createEdges.sql"
 
 $constraintsTime = Measure-Command {
     psql -U postgres -d test -f "C:/temp/createEdges.sql"

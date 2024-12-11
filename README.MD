@@ -39,7 +39,7 @@
     -   `Neo4j`: configure the database.
 
     ```bash
-    .\doesAll.ps1 -user "Rafael" -pgPassword "password" -datasetFolder "ldbc_output_composite_merged-default_0_3" -neo4jDB "dbms-23424-1234123-234234-sada2dasd3qqf" >> "output_machine2.txt"
+    .\doesAll.ps1 -user "Rafael" -pgPassword "password" -dataset "0.3" -neo4jDB "dbms-23424-1234123-234234-sada2dasd3qqf" >> "output_machine2.txt"
     ```
 
 -   ### 5. Load data into Neo4j
