@@ -72,7 +72,17 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir
+jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/5.csv" `
+    -Jcsv6="../../inputs/dataset $dataset/6.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
 # Find and terminate all child processes of the Neo4j cmd process
 $childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
@@ -124,7 +134,17 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir
+jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/5.csv" `
+    -Jcsv6="../../inputs/dataset $dataset/6.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
 # Find and terminate all child processes of the Neo4j cmd process
 $childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
@@ -175,7 +195,17 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir
+jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/5.csv" `
+    -Jcsv6="../../inputs/dataset $dataset/6.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
 # Find and terminate all child processes of the Neo4j cmd process
 $childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
@@ -226,7 +256,17 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir
+jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/5.csv" `
+    -Jcsv6="../../inputs/dataset $dataset/6.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
 # Find and terminate all child processes of the Neo4j cmd process
 $childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
@@ -277,8 +317,18 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir
-
+jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/5.csv" `
+    -Jcsv6="../../inputs/dataset $dataset/6.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/10.csv"
+    
 # Find and terminate all child processes of the Neo4j cmd process
 $childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
 foreach ($child in $childProcesses) {

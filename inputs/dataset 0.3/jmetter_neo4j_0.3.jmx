@@ -9,7 +9,7 @@
       <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j" enabled="false">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -60,10 +60,10 @@ LIMIT 20;</stringProp>
             <intProp name="txTimeout">420</intProp>
           </BoltSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
+              <stringProp name="filename">${__P(csv1)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -78,7 +78,7 @@ LIMIT 20;</stringProp>
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4">
+          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4" enabled="true">
             <stringProp name="accessMode">READ</stringProp>
             <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..4]-&gt;(p:Person)
 WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
@@ -110,10 +110,10 @@ LIMIT 20;</stringProp>
             <intProp name="txTimeout">420</intProp>
           </BoltSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/2.csv</stringProp>
+              <stringProp name="filename">${__P(csv2)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -124,11 +124,11 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5">
+          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5" enabled="true">
             <stringProp name="accessMode">READ</stringProp>
             <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..5]-&gt;(p:Person)
 WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
@@ -163,7 +163,7 @@ LIMIT 20;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/3.csv</stringProp>
+              <stringProp name="filename">${__P(csv3)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -174,11 +174,11 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries">
+          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries" enabled="true">
             <stringProp name="accessMode">READ</stringProp>
             <stringProp name="cypher">WITH ${personId} AS personIdParam, ${countryXname} AS countryXNameParam, ${countryYname} AS countryYNameParam, datetime(${startDate}) AS startDateParam, duration({days: ${days}}) AS durationParam
 MATCH (start:Person {person_id: personIdParam})-[:KNOWS*1..2]-&gt;(otherPerson:Person)
@@ -224,7 +224,7 @@ LIMIT 20;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/4 neo4j.csv</stringProp>
+              <stringProp name="filename">${__P(csv4)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -232,43 +232,6 @@ LIMIT 20;</stringProp>
               <boolProp name="stopThread">true</boolProp>
               <stringProp name="variableNames">personId,countryXname,countryYname,startDate,days</stringProp>
             </CSVDataSet>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -290,7 +253,7 @@ RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/5.csv</stringProp>
+              <stringProp name="filename">${__P(csv5)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -298,117 +261,6 @@ RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
               <boolProp name="stopThread">true</boolProp>
               <stringProp name="variableNames">startId,endId</stringProp>
             </CSVDataSet>
-            <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -459,7 +311,7 @@ ORDER BY totalCost;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/6.csv</stringProp>
+              <stringProp name="filename">${__P(csv6)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -467,117 +319,6 @@ ORDER BY totalCost;</stringProp>
               <boolProp name="stopThread">true</boolProp>
               <stringProp name="variableNames">startId,endId</stringProp>
             </CSVDataSet>
-            <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -589,7 +330,7 @@ ORDER BY totalCost;</stringProp>
           <intProp name="txTimeout">420</intProp>
         </BoltSampler>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -622,7 +363,7 @@ RETURN
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/7.csv</stringProp>
+              <stringProp name="filename">${__P(csv7)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -631,120 +372,9 @@ RETURN
               <stringProp name="variableNames">messageId</stringProp>
             </CSVDataSet>
             <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -770,7 +400,7 @@ LIMIT 20;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/8.csv</stringProp>
+              <stringProp name="filename">${__P(csv8)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -778,117 +408,6 @@ LIMIT 20;</stringProp>
               <boolProp name="stopThread">true</boolProp>
               <stringProp name="variableNames">personId,dateParam</stringProp>
             </CSVDataSet>
-            <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
             <hashTree/>
           </hashTree>
         </hashTree>
@@ -940,7 +459,7 @@ LIMIT 10;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/9.csv</stringProp>
+              <stringProp name="filename">${__P(csv9)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -949,124 +468,13 @@ LIMIT 10;</stringProp>
               <stringProp name="variableNames">personId,month</stringProp>
             </CSVDataSet>
             <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
           </hashTree>
         </hashTree>
         <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation">
+          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation" enabled="true">
             <stringProp name="accessMode">READ</stringProp>
             <stringProp name="cypher">MATCH (creator:Person)&lt;-[:POSTED_BY]-(m:Message {message_id: ${messageId}})&lt;-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]-&gt;(replyAuthor:Person)
 RETURN 
@@ -1089,7 +497,7 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/10.csv</stringProp>
+              <stringProp name="filename">${__P(csv10)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1098,121 +506,10 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
               <stringProp name="variableNames">messageId</stringProp>
             </CSVDataSet>
             <hashTree/>
-            <ResultCollector guiclass="SummaryReport" testclass="ResultCollector" testname="Summary Report" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="ViewResultsFullVisualizer" testclass="ResultCollector" testname="View Results Tree" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
-            <ResultCollector guiclass="TableVisualizer" testclass="ResultCollector" testname="View Results in Table" enabled="true">
-              <boolProp name="ResultCollector.error_logging">false</boolProp>
-              <objProp>
-                <name>saveConfig</name>
-                <value class="SampleSaveConfiguration">
-                  <time>true</time>
-                  <latency>true</latency>
-                  <timestamp>true</timestamp>
-                  <success>true</success>
-                  <label>true</label>
-                  <code>true</code>
-                  <message>true</message>
-                  <threadName>true</threadName>
-                  <dataType>true</dataType>
-                  <encoding>false</encoding>
-                  <assertions>true</assertions>
-                  <subresults>true</subresults>
-                  <responseData>false</responseData>
-                  <samplerData>false</samplerData>
-                  <xml>false</xml>
-                  <fieldNames>true</fieldNames>
-                  <responseHeaders>false</responseHeaders>
-                  <requestHeaders>false</requestHeaders>
-                  <responseDataOnError>false</responseDataOnError>
-                  <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-                  <assertionsResultsToSave>0</assertionsResultsToSave>
-                  <bytes>true</bytes>
-                  <sentBytes>true</sentBytes>
-                  <url>true</url>
-                  <threadCounts>true</threadCounts>
-                  <idleTime>true</idleTime>
-                  <connectTime>true</connectTime>
-                </value>
-              </objProp>
-              <stringProp name="filename"></stringProp>
-            </ResultCollector>
-            <hashTree/>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -1223,7 +520,7 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="poolMax">1</stringProp>
           <stringProp name="timeout">10000</stringProp>
@@ -1242,7 +539,7 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
           <stringProp name="connectionProperties"></stringProp>
         </JDBCDataSource>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1" enabled="true">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1323,7 +620,7 @@ LIMIT 20;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
+              <stringProp name="filename">${__P(csv1)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1334,7 +631,7 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1415,7 +712,7 @@ LIMIT 20;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/2.csv</stringProp>
+              <stringProp name="filename">${__P(csv2)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1426,11 +723,11 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5" enabled="true">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -1504,10 +801,10 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/3.csv</stringProp>
+              <stringProp name="filename">${__P(csv3)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1518,7 +815,7 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1594,7 +891,7 @@ LIMIT 20;
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/4.csv</stringProp>
+              <stringProp name="filename">${__P(csv4)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1605,7 +902,7 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1635,7 +932,7 @@ JOIN person p ON p.person_id = path.node;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/5.csv</stringProp>
+              <stringProp name="filename">${__P(csv5)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1646,7 +943,7 @@ JOIN person p ON p.person_id = path.node;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1680,7 +977,7 @@ ORDER BY path.path_id;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/6.csv</stringProp>
+              <stringProp name="filename">${__P(csv6)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1691,7 +988,7 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1711,7 +1008,7 @@ ORDER BY path.path_id;</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/7.csv</stringProp>
+              <stringProp name="filename">${__P(csv7)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1722,7 +1019,7 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1758,7 +1055,7 @@ LIMIT 20;
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/8.csv</stringProp>
+              <stringProp name="filename">${__P(csv8)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1769,7 +1066,7 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1860,7 +1157,7 @@ LIMIT 10;
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/9.csv</stringProp>
+              <stringProp name="filename">${__P(csv9)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
@@ -1871,7 +1168,7 @@ LIMIT 10;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="false">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -1911,7 +1208,7 @@ WHERE c.parent_id = ${messageId};</stringProp>
             <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/10.csv</stringProp>
+              <stringProp name="filename">${__P(csv10)}</stringProp>
               <boolProp name="ignoreFirstLine">false</boolProp>
               <boolProp name="quotedData">true</boolProp>
               <boolProp name="recycle">false</boolProp>
