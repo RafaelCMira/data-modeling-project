@@ -4,7 +4,7 @@ LIMIT 500;
 
 
 WITH 3648 AS personIdParam, "Arjun" AS personFirstNameParam 
-MATCH path = (start:Person {person_id: personIdParam})-[:KNOWS*1..4]->(p:Person)
+MATCH path = (start:Person {person_id: personIdParam})-[:KNOWS*1..3]->(p:Person)
 WHERE p.person_first_name = personFirstNameParam AND p.person_id <> personIdParam
 WITH p, min(length(path)) AS distance
 OPTIONAL MATCH (p)-[:WORKS_AT]->(company:Company)

@@ -17,7 +17,7 @@ WITH RECURSIVE knows_path AS (
         kp.distance + 1
     FROM knows_path kp
     	JOIN knows k ON kp.connected_person_id = k.person_id1
-    WHERE kp.distance < 4
+    WHERE kp.distance < 3
 )
 -- Filter to get the shortest path for each connected person
 , shortest_path AS (
