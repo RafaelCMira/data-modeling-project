@@ -9,3 +9,163 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1734018712912,31,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,61,0,1,1,null,31,0,0
 1734018712944,4,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,63,0,1,1,null,4,0,0
 1734018712949,1,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,1,0,0
+1734039283237,116,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,112,0,0
+1734039283354,78,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,77,0,0
+1734039283432,76,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,75,0,0
+1734039283509,76,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,76,0,0
+1734039283586,5,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,837,0,1,1,null,4,0,0
+1734039283591,3,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,837,0,1,1,null,2,0,0
+1734039283594,3,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,837,0,1,1,null,3,0,0
+1734039283597,3,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,837,0,1,1,null,2,0,0
+1734039283600,16,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,15,0,0
+1734039283617,9,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,7,0,0
+1734039283626,8,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,7,0,0
+1734039283634,9,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,8,0,0
+1734039283643,21,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,21,0,0
+1734039283665,21,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,20,0,0
+1734039283686,22,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,21,0,0
+1734039283708,23,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,22,0,0
+1734039283732,1193,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,1193,0,0
+1734039284925,1182,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,1182,0,0
+1734039286108,1196,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,1195,0,0
+1734039287304,1213,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,1213,0,0
+1734039288517,21,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,1273,0,1,1,null,20,0,0
+1734039288538,6,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,1273,0,1,1,null,6,0,0
+1734039288544,7,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,1273,0,1,1,null,7,0,0
+1734039288551,7,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,1273,0,1,1,null,7,0,0
+1734039288558,61,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,60,0,0
+1734039288619,61,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,61,0,0
+1734039288681,61,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,61,0,0
+1734039288742,62,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,62,0,0
+1734039288804,331,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,331,0,0
+1734039289135,349,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,349,0,0
+1734039289485,337,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,337,0,0
+1734039289822,341,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,341,0,0
+1734039290165,15183,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,15183,0,0
+1734039305350,15333,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,15332,0,0
+1734039320683,15332,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,15331,0,0
+1734039336015,15328,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3174,0,1,1,null,15328,0,0
+1734039351343,147,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,1617,0,1,1,null,146,0,0
+1734039351490,22,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,1617,0,1,1,null,22,0,0
+1734039351512,22,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,1617,0,1,1,null,22,0,0
+1734039351534,23,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,1617,0,1,1,null,23,0,0
+1734039351557,634,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,634,0,0
+1734039352192,699,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,699,0,0
+1734039352891,655,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,655,0,0
+1734039353546,646,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3212,0,1,1,null,645,0,0
+1734039354192,4356,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,4356,0,0
+1734039358547,4413,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,4412,0,0
+1734039362961,4439,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,4438,0,0
+1734039367401,4418,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2262,0,1,1,null,4418,0,0
+1734039371821,187,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,85,0,1,1,null,187,0,0
+1734039372009,76,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,85,0,1,1,null,76,0,0
+1734039372085,77,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,85,0,1,1,null,77,0,0
+1734039372162,176,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,85,0,1,1,null,176,0,0
+1734039372338,93,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,231,0,1,1,null,93,0,0
+1734039372431,92,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,231,0,1,1,null,92,0,0
+1734039372524,92,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,231,0,1,1,null,92,0,0
+1734039372616,92,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,231,0,1,1,null,92,0,0
+1734039372709,81,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,188,0,1,1,null,81,0,0
+1734039372790,78,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,188,0,1,1,null,78,0,0
+1734039372869,77,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,188,0,1,1,null,77,0,0
+1734039372946,77,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,188,0,1,1,null,77,0,0
+1734039373023,167,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,155,0,1,1,null,167,0,0
+1734039373190,86,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,155,0,1,1,null,86,0,0
+1734039373276,175,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,155,0,1,1,null,175,0,0
+1734039373451,83,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,155,0,1,1,null,83,0,0
+1734039373535,34,5 - Shortest path,200,OK,Postgres 1-1,text,true,,37,0,1,1,null,34,0,0
+1734039373569,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,37,0,1,1,null,24,0,0
+1734039373593,25,5 - Shortest path,200,OK,Postgres 1-1,text,true,,37,0,1,1,null,25,0,0
+1734039373618,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,37,0,1,1,null,23,0,0
+1734039373642,23,5 - Shortest path,200,OK,Postgres 1-1,text,true,,57,0,1,1,null,23,0,0
+1734039373665,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,57,0,1,1,null,24,0,0
+1734039373689,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,57,0,1,1,null,24,0,0
+1734039373713,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,57,0,1,1,null,24,0,0
+1734039373737,25,5 - Shortest path,200,OK,Postgres 1-1,text,true,,48,0,1,1,null,25,0,0
+1734039373763,23,5 - Shortest path,200,OK,Postgres 1-1,text,true,,48,0,1,1,null,23,0,0
+1734039373787,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,48,0,1,1,null,24,0,0
+1734039373811,23,5 - Shortest path,200,OK,Postgres 1-1,text,true,,48,0,1,1,null,23,0,0
+1734039373834,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,71,0,1,1,null,24,0,0
+1734039373858,24,5 - Shortest path,200,OK,Postgres 1-1,text,true,,71,0,1,1,null,24,0,0
+1734039373883,23,5 - Shortest path,200,OK,Postgres 1-1,text,true,,71,0,1,1,null,23,0,0
+1734039373906,26,5 - Shortest path,200,OK,Postgres 1-1,text,true,,71,0,1,1,null,26,0,0
+1734039373933,29,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,133,0,1,1,null,29,0,0
+1734039373962,26,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,133,0,1,1,null,26,0,0
+1734039373988,26,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,133,0,1,1,null,26,0,0
+1734039374015,26,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,133,0,1,1,null,26,0,0
+1734039374042,25,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,162,0,1,1,null,25,0,0
+1734039374067,25,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,162,0,1,1,null,25,0,0
+1734039374092,26,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,162,0,1,1,null,26,0,0
+1734039374118,25,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,162,0,1,1,null,25,0,0
+1734039374143,27,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,138,0,1,1,null,27,0,0
+1734039374170,27,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,138,0,1,1,null,27,0,0
+1734039374197,27,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,138,0,1,1,null,27,0,0
+1734039374224,30,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,138,0,1,1,null,30,0,0
+1734039374254,32,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,205,0,1,1,null,32,0,0
+1734039374286,28,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,205,0,1,1,null,28,0,0
+1734039374314,28,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,205,0,1,1,null,28,0,0
+1734039374342,28,6 - k Shortest paths,200,OK,Postgres 1-1,text,true,,205,0,1,1,null,28,0,0
+1734039374371,5,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,5,0,0
+1734039374376,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,0,0,0
+1734039374377,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,0,0,0
+1734039374377,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,0,0,0
+1734039374377,3,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,3,0,0
+1734039374380,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,0,0,0
+1734039374380,1,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,1,0,1
+1734039374381,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,115,0,1,1,null,0,0,0
+1734039374381,2,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,2,0,0
+1734039374383,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,0,0,0
+1734039374383,1,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,1,0,0
+1734039374384,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,0,0,0
+1734039374384,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,0,0,0
+1734039374384,1,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,1,0,0
+1734039374385,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,0,0,0
+1734039374385,0,7 - Forum of a message,200,OK,Postgres 1-1,text,true,,118,0,1,1,null,0,0,0
+1734039374386,48,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,1885,0,1,1,null,47,0,0
+1734039374434,46,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,1885,0,1,1,null,46,0,0
+1734039374480,47,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,1885,0,1,1,null,47,0,0
+1734039374527,47,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,1885,0,1,1,null,47,0,0
+1734039374574,37,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,3365,0,1,1,null,37,0,0
+1734039374611,36,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,3365,0,1,1,null,36,0,0
+1734039374648,35,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,3365,0,1,1,null,35,0,0
+1734039374683,36,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,3365,0,1,1,null,36,0,0
+1734039374719,39,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2712,0,1,1,null,39,0,0
+1734039374758,39,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2712,0,1,1,null,39,0,0
+1734039374797,40,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2712,0,1,1,null,40,0,0
+1734039374837,39,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2712,0,1,1,null,39,0,0
+1734039374876,46,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2322,0,1,1,null,46,0,0
+1734039374922,140,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2322,0,1,1,null,140,0,0
+1734039375063,45,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2322,0,1,1,null,45,0,0
+1734039375109,45,8 - Recent messages by your friends,200,OK,Postgres 1-1,text,true,,2322,0,1,1,null,45,0,0
+1734039375155,514,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,540,0,1,1,null,513,0,0
+1734039375669,142,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,540,0,1,1,null,142,0,0
+1734039375811,148,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,540,0,1,1,null,147,0,0
+1734039375959,140,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,540,0,1,1,null,140,0,0
+1734039376099,1774,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1774,0,0
+1734039377873,1756,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1756,0,0
+1734039379630,1758,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1758,0,0
+1734039381389,1734,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1734,0,0
+1734039383124,1029,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1029,0,0
+1734039384153,1020,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1020,0,0
+1734039385173,1016,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1016,0,0
+1734039386189,1018,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,520,0,1,1,null,1018,0,0
+1734039387207,1770,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,515,0,1,1,null,1770,0,0
+1734039388977,1745,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,515,0,1,1,null,1745,0,0
+1734039390724,1745,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,515,0,1,1,null,1745,0,0
+1734039392470,1749,9 - Friend recommendation,200,OK,Postgres 1-1,text,true,,515,0,1,1,null,1749,0,0
+1734039394220,29,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1141,0,1,1,null,29,0,0
+1734039394249,26,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1141,0,1,1,null,25,0,0
+1734039394275,24,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1141,0,1,1,null,24,0,0
+1734039394299,24,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1141,0,1,1,null,24,0,0
+1734039394324,25,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1048,0,1,1,null,25,0,0
+1734039394349,25,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1048,0,1,1,null,25,0,0
+1734039394374,24,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1048,0,1,1,null,24,0,0
+1734039394398,131,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,1048,0,1,1,null,131,0,0
+1734039394529,27,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,315,0,1,1,null,27,0,0
+1734039394556,25,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,315,0,1,1,null,25,0,0
+1734039394581,25,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,315,0,1,1,null,25,0,0
+1734039394606,24,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,315,0,1,1,null,24,0,0
+1734039394630,24,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,574,0,1,1,null,24,0,0
+1734039394654,25,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,574,0,1,1,null,25,0,0
+1734039394679,26,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,574,0,1,1,null,26,0,0
+1734039394705,23,10 - Replies of a message,200,OK,Postgres 1-1,text,true,,574,0,1,1,null,23,0,0
