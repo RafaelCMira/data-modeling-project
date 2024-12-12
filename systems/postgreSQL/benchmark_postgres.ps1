@@ -42,10 +42,10 @@ Copy-Item -Path $replacementFilePath -Destination $originalFilePath -Force
 # Restart the PostgreSQL service
 Restart-Service -Name "postgresql-x64-17"
 
-Start-Sleep -Seconds 3
+Start-Sleep -Seconds 3 
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_postgres_$dataset.jmx" -l $FullOutputDir `
+jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -73,7 +73,7 @@ Restart-Service -Name "postgresql-x64-17"
 Start-Sleep -Seconds 3
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_postgres_$dataset.jmx" -l $FullOutputDir `
+jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -100,7 +100,7 @@ Restart-Service -Name "postgresql-x64-17"
 Start-Sleep -Seconds 3
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_postgres_$dataset.jmx" -l $FullOutputDir `
+jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -127,7 +127,7 @@ Restart-Service -Name "postgresql-x64-17"
 Start-Sleep -Seconds 3
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_postgres_$dataset.jmx" -l $FullOutputDir `
+jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -155,7 +155,7 @@ Restart-Service -Name "postgresql-x64-17"
 Start-Sleep -Seconds 3
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_postgres_$dataset.jmx" -l $FullOutputDir `
+jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `

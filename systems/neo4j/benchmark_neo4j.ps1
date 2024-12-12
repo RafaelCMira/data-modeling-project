@@ -72,7 +72,7 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -134,7 +134,7 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -195,7 +195,7 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -256,7 +256,7 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
@@ -317,7 +317,7 @@ $neo4jPid = $neo4jProcess.Id
 Start-Sleep -Seconds 40
 
 # Run Jmeter
-jmeter -n -t "../../inputs/dataset $dataset/jmetter_neo4j_$dataset.jmx" -l $FullOutputDir  `
+jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
     -Jcsv1="../../inputs/dataset $dataset/1.csv" `
     -Jcsv2="../../inputs/dataset $dataset/2.csv" `
     -Jcsv3="../../inputs/dataset $dataset/3.csv" `
