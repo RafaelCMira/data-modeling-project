@@ -1,0 +1,41 @@
+-------------------------------------------------------------------------------
+User: Rafael
+Dataset: 0.3
+Entities scripts completed in 8.4808625 seconds.
+Relations scripts completed in 4.3544459 seconds.
+schema.sql completed in 0.2152321 seconds.
+bulkInserts.sql completed in 9.4717716 seconds.
+constraints.sql completed in 4.6493127 seconds.
+createEdges.sql completed in 0.2097844 seconds.
+ANALYZE completed in 1.2484892 seconds.
+
+neo4j load time: 127972 ms
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+User: Rafael
+Dataset: 1
+Entities scripts completed in 26.4892084 seconds.
+Relations scripts completed in 13.7293659 seconds.
+schema.sql completed in 0.2475081 seconds.
+bulkInserts.sql completed in 33.0830533 seconds.
+constraints.sql completed in 20.6150074 seconds.
+createEdges.sql completed in 0.7099249 seconds.
+ANALYZE completed in 8.3132659 seconds.
+
+neo4j load time: 418959 ms
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+User: Rafael
+Dataset: 3
+Entities scripts completed in 72.7508394 seconds.
+Relations scripts completed in 43.3319496 seconds.
+schema.sql completed in 0.4175004 seconds.
+bulkInserts.sql completed in 101.0491584 seconds.
+constraints.sql completed in 88.2572199 seconds.
+createEdges.sql completed in 1.6793114 seconds.
+ANALYZE completed in 2.4587552 seconds.
+
+neo4j load time: 1195865 ms
+-------------------------------------------------------------------------------

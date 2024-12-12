@@ -5,11 +5,9 @@
       <elementProp name="TestPlan.user_defined_variables" elementType="Arguments" guiclass="ArgumentsPanel" testclass="Arguments" testname="User Defined Variables">
         <collectionProp name="Arguments.arguments"/>
       </elementProp>
-      <boolProp name="TestPlan.functional_mode">false</boolProp>
-      <boolProp name="TestPlan.serialize_threadgroups">false</boolProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j" enabled="false">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -20,7 +18,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <BoltConnectionElement guiclass="TestBeanGUI" testclass="BoltConnectionElement" testname="Bolt Connection Configuration">
+        <BoltConnectionElement guiclass="TestBeanGUI" testclass="BoltConnectionElement" testname="Bolt Connection Configuration" enabled="true">
           <stringProp name="boltUri">bolt://localhost:7687</stringProp>
           <intProp name="maxConnectionPoolSize">1</intProp>
           <stringProp name="password">neo4j</stringProp>
@@ -60,7 +58,7 @@ LIMIT 20;</stringProp>
             <intProp name="txTimeout">420</intProp>
           </BoltSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv1)}</stringProp>
@@ -281,7 +279,7 @@ RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
           <intProp name="txTimeout">420</intProp>
         </BoltSampler>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -322,7 +320,7 @@ ORDER BY totalCost;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="6.2 - K Shortest paths - Drop graph">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="6.2 - K Shortest paths - Drop graph" enabled="true">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">CALL gds.graph.drop(&apos;myGraph&apos;)</stringProp>
           <stringProp name="params"></stringProp>
@@ -470,7 +468,7 @@ LIMIT 10;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -509,7 +507,7 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
           </hashTree>
         </hashTree>
       </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres" enabled="false">
+      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres">
         <intProp name="ThreadGroup.num_threads">1</intProp>
         <intProp name="ThreadGroup.ramp_time">0</intProp>
         <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
@@ -520,7 +518,7 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="false">
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="poolMax">1</stringProp>
           <stringProp name="timeout">10000</stringProp>
@@ -539,8 +537,8 @@ ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
           <stringProp name="connectionProperties"></stringProp>
         </JDBCDataSource>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1 - Transitive friends - step 3" enabled="true">
@@ -617,7 +615,7 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv1)}</stringProp>
@@ -631,11 +629,11 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4" enabled="true">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -709,7 +707,7 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv2)}</stringProp>
@@ -723,8 +721,8 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5" enabled="true">
@@ -801,7 +799,7 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv3)}</stringProp>
@@ -815,8 +813,8 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="4 - Friends and fof that have been to countries" enabled="true">
@@ -888,7 +886,7 @@ LIMIT 20;
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv4)}</stringProp>
@@ -902,8 +900,8 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="5 - Shortest path" enabled="true">
@@ -929,7 +927,7 @@ JOIN person p ON p.person_id = path.node;</stringProp>
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv5)}</stringProp>
@@ -943,8 +941,8 @@ JOIN person p ON p.person_id = path.node;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="6 - k Shortest paths" enabled="true">
@@ -974,7 +972,7 @@ ORDER BY path.path_id;</stringProp>
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv6)}</stringProp>
@@ -988,8 +986,8 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="7 - Forum of a message" enabled="true">
@@ -1005,7 +1003,7 @@ ORDER BY path.path_id;</stringProp>
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv7)}</stringProp>
@@ -1019,8 +1017,8 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="8 - Recent messages by your friends" enabled="true">
@@ -1052,7 +1050,7 @@ LIMIT 20;
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv8)}</stringProp>
@@ -1066,8 +1064,8 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="9 - Friend recommendation" enabled="true">
@@ -1154,7 +1152,7 @@ LIMIT 10;
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv9)}</stringProp>
@@ -1168,8 +1166,8 @@ LIMIT 10;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="false">
-          <stringProp name="LoopController.loops">16</stringProp>
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
+          <stringProp name="LoopController.loops">1</stringProp>
         </LoopController>
         <hashTree>
           <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="10 - Replies of a message" enabled="true">
@@ -1205,7 +1203,7 @@ WHERE c.parent_id = ${messageId};</stringProp>
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params" enabled="true">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv10)}</stringProp>
