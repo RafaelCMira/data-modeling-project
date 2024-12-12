@@ -7,1242 +7,98 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j" enabled="false">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
-        <intProp name="ThreadGroup.ramp_time">0</intProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">1</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <BoltConnectionElement guiclass="TestBeanGUI" testclass="BoltConnectionElement" testname="Bolt Connection Configuration">
-          <stringProp name="boltUri">bolt://localhost:7687</stringProp>
-          <intProp name="maxConnectionPoolSize">1</intProp>
-          <stringProp name="password">neo4j</stringProp>
-          <stringProp name="username">neo4j</stringProp>
-        </BoltConnectionElement>
-        <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="1 - Transitive friends - step 3">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..3]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv1)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..4]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="params">{
-&quot;personIdParam&quot;: &quot;3648&quot;,
-&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
-}</stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv2)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..5]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="params">{
-&quot;personIdParam&quot;: &quot;3648&quot;,
-&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
-}</stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv3)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">WITH ${personId} AS personIdParam, ${countryXname} AS countryXNameParam, ${countryYname} AS countryYNameParam, datetime(${startDate}) AS startDateParam, duration({days: ${days}}) AS durationParam
-MATCH (start:Person {person_id: personIdParam})-[:KNOWS*1..2]-&gt;(otherPerson:Person)
-WHERE otherPerson.person_id &lt;&gt; personIdParam
-  AND NOT (otherPerson)-[:LOCATED_IN]-&gt;(:City)-[:CITY_OF]-&gt;(:Country {name: countryXNameParam})
-  AND NOT (otherPerson)-[:LOCATED_IN]-&gt;(:City)-[:CITY_OF]-&gt;(:Country {name: countryYNameParam})
-
-WITH DISTINCT otherPerson, countryXNameParam, countryYNameParam, startDateParam, durationParam
-MATCH (otherPerson)&lt;-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]-&gt;(country:Country)
-WHERE country.name = countryYNameParam
-    AND message.message_created_at &gt;= startDateParam
-    AND message.message_created_at &lt; startDateParam + durationParam
-WITH 
-    otherPerson, 
-    COUNT(message) AS xCount,
-    countryXNameParam,
-    countryYNameParam,
-    startDateParam,
-    durationParam
-MATCH (otherPerson)&lt;-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]-&gt;(country:Country)
-WHERE country.name = countryXNameParam
-    AND message.message_created_at &gt;= startDateParam
-    AND message.message_created_at &lt; startDateParam + durationParam
-WITH 
-    otherPerson, 
-    xCount, 
-    COUNT(message) AS yCount
-WHERE xCount &gt; 0 AND yCount &gt; 0
-RETURN 
-    otherPerson.person_id AS id,
-    otherPerson.person_first_name AS firstName,
-    otherPerson.person_last_name AS lastName,
-    xCount,
-    yCount,
-    (xCount + yCount) AS count
-ORDER BY count DESC, id ASC
-LIMIT 20;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv4)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,countryXname,countryYname,startDate,days</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="5 - Shortest path">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH p = shortestPath(
-    (p1:Person {person_id: ${startId}})-[:KNOWS*]-(p2:Person {person_id: ${endId}})
-)
-RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv5)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">startId,endId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="6.0 - K shortest paths - Create graph" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">CALL gds.graph.project(
-    &apos;myGraph&apos;,
-    [&apos;Person&apos;], // Node labels to include
-    {
-        KNOWS: {
-            type: &apos;KNOWS&apos;,
-            orientation: &apos;UNDIRECTED&apos;
-        }
-    }
-);</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="6.1 - K shortest paths" enabled="true">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH (p:Person {person_id: ${startId}})
-WITH id(p) AS sourceNodeId
-
-MATCH (p:Person {person_id: ${endId}})
-WITH sourceNodeId, id(p) AS targetNodeId
-
-CALL gds.shortestPath.yens.stream(&apos;myGraph&apos;, {
-    sourceNode: sourceNodeId,
-    targetNode: targetNodeId,
-    k: 3
-})
-YIELD index, totalCost, nodeIds, path
-RETURN
-    totalCost,
-    [nodeId IN nodeIds | gds.util.asNode(nodeId).person_id] AS person_ids
-ORDER BY totalCost;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv6)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">startId,endId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="6.2 - K Shortest paths - Drop graph">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">CALL gds.graph.drop(&apos;myGraph&apos;)</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="7 - Forum of a message">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH (message:Message {message_id: ${messageId}})
-OPTIONAL MATCH path = (message)-[:REPLY_OF*]-&gt;(post:Post)
-WITH 
-    message, 
-    post, 
-    CASE 
-        WHEN post IS NOT NULL 
-        THEN post 
-        ELSE message 
-    END AS targetPost
-MATCH (targetPost:Post)-[:POSTED_IN]-&gt;(forum:Forum)
-OPTIONAL MATCH (moderator:Person)-[:MODERATOR_OF]-&gt;(forum:Forum)
-RETURN 
-    forum.forum_id,
-    forum.forum_title,
-    moderator.person_id,
-    moderator.person_first_name,
-    moderator.person_last_name
-;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv7)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">messageId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="8 - Recent messages by your friends">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">WITH ${personId} AS personIdParam, datetime(${dateParam}) AS dateParam
-MATCH (p:Person {person_id:personIdParam})-[:KNOWS]-&gt;(f:Person)&lt;-[:POSTED_BY]-(m:Message)
-WHERE m.message_created_at &lt; dateParam
-RETURN 
-    f.person_id,
-    f.person_first_name,
-    f.person_last_name,
-    m.message_id,
-    m.message_content,
-    m.message_created_at
-ORDER BY m.message_created_at DESC, m.message_id ASC
-LIMIT 20;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv8)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,dateParam</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="9 - Friends recommendation">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">WITH ${month} AS monthParam, ${personId} AS personIdParam
-MATCH (p:Person {person_id: personIdParam})-[:KNOWS*2..2]-&gt;(foaf:Person)
-WHERE
-    (foaf.person_birthday.month = monthParam AND foaf.person_birthday.day &gt;= 21) OR
-    (foaf.person_birthday.month = ((monthParam + 1) % 12) AND foaf.person_birthday.day &lt; 22)
-
-// Collect the start person&apos;s tags of interest
-WITH p, foaf
-MATCH (p)-[:HAS_INTEREST]-&gt;(tags:Tag)
-
-// Calculate Common Posts
-WITH p, foaf, COLLECT(DISTINCT tags) AS personTags
-OPTIONAL MATCH (foaf)&lt;-[:POSTED_BY]-(commonPost:Post)&lt;-[:TAG_OF]-(commonTag:Tag)
-WHERE commonTag IN personTags
-
-// Calculate Uncommon Posts
-WITH p, foaf, COUNT(DISTINCT commonPost) AS common, personTags
-OPTIONAL MATCH (uncommonPost:Post)-[:POSTED_BY]-&gt;(foaf)
-WHERE NOT EXISTS {
-    MATCH (uncommonPost)&lt;-[:TAG_OF]-(uncommonTag:Tag)
-    WHERE uncommonTag IN personTags
-}
-
-WITH p, foaf, common, (common - COUNT(DISTINCT uncommonPost)) AS commonInterestScore
-MATCH (foaf)-[:LOCATED_IN]-&gt;(city:City)
-RETURN
-    foaf.person_id AS foafId,
-    foaf.person_first_name AS foafFirstName,
-    foaf.person_last_name AS foafLastName,
-    commonInterestScore,
-    foaf.person_gender AS foafGender,
-    city.name AS cityName
-ORDER BY commonInterestScore DESC, foafId ASC
-LIMIT 10;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv9)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,month</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
-          <stringProp name="LoopController.loops">16</stringProp>
-        </LoopController>
-        <hashTree>
-          <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation">
-            <stringProp name="accessMode">READ</stringProp>
-            <stringProp name="cypher">MATCH (creator:Person)&lt;-[:POSTED_BY]-(m:Message {message_id: ${messageId}})&lt;-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]-&gt;(replyAuthor:Person)
-RETURN 
-    c.message_id as ReplyId,
-    c.message_content as content,
-    c.message_created_at,
-    replyAuthor.person_id,
-    replyAuthor.person_first_name,
-    replyAuthor.person_last_name,
-    CASE 
-        WHEN (creator)-[:KNOWS]-&gt;(replyAuthor) THEN true
-        ELSE false
-    END AS knows
-ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
-            <stringProp name="params"></stringProp>
-            <boolProp name="recordQueryResults">false</boolProp>
-            <intProp name="txTimeout">420</intProp>
-          </BoltSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params" enabled="true">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv10)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">messageId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres" enabled="false">
-        <intProp name="ThreadGroup.num_threads">1</intProp>
-        <intProp name="ThreadGroup.ramp_time">0</intProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <stringProp name="LoopController.loops">1</stringProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
-          <stringProp name="dataSource">bss</stringProp>
-          <stringProp name="poolMax">1</stringProp>
-          <stringProp name="timeout">10000</stringProp>
-          <stringProp name="trimInterval">120000</stringProp>
-          <boolProp name="autocommit">false</boolProp>
-          <stringProp name="transactionIsolation">DEFAULT</stringProp>
-          <boolProp name="preinit">true</boolProp>
-          <stringProp name="initQuery"></stringProp>
-          <boolProp name="keepAlive">true</boolProp>
-          <stringProp name="connectionAge">5000</stringProp>
-          <stringProp name="checkQuery"></stringProp>
-          <stringProp name="dbUrl">jdbc:postgresql://localhost:5432/test</stringProp>
-          <stringProp name="driver">org.postgresql.Driver</stringProp>
-          <stringProp name="username">postgres</stringProp>
-          <stringProp name="password">root</stringProp>
-          <stringProp name="connectionProperties"></stringProp>
-        </JDBCDataSource>
-        <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1 - Transitive friends - step 3">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH RECURSIVE knows_path AS (
-    -- Base case: direct neighbors
-    SELECT
-        k1.person_id1 AS start_person_id,
-        k1.person_id2 AS connected_person_id,
-        1 AS distance
-    FROM knows k1
-    WHERE k1.person_id1 = ${personId}
-    
-    UNION ALL
-    
-    -- Recursive case: expand the path
-    SELECT
-        kp.start_person_id,
-        k.person_id2 AS connected_person_id,
-        kp.distance + 1
-    FROM knows_path kp
-    	JOIN knows k ON kp.connected_person_id = k.person_id1
-    WHERE kp.distance &lt; 3
-)
--- Filter to get the shortest path for each connected person
-, shortest_path AS (
-    SELECT
-        connected_person_id,
-        MIN(distance) AS distance
-    FROM knows_path
-    WHERE connected_person_id != ${personId}
-    GROUP BY connected_person_id
-)
--- Main query: join with other tables
-SELECT
-    p.person_id AS id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name AS city_name,
-    ARRAY_AGG(DISTINCT co.name) AS workplaces,
-    ARRAY_AGG(DISTINCT u.name) AS places_of_study
-FROM shortest_path sp
-	JOIN person p ON sp.connected_person_id = p.person_id
-	JOIN city c ON p.city_id = c.city_id
-	LEFT JOIN works wa ON p.person_id = wa.person_id
-	LEFT JOIN company co ON wa.company_id = co.company_id
-	LEFT JOIN studies sa ON p.person_id = sa.person_id
-	LEFT JOIN university u ON sa.university_id = u.university_id
-WHERE p.first_name = ${personName}
-GROUP BY
-    p.person_id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name
-ORDER BY sp.distance, p.last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv1)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH RECURSIVE knows_path AS (
-    -- Base case: direct neighbors
-    SELECT
-        k1.person_id1 AS start_person_id,
-        k1.person_id2 AS connected_person_id,
-        1 AS distance
-    FROM knows k1
-    WHERE k1.person_id1 = ${personId}
-    
-    UNION ALL
-    
-    -- Recursive case: expand the path
-    SELECT
-        kp.start_person_id,
-        k.person_id2 AS connected_person_id,
-        kp.distance + 1
-    FROM knows_path kp
-    	JOIN knows k ON kp.connected_person_id = k.person_id1
-    WHERE kp.distance &lt; 4
-)
--- Filter to get the shortest path for each connected person
-, shortest_path AS (
-    SELECT
-        connected_person_id,
-        MIN(distance) AS distance
-    FROM knows_path
-    WHERE connected_person_id != ${personId}
-    GROUP BY connected_person_id
-)
--- Main query: join with other tables
-SELECT
-    p.person_id AS id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name AS city_name,
-    ARRAY_AGG(DISTINCT co.name) AS workplaces,
-    ARRAY_AGG(DISTINCT u.name) AS places_of_study
-FROM shortest_path sp
-	JOIN person p ON sp.connected_person_id = p.person_id
-	JOIN city c ON p.city_id = c.city_id
-	LEFT JOIN works wa ON p.person_id = wa.person_id
-	LEFT JOIN company co ON wa.company_id = co.company_id
-	LEFT JOIN studies sa ON p.person_id = sa.person_id
-	LEFT JOIN university u ON sa.university_id = u.university_id
-WHERE p.first_name = ${personName}
-GROUP BY
-    p.person_id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name
-ORDER BY sp.distance, p.last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv2)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH RECURSIVE knows_path AS (
-    -- Base case: direct neighbors
-    SELECT
-        k1.person_id1 AS start_person_id,
-        k1.person_id2 AS connected_person_id,
-        1 AS distance
-    FROM knows k1
-    WHERE k1.person_id1 = ${personId}
-    
-    UNION ALL
-    
-    -- Recursive case: expand the path
-    SELECT
-        kp.start_person_id,
-        k.person_id2 AS connected_person_id,
-        kp.distance + 1
-    FROM knows_path kp
-    	JOIN knows k ON kp.connected_person_id = k.person_id1
-    WHERE kp.distance &lt; 5
-)
--- Filter to get the shortest path for each connected person
-, shortest_path AS (
-    SELECT
-        connected_person_id,
-        MIN(distance) AS distance
-    FROM knows_path
-    WHERE connected_person_id != ${personId}
-    GROUP BY connected_person_id
-)
--- Main query: join with other tables
-SELECT
-    p.person_id AS id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name AS city_name,
-    ARRAY_AGG(DISTINCT co.name) AS workplaces,
-    ARRAY_AGG(DISTINCT u.name) AS places_of_study
-FROM shortest_path sp
-	JOIN person p ON sp.connected_person_id = p.person_id
-	JOIN city c ON p.city_id = c.city_id
-	LEFT JOIN works wa ON p.person_id = wa.person_id
-	LEFT JOIN company co ON wa.company_id = co.company_id
-	LEFT JOIN studies sa ON p.person_id = sa.person_id
-	LEFT JOIN university u ON sa.university_id = u.university_id
-WHERE p.first_name = ${personName}
-GROUP BY
-    p.person_id,
-    p.last_name,
-    sp.distance,
-    p.birthday,
-    p.created_at,
-    p.gender,
-    p.browser_used,
-    p.location_ip,
-    c.name
-ORDER BY sp.distance, p.last_name, id
-LIMIT 20;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Store as String</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv3)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,personName</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="4 - Friends and fof that have been to countries">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH friends AS (
-    SELECT k1.person_id2 as person_id
-    FROM knows k1
-    WHERE k1.person_id1 = ${personId}
-
-    UNION
-
-    SELECT k2.person_id2 as person_id
-    FROM knows k1
-	    JOIN knows k2 ON k1.person_id2 = k2.person_id1
-    WHERE k1.person_id1 = ${personId}
-),
-excluded_friends AS (
-	SELECT f.person_id
-	FROM friends f
-		JOIN person p ON f.person_id = p.person_id 
-		JOIN city c ON p.city_id = c.city_id
-		JOIN country ct ON c.country_id = ct.country_id
-	WHERE ct.name NOT IN (${countryXname}, ${countryYname})
-),
-messages_in_xCountry AS (
-    SELECT 
-        m.person_id,
-        COUNT(m.message_id) AS xCount
-    FROM message m
-	    JOIN country ct ON m.country_id = ct.country_id
-    WHERE 
-		ct.name = ${countryXname} 
-		AND m.created_at BETWEEN  ${startDate}  AND ${startDate}::TIMESTAMP + INTERVAL ${days} 
-    GROUP BY m.person_id
-),
-messages_in_yCountry AS (
-    SELECT 
-        m.person_id,
-        COUNT(m.message_id) AS yCount
-    FROM message m
-	    JOIN country ct ON m.country_id = ct.country_id
-    WHERE 
-		ct.name = ${countryYname} 
-		AND m.created_at BETWEEN ${startDate} AND ${startDate}::TIMESTAMP + INTERVAL ${days}
-    GROUP BY m.person_id
-)
-SELECT
-    ef.person_id,
-   	p.first_name,
-  	p.last_name,
-   	mx.xCount,
-	my.yCount,
-	mx.xCount + my.yCount AS count
-FROM excluded_friends ef
-	JOIN person p ON ef.person_id = p.person_id
-	JOIN messages_in_xCountry mx ON (ef.person_id = mx.person_id AND COALESCE(mx.xCount, 0) &gt; 0)
-	JOIN messages_in_yCountry my ON (ef.person_id = my.person_id AND COALESCE(my.yCount, 0) &gt; 0)
-ORDER BY count DESC, ef.person_id ASC
-LIMIT 20;
-
-</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv4)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,countryXname,countryYname,startDate,days</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="5 - Shortest path">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH path AS (
-    SELECT * FROM pgr_dijkstra(
-        &apos;SELECT id, source, target, cost FROM edges&apos;, 
-        ${startPersonId},  -- Start node
-        ${endPersonId}   -- End node
-    )
-)
-SELECT 
-    array_agg(p.person_id ORDER BY path.seq) AS path_nodes
-FROM path
-JOIN person p ON p.person_id = path.node;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv5)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">startPersonId,endPersonId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="6 - k Shortest paths">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">WITH path AS (
-    SELECT * FROM pgr_ksp(
-        &apos;SELECT id, source, target, cost FROM edges&apos;,
-	   ${startPersonId},  -- Start node
-        ${endPersonId},   -- End node
-        3 -- number of paths
-    )
-)
-SELECT 
-    path.path_id, 
-    array_agg(p.person_id ORDER BY path.seq) AS path_nodes
-FROM path
-    JOIN person p ON p.person_id = path.node
-GROUP BY path.path_id
-ORDER BY path.path_id;</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv6)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">startPersonId,endPersonId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="7 - Forum of a message">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">SELECT * FROM get_forum_and_moderator(${messageId});</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv7)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">messageId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="8 - Recent messages by your friends">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">SELECT
-	p.person_id,
-	p.first_name,
-	p.last_name,
-	m.message_id,
-	m.content,
-	m.created_at
-FROM knows k
-	JOIN message m ON m.person_id = k.person_id2
-	JOIN person p ON m.person_id = p.person_id
-WHERE 
-	k.person_id1 = ${personId}
-	AND
-	m.created_at &lt; ${dateParam}
-ORDER BY m.created_at DESC, m.message_id ASC
-LIMIT 20;
-</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv8)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,dateParam</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="9 - Friend recommendation">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">-- Friends of Friends
-WITH foaf AS (
-    SELECT DISTINCT k2.person_id2 AS person_id
-    FROM knows k1
-	    JOIN knows k2 ON k1.person_id2 = k2.person_id1
-    WHERE k1.person_id1 = ${personId}
-),
--- Filter foaf by Birthdays
-filtered_foaf AS (
-    SELECT 
-        p.person_id AS foaf_id, 
-        p.first_name, 
-        p.last_name, 
-        p.gender, 
-        p.city_id
-    FROM person p
-    JOIN foaf f ON p.person_id = f.person_id
-    WHERE (
-        EXTRACT(MONTH FROM p.birthday) = ${monthParam} AND EXTRACT(DAY FROM p.birthday) &gt;= 21
-    ) OR (
-        EXTRACT(MONTH FROM p.birthday) = ((${monthParam} + 1) % 12) AND EXTRACT(DAY FROM p.birthday) &lt; 22
-    )
-),
--- Collect Tags of Interest
-person_tags AS (
-    SELECT t.tag_id
-    FROM has_interest t
-    WHERE t.person_id = ${personId}
-),
--- Calculate Common Posts
-common_posts AS (
-    SELECT
-        f.foaf_id,
-        COUNT(DISTINCT p.message_id) AS common_count
-    FROM filtered_foaf f
-	    JOIN message m ON f.foaf_id = m.person_id
-	    JOIN post p ON p.message_id = m.message_id
-	    JOIN message_tags mt ON p.message_id = mt.message_id
-    WHERE mt.tag_id IN (SELECT tag_id FROM person_tags)
-    GROUP BY f.foaf_id
-),
--- Calculate Uncommon Posts
-uncommon_posts AS (
-    SELECT
-        f.foaf_id,
-        COUNT(DISTINCT p.message_id) AS uncommon_count
-    FROM filtered_foaf f
-	    JOIN message m ON f.foaf_id = m.person_id
-	    JOIN post p USING(message_id)
-    WHERE NOT EXISTS (
-        SELECT 1
-        FROM message_tags mt
-        WHERE mt.message_id = p.message_id
-          AND mt.tag_id IN (SELECT tag_id FROM person_tags)
-    )
-    GROUP BY f.foaf_id
-)
--- Combine Results and Return
-SELECT
-    f.foaf_id,
-    f.first_name,
-    f.last_name,
-    COALESCE(cp.common_count, 0) - COALESCE(up.uncommon_count, 0) AS common_interest_score,
-    f.gender,
-    c.name
-FROM filtered_foaf f
-	JOIN city c USING(city_id)
-	LEFT JOIN common_posts cp USING(foaf_id)
-	LEFT JOIN uncommon_posts up USING(foaf_id)
-ORDER BY common_interest_score DESC, f.foaf_id ASC
-LIMIT 10;
-</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv9)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">personId,monthParam</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
-          <stringProp name="LoopController.loops">1</stringProp>
-        </LoopController>
-        <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="10 - Replies of a message">
-            <stringProp name="dataSource">bss</stringProp>
-            <stringProp name="queryType">Prepared Select Statement</stringProp>
-            <stringProp name="query">SELECT 
-    c.message_id AS comment_id,
-    m.content AS comment_content,
-    m.created_at AS comment_created_at,
-    m.person_id AS reply_author_id,
-    p.first_name AS reply_author_first_name,
-    p.last_name AS reply_author_last_name,
-    CASE 
-        WHEN m.person_id = original_message.person_id THEN FALSE
-        ELSE EXISTS (
-            SELECT 1
-            FROM knows k
-            WHERE (k.person_id1 = original_message.person_id AND k.person_id2 = m.person_id)
-               OR (k.person_id1 = m.person_id AND k.person_id2 = original_message.person_id)
-        )
-    END AS knows
-FROM comment c
-JOIN message m ON c.message_id = m.message_id
-JOIN message original_message ON c.parent_id = original_message.message_id
-JOIN person p ON m.person_id = p.person_id
-WHERE c.parent_id = ${messageId};</stringProp>
-            <stringProp name="queryArguments"></stringProp>
-            <stringProp name="queryArgumentsTypes"></stringProp>
-            <stringProp name="variableNames"></stringProp>
-            <stringProp name="resultVariable"></stringProp>
-            <stringProp name="queryTimeout"></stringProp>
-            <stringProp name="resultSetMaxRows"></stringProp>
-            <stringProp name="resultSetHandler">Count Records</stringProp>
-          </JDBCSampler>
-          <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params">
-              <stringProp name="delimiter">,</stringProp>
-              <stringProp name="fileEncoding"></stringProp>
-              <stringProp name="filename">${__P(csv10)}</stringProp>
-              <boolProp name="ignoreFirstLine">false</boolProp>
-              <boolProp name="quotedData">true</boolProp>
-              <boolProp name="recycle">false</boolProp>
-              <stringProp name="shareMode">shareMode.thread</stringProp>
-              <boolProp name="stopThread">true</boolProp>
-              <stringProp name="variableNames">messageId</stringProp>
-            </CSVDataSet>
-            <hashTree/>
-          </hashTree>
-        </hashTree>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Postgres concurrent" enabled="false">
-        <intProp name="ThreadGroup.num_threads">32</intProp>
-        <intProp name="ThreadGroup.ramp_time">60</intProp>
-        <longProp name="ThreadGroup.duration">120</longProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group">
+        <collectionProp name="ultimatethreadgroupdata">
+          <collectionProp name="-1630665033">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="53430">600</stringProp>
+            <stringProp name="1567">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-887342737">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="52593">540</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="658728566">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48687">120</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="51756">480</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-1552865843">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48873">180</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="51570">420</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-54803178">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="49710">240</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="50733">360</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-1166878134">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="50547">300</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="50547">300</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="168958614">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="50733">360</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="49710">240</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="948698765">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="51570">420</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48873">180</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-1286067338">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="51756">480</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="48687">120</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="38873647">
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="52593">540</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="1722">60</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+        </collectionProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <intProp name="LoopController.loops">-1</intProp>
           <boolProp name="LoopController.continue_forever">false</boolProp>
         </elementProp>
-      </ThreadGroup>
+        <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
+      </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
         <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
           <stringProp name="dataSource">bss</stringProp>
-          <stringProp name="poolMax">16</stringProp>
+          <stringProp name="poolMax">0</stringProp>
           <stringProp name="timeout">10000</stringProp>
-          <stringProp name="trimInterval">120000</stringProp>
+          <stringProp name="trimInterval">60000</stringProp>
           <boolProp name="autocommit">false</boolProp>
           <stringProp name="transactionIsolation">DEFAULT</stringProp>
           <boolProp name="preinit">true</boolProp>
           <stringProp name="initQuery"></stringProp>
           <boolProp name="keepAlive">true</boolProp>
           <stringProp name="connectionAge">5000</stringProp>
-          <stringProp name="checkQuery"></stringProp>
+          <stringProp name="checkQuery">select 1</stringProp>
           <stringProp name="dbUrl">jdbc:postgresql://localhost:5432/test</stringProp>
           <stringProp name="driver">org.postgresql.Driver</stringProp>
           <stringProp name="username">postgres</stringProp>
@@ -1327,7 +183,7 @@ LIMIT 20;</stringProp>
           <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
+            <stringProp name="filename">${__P(csv1)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
@@ -1337,7 +193,7 @@ LIMIT 20;</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -1411,20 +267,20 @@ LIMIT 20;</stringProp>
           <stringProp name="resultSetHandler">Store as String</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
+            <stringProp name="filename">${__P(csv2)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">personId,personName</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="3 - Transitive friends - step 5" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -1498,20 +354,20 @@ LIMIT 20;</stringProp>
           <stringProp name="resultSetHandler">Store as String</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
+            <stringProp name="filename">${__P(csv3)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">personId,personName</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="4 - Friends and fof that have been to countries">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="4 - Friends and fof that have been to countries" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">WITH friends AS (
@@ -1580,14 +436,14 @@ LIMIT 20;
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/4.csv</stringProp>
+            <stringProp name="filename">${__P(csv4)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">personId,countryXname,countryYname,startDate,days</stringProp>
           </CSVDataSet>
@@ -1616,14 +472,14 @@ JOIN person p ON p.person_id = path.node;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/5.csv</stringProp>
+            <stringProp name="filename">${__P(csv5)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">startPersonId,endPersonId</stringProp>
           </CSVDataSet>
@@ -1656,7 +512,7 @@ ORDER BY path.path_id;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 6 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
             <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/6.csv</stringProp>
@@ -1682,20 +538,20 @@ ORDER BY path.path_id;</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/7.csv</stringProp>
+            <stringProp name="filename">${__P(csv7)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">messageId</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="8 - Recent messages by your friends">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="8 - Recent messages by your friends" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">SELECT
@@ -1724,20 +580,20 @@ LIMIT 20;
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/8.csv</stringProp>
+            <stringProp name="filename">${__P(csv8)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">personId,dateParam</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="9 - Friend recommendation">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="9 - Friend recommendation" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">-- Friends of Friends
@@ -1821,14 +677,14 @@ LIMIT 10;
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/9.csv</stringProp>
+            <stringProp name="filename">${__P(csv9)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">personId,monthParam</stringProp>
           </CSVDataSet>
@@ -1867,484 +723,19 @@ WHERE c.parent_id = ${messageId};</stringProp>
           <stringProp name="resultSetHandler">Count Records</stringProp>
         </JDBCSampler>
         <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params">
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params" enabled="true">
             <stringProp name="delimiter">,</stringProp>
             <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/10.csv</stringProp>
+            <stringProp name="filename">${__P(csv10)}</stringProp>
             <boolProp name="ignoreFirstLine">false</boolProp>
             <boolProp name="quotedData">true</boolProp>
             <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
             <boolProp name="stopThread">false</boolProp>
             <stringProp name="variableNames">messageId</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
-      </hashTree>
-      <ThreadGroup guiclass="ThreadGroupGui" testclass="ThreadGroup" testname="Neo4j concurrent">
-        <intProp name="ThreadGroup.num_threads">32</intProp>
-        <intProp name="ThreadGroup.ramp_time">60</intProp>
-        <longProp name="ThreadGroup.duration">120</longProp>
-        <boolProp name="ThreadGroup.same_user_on_next_iteration">true</boolProp>
-        <boolProp name="ThreadGroup.scheduler">true</boolProp>
-        <stringProp name="ThreadGroup.on_sample_error">continue</stringProp>
-        <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
-          <intProp name="LoopController.loops">-1</intProp>
-          <boolProp name="LoopController.continue_forever">false</boolProp>
-        </elementProp>
-      </ThreadGroup>
-      <hashTree>
-        <BoltConnectionElement guiclass="TestBeanGUI" testclass="BoltConnectionElement" testname="Bolt Connection Configuration">
-          <stringProp name="boltUri">bolt://localhost:7687</stringProp>
-          <intProp name="maxConnectionPoolSize">32</intProp>
-          <stringProp name="password">neo4j</stringProp>
-          <stringProp name="username">neo4j</stringProp>
-        </BoltConnectionElement>
-        <hashTree/>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="1 - Transitive friends - step 3">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..3]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,personName</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..4]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-          <stringProp name="params">{
-&quot;personIdParam&quot;: &quot;3648&quot;,
-&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
-}</stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,personName</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..5]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-          <stringProp name="params">{
-&quot;personIdParam&quot;: &quot;3648&quot;,
-&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
-}</stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 3 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/1.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,personName</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">WITH ${personId} AS personIdParam, ${countryXname} AS countryXNameParam, ${countryYname} AS countryYNameParam, datetime(${startDate}) AS startDateParam, duration({days: ${days}}) AS durationParam
-MATCH (start:Person {person_id: personIdParam})-[:KNOWS*1..2]-&gt;(otherPerson:Person)
-WHERE otherPerson.person_id &lt;&gt; personIdParam
-  AND NOT (otherPerson)-[:LOCATED_IN]-&gt;(:City)-[:CITY_OF]-&gt;(:Country {name: countryXNameParam})
-  AND NOT (otherPerson)-[:LOCATED_IN]-&gt;(:City)-[:CITY_OF]-&gt;(:Country {name: countryYNameParam})
-
-WITH DISTINCT otherPerson, countryXNameParam, countryYNameParam, startDateParam, durationParam
-MATCH (otherPerson)&lt;-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]-&gt;(country:Country)
-WHERE country.name = countryYNameParam
-    AND message.message_created_at &gt;= startDateParam
-    AND message.message_created_at &lt; startDateParam + durationParam
-WITH 
-    otherPerson, 
-    COUNT(message) AS xCount,
-    countryXNameParam,
-    countryYNameParam,
-    startDateParam,
-    durationParam
-MATCH (otherPerson)&lt;-[:POSTED_BY]-(message:Message)-[:LOCATED_IN]-&gt;(country:Country)
-WHERE country.name = countryXNameParam
-    AND message.message_created_at &gt;= startDateParam
-    AND message.message_created_at &lt; startDateParam + durationParam
-WITH 
-    otherPerson, 
-    xCount, 
-    COUNT(message) AS yCount
-WHERE xCount &gt; 0 AND yCount &gt; 0
-RETURN 
-    otherPerson.person_id AS id,
-    otherPerson.person_first_name AS firstName,
-    otherPerson.person_last_name AS lastName,
-    xCount,
-    yCount,
-    (xCount + yCount) AS count
-ORDER BY count DESC, id ASC
-LIMIT 20;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 4 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/4 neo4j.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,countryXname,countryYname,startDate,days</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="5 - Shortest path">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH p = shortestPath(
-    (p1:Person {person_id: ${startId}})-[:KNOWS*]-(p2:Person {person_id: ${endId}})
-)
-RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 5 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/5.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">startId,endId</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="7 - Forum of a message" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH (message:Message {message_id: ${messageId}})
-OPTIONAL MATCH path = (message)-[:REPLY_OF*]-&gt;(post:Post)
-WITH 
-    message, 
-    post, 
-    CASE 
-        WHEN post IS NOT NULL 
-        THEN post 
-        ELSE message 
-    END AS targetPost
-MATCH (targetPost:Post)-[:POSTED_IN]-&gt;(forum:Forum)
-OPTIONAL MATCH (moderator:Person)-[:MODERATOR_OF]-&gt;(forum:Forum)
-RETURN 
-    forum.forum_id,
-    forum.forum_title,
-    moderator.person_id,
-    moderator.person_first_name,
-    moderator.person_last_name
-;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/7.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">messageId</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="8 - Recent messages by your friends" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">WITH ${personId} AS personIdParam, datetime(${dateParam}) AS dateParam
-MATCH (p:Person {person_id:personIdParam})-[:KNOWS]-&gt;(f:Person)&lt;-[:POSTED_BY]-(m:Message)
-WHERE m.message_created_at &lt; dateParam
-RETURN 
-    f.person_id,
-    f.person_first_name,
-    f.person_last_name,
-    m.message_id,
-    m.message_content,
-    m.message_created_at
-ORDER BY m.message_created_at DESC, m.message_id ASC
-LIMIT 20;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 8 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/8.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,dateParam</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="9 - Friends recommendation" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">WITH ${month} AS monthParam, ${personId} AS personIdParam
-MATCH (p:Person {person_id: personIdParam})-[:KNOWS*2..2]-&gt;(foaf:Person)
-WHERE
-    (foaf.person_birthday.month = monthParam AND foaf.person_birthday.day &gt;= 21) OR
-    (foaf.person_birthday.month = ((monthParam + 1) % 12) AND foaf.person_birthday.day &lt; 22)
-
-// Collect the start person&apos;s tags of interest
-WITH p, foaf
-MATCH (p)-[:HAS_INTEREST]-&gt;(tags:Tag)
-
-// Calculate Common Posts
-WITH p, foaf, COLLECT(DISTINCT tags) AS personTags
-OPTIONAL MATCH (foaf)&lt;-[:POSTED_BY]-(commonPost:Post)&lt;-[:TAG_OF]-(commonTag:Tag)
-WHERE commonTag IN personTags
-
-// Calculate Uncommon Posts
-WITH p, foaf, COUNT(DISTINCT commonPost) AS common, personTags
-OPTIONAL MATCH (uncommonPost:Post)-[:POSTED_BY]-&gt;(foaf)
-WHERE NOT EXISTS {
-    MATCH (uncommonPost)&lt;-[:TAG_OF]-(uncommonTag:Tag)
-    WHERE uncommonTag IN personTags
-}
-
-WITH p, foaf, common, (common - COUNT(DISTINCT uncommonPost)) AS commonInterestScore
-MATCH (foaf)-[:LOCATED_IN]-&gt;(city:City)
-RETURN
-    foaf.person_id AS foafId,
-    foaf.person_first_name AS foafFirstName,
-    foaf.person_last_name AS foafLastName,
-    commonInterestScore,
-    foaf.person_gender AS foafGender,
-    city.name AS cityName
-ORDER BY commonInterestScore DESC, foafId ASC
-LIMIT 10;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 9 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/9.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,month</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH (creator:Person)&lt;-[:POSTED_BY]-(m:Message {message_id: ${messageId}})&lt;-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]-&gt;(replyAuthor:Person)
-RETURN 
-    c.message_id as ReplyId,
-    c.message_content as content,
-    c.message_created_at,
-    replyAuthor.person_id,
-    replyAuthor.person_first_name,
-    replyAuthor.person_last_name,
-    CASE 
-        WHEN (creator)-[:KNOWS]-&gt;(replyAuthor) THEN true
-        ELSE false
-    END AS knows
-ORDER BY c.created_at DESC, replyAuthor.person_id ASC;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 10 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">C:/Users/Rafael/Documents/Universidade/2024_2025/1º Semestre/MD/Trabalho2/data-modeling/inputs/dataset 0.3/10.csv</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.thread</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">messageId</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <ResultCollector guiclass="StatVisualizer" testclass="ResultCollector" testname="Aggregate Report">
-          <boolProp name="ResultCollector.error_logging">false</boolProp>
-          <objProp>
-            <name>saveConfig</name>
-            <value class="SampleSaveConfiguration">
-              <time>true</time>
-              <latency>true</latency>
-              <timestamp>true</timestamp>
-              <success>true</success>
-              <label>true</label>
-              <code>true</code>
-              <message>true</message>
-              <threadName>true</threadName>
-              <dataType>true</dataType>
-              <encoding>false</encoding>
-              <assertions>true</assertions>
-              <subresults>true</subresults>
-              <responseData>false</responseData>
-              <samplerData>false</samplerData>
-              <xml>false</xml>
-              <fieldNames>true</fieldNames>
-              <responseHeaders>false</responseHeaders>
-              <requestHeaders>false</requestHeaders>
-              <responseDataOnError>false</responseDataOnError>
-              <saveAssertionResultsFailureMessage>true</saveAssertionResultsFailureMessage>
-              <assertionsResultsToSave>0</assertionsResultsToSave>
-              <bytes>true</bytes>
-              <sentBytes>true</sentBytes>
-              <url>true</url>
-              <threadCounts>true</threadCounts>
-              <idleTime>true</idleTime>
-              <connectTime>true</connectTime>
-            </value>
-          </objProp>
-          <stringProp name="filename"></stringProp>
-        </ResultCollector>
-        <hashTree/>
       </hashTree>
     </hashTree>
   </hashTree>
