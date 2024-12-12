@@ -2,6 +2,7 @@
 // Replace X with the number of comments
 MATCH path = (c:Comment)-[:REPLY_OF*X]->(p:Post)
 RETURN c, nodes(path) AS pathNodes, p
+order by pathNodes DESC
 LIMIT 5;
 
 

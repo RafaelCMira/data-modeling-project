@@ -1,7 +1,15 @@
-match(n:Person)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(c:Country{name:'United_States'})
-return n
-LIMIT 500;
+match (n:Person)-[:KNOWS]->(f:Person)
+return n.person_id, count(f) as numberOfFriends
+order by numberOfFriends DESC
 
+MATCH (n:Person)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(c:Country)
+WHERE n.person_id = 2435
+RETURN c.name AS country
+
+match(n:Person)-[:LOCATED_IN]->(:City)-[:CITY_OF]->(c:Country{name:'China'})
+return n.person_first_name, count(n.person_first_name) as personName
+order by personName DESC
+LIMIT 500
 
 WITH 3648 AS personIdParam, "Arjun" AS personFirstNameParam 
 MATCH path = (start:Person {person_id: personIdParam})-[:KNOWS*1..3]->(p:Person)

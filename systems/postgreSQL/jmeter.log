@@ -1,0 +1,78 @@
+2024-12-12 15:52:06,120 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2024-12-12 15:52:06,131 INFO o.a.j.JMeter: Loading user properties from: C:\Users\josec\Desktop\apache-jmeter-5.6.3\bin\user.properties
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Loading system properties from: C:\Users\josec\Desktop\apache-jmeter-5.6.3\bin\system.properties
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv1=../../inputs/dataset 0.3/1.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv2=../../inputs/dataset 0.3/2.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv3=../../inputs/dataset 0.3/3.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv4=../../inputs/dataset 0.3/4.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv5=../../inputs/dataset 0.3/5.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv6=../../inputs/dataset 0.3/6.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv7=../../inputs/dataset 0.3/7.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv8=../../inputs/dataset 0.3/8.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv9=../../inputs/dataset 0.3/9.csv
+2024-12-12 15:52:06,132 INFO o.a.j.JMeter: Setting JMeter property: csv10=../../inputs/dataset 0.3/10.csv
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: Version 5.6.3
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: java.version=21.0.4
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: java.vm.name=Java HotSpot(TM) 64-Bit Server VM
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: os.name=Windows 11
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: os.arch=amd64
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: os.version=10.0
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: file.encoding=UTF-8
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: java.awt.headless=true
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: Max memory     =1073741824
+2024-12-12 15:52:06,136 INFO o.a.j.JMeter: Available Processors =16
+2024-12-12 15:52:06,141 INFO o.a.j.JMeter: Default Locale=English (EN)
+2024-12-12 15:52:06,141 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2024-12-12 15:52:06,141 INFO o.a.j.JMeter: JMeterHome=C:\Users\josec\Desktop\apache-jmeter-5.6.3
+2024-12-12 15:52:06,141 INFO o.a.j.JMeter: user.dir  =C:\Users\josec\Desktop\data-modeling-project\systems\postgreSQL
+2024-12-12 15:52:06,141 INFO o.a.j.JMeter: PWD       =C:\Users\josec\Desktop\data-modeling-project\systems\postgreSQL
+2024-12-12 15:52:06,151 INFO o.a.j.JMeter: IP: 192.168.0.13 Name: Eduardo FullName: 192.168.0.13
+2024-12-12 15:52:06,158 INFO o.a.j.s.FileServer: Default base='C:\Users\josec\Desktop\data-modeling-project\systems\postgreSQL'
+2024-12-12 15:52:06,158 INFO o.a.j.s.FileServer: Set new base='C:\Users\josec\Desktop\data-modeling-project\systems\postgreSQL\..\..\inputs'
+2024-12-12 15:52:06,266 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2024-12-12 15:52:06,287 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2024-12-12 15:52:06,289 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2024-12-12 15:52:06,292 INFO o.a.j.s.SaveService: Loading file: ..\..\inputs\jmetter_postgres.jmx
+2024-12-12 15:52:06,331 INFO o.a.j.JMeter: Creating summariser <summary>
+2024-12-12 15:52:06,342 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2024-12-12 15:52:06,342 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-12-12 15:52:06,342 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2024-12-12 15:52:06,345 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2024-12-12 15:52:06,345 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2024-12-12 15:52:06,601 INFO o.a.j.JMeter: Running test (1734018726601)
+2024-12-12 15:52:06,610 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : Postgres
+2024-12-12 15:52:06,610 INFO o.a.j.e.StandardJMeterEngine: Starting 1 threads for group Postgres.
+2024-12-12 15:52:06,611 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2024-12-12 15:52:06,611 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=1 ramp-up=0 delayedStart=false
+2024-12-12 15:52:06,614 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2024-12-12 15:52:06,614 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2024-12-12 15:52:06,620 INFO o.a.j.t.JMeterThread: Thread started: Postgres 1-1
+2024-12-12 15:52:06,621 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/1.csv Alias: ../../inputs/dataset 0.3/1.csv@1947364790
+2024-12-12 15:52:06,633 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2024-12-12 15:52:06,633 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2024-12-12 15:52:06,633 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2024-12-12 15:52:06,633 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2024-12-12 15:52:06,655 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/2.csv Alias: ../../inputs/dataset 0.3/2.csv@1947364790
+2024-12-12 15:52:06,657 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/3.csv Alias: ../../inputs/dataset 0.3/3.csv@1947364790
+2024-12-12 15:52:06,660 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/4.csv Alias: ../../inputs/dataset 0.3/4.csv@1947364790
+2024-12-12 15:52:06,666 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/5.csv Alias: ../../inputs/dataset 0.3/5.csv@1947364790
+2024-12-12 15:52:07,037 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/6.csv Alias: ../../inputs/dataset 0.3/6.csv@1947364790
+2024-12-12 15:52:07,376 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/7.csv Alias: ../../inputs/dataset 0.3/7.csv@1947364790
+2024-12-12 15:52:07,380 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/8.csv Alias: ../../inputs/dataset 0.3/8.csv@1947364790
+2024-12-12 15:52:07,411 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/9.csv Alias: ../../inputs/dataset 0.3/9.csv@1947364790
+2024-12-12 15:52:07,415 INFO o.a.j.s.FileServer: Stored: ../../inputs/dataset 0.3/10.csv Alias: ../../inputs/dataset 0.3/10.csv@1947364790
+2024-12-12 15:52:07,417 INFO o.a.j.t.JMeterThread: Thread is done: Postgres 1-1
+2024-12-12 15:52:07,417 INFO o.a.j.t.JMeterThread: Thread finished: Postgres 1-1
+2024-12-12 15:52:07,417 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2024-12-12 15:52:07,417 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/5.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/10.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/4.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/9.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/6.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/7.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/8.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/3.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/2.csv@1947364790
+2024-12-12 15:52:07,418 INFO o.a.j.s.FileServer: Close: ../../inputs/dataset 0.3/1.csv@1947364790
+2024-12-12 15:52:07,420 INFO o.a.j.r.Summariser: summary =     10 in 00:00:01 =   12.2/s Avg:    77 Min:     1 Max:   371 Err:     0 (0.00%)
