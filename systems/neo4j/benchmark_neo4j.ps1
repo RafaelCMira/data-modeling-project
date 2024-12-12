@@ -37,7 +37,9 @@ if($user -eq "Rafael") {
 
 $OutputDir = "../../csv_results/$user/neo4j/dataset $dataset" 
 
-# -------------------- Neo4j Default configuration Benchmark --------------------
+$neo4jBin = "C:\Users\$userWindows\.Neo4jDesktop\relate-data\dbmss\$neo4jDb\bin"
+
+#region -------------------- Neo4j Default configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "default.csv"
 
@@ -50,9 +52,6 @@ $config = $config -replace 'server.memory.heap.max_size=.*', 'server.memory.heap
 $config = $config -replace 'server.memory.pagecache.size=.*', '#server.memory.pagecache.size='
 
 $config | Set-Content -Path $confFile
-
-# Start the Neo4j application and capture the pid
-$neo4jBin = "C:\Users\$userWindows\.Neo4jDesktop\relate-data\dbmss\$neo4jDb\bin"
 
 # Start the Neo4j console in a new terminal and capture the process
 $neo4jProcess = Start-Process -FilePath "cmd.exe" `
@@ -69,7 +68,7 @@ if ($neo4jProcess -ne $null) {
 
 $neo4jPid = $neo4jProcess.Id
 
-Start-Sleep -Seconds 40
+Start-Sleep -Seconds 60
 
 # Run Jmeter
 jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
@@ -94,12 +93,57 @@ Stop-Process -Id $neo4jPid -Force
 
 Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
 
-
 Start-Sleep -Seconds 40
 
 
+############### Concurrent version ###############
 
-# -------------------- Neo4j 1GB configuration Benchmark --------------------
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "default_parallel.csv"
+
+# Start the Neo4j console in a new terminal and capture the process
+$neo4jProcess = Start-Process -FilePath "cmd.exe" `
+                             -ArgumentList "/c cd /d `"$neo4jBin`" && .\neo4j console" `
+                             -NoNewWindow:$false `
+                             -PassThru
+
+if ($neo4jProcess -ne $null) {
+    Write-Output "Neo4j process started with PID: $($neo4jProcess.Id)"
+} else {
+    Write-Error "Failed to start the Neo4j console."
+    exit 1
+}
+
+$neo4jPid = $neo4jProcess.Id
+
+Start-Sleep -Seconds 60
+
+# Run Jmeter
+jmeter -n -t "../../inputs/jmetter_concurrent_neo4j.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+# Find and terminate all child processes of the Neo4j cmd process
+$childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
+foreach ($child in $childProcesses) {
+    Stop-Process -Id $child.ProcessId -Force
+}
+
+Stop-Process -Id $neo4jPid -Force
+
+Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+
+Start-Sleep -Seconds 40
+#endregion
+
+#region -------------------- Neo4j 1GB configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "1GB.csv"
 
@@ -131,7 +175,7 @@ if ($neo4jProcess -ne $null) {
 
 $neo4jPid = $neo4jProcess.Id
 
-Start-Sleep -Seconds 40
+Start-Sleep -Seconds 60
 
 # Run Jmeter
 jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
@@ -158,9 +202,53 @@ Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Pro
 
 Start-Sleep -Seconds 40
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "1GB_parallel.csv"
 
+# Start the Neo4j console in a new terminal and capture the process
+$neo4jProcess = Start-Process -FilePath "cmd.exe" `
+                             -ArgumentList "/c cd /d `"$neo4jBin`" && .\neo4j console" `
+                             -NoNewWindow:$false `
+                             -PassThru
 
-# -------------------- Neo4j 2GB configuration Benchmark --------------------
+if ($neo4jProcess -ne $null) {
+    Write-Output "Neo4j process started with PID: $($neo4jProcess.Id)"
+} else {
+    Write-Error "Failed to start the Neo4j console."
+    exit 1
+}
+
+$neo4jPid = $neo4jProcess.Id
+
+Start-Sleep -Seconds 60
+
+# Run Jmeter
+jmeter -n -t "../../inputs/jmetter_concurrent_neo4j.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+# Find and terminate all child processes of the Neo4j cmd process
+$childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
+foreach ($child in $childProcesses) {
+    Stop-Process -Id $child.ProcessId -Force
+}
+
+Stop-Process -Id $neo4jPid -Force
+
+Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+
+Start-Sleep -Seconds 40
+#endregion
+
+#region -------------------- Neo4j 2GB configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "2GB.csv"
 
@@ -192,7 +280,7 @@ if ($neo4jProcess -ne $null) {
 
 $neo4jPid = $neo4jProcess.Id
 
-Start-Sleep -Seconds 40
+Start-Sleep -Seconds 60
 
 # Run Jmeter
 jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
@@ -219,9 +307,53 @@ Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Pro
 
 Start-Sleep -Seconds 40
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "2GB_parallel.csv"
 
+# Start the Neo4j console in a new terminal and capture the process
+$neo4jProcess = Start-Process -FilePath "cmd.exe" `
+                             -ArgumentList "/c cd /d `"$neo4jBin`" && .\neo4j console" `
+                             -NoNewWindow:$false `
+                             -PassThru
 
-# -------------------- Neo4j 4GB configuration Benchmark --------------------
+if ($neo4jProcess -ne $null) {
+    Write-Output "Neo4j process started with PID: $($neo4jProcess.Id)"
+} else {
+    Write-Error "Failed to start the Neo4j console."
+    exit 1
+}
+
+$neo4jPid = $neo4jProcess.Id
+
+Start-Sleep -Seconds 60
+
+# Run Jmeter
+jmeter -n -t "../../inputs/jmetter_concurrent_neo4j.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+# Find and terminate all child processes of the Neo4j cmd process
+$childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
+foreach ($child in $childProcesses) {
+    Stop-Process -Id $child.ProcessId -Force
+}
+
+Stop-Process -Id $neo4jPid -Force
+
+Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+
+Start-Sleep -Seconds 40
+#endregion
+
+#region -------------------- Neo4j 4GB configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "4GB.csv"
 
@@ -253,7 +385,7 @@ if ($neo4jProcess -ne $null) {
 
 $neo4jPid = $neo4jProcess.Id
 
-Start-Sleep -Seconds 40
+Start-Sleep -Seconds 60
 
 # Run Jmeter
 jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
@@ -280,9 +412,53 @@ Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Pro
 
 Start-Sleep -Seconds 40
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "4GB_parallel.csv"
 
+# Start the Neo4j console in a new terminal and capture the process
+$neo4jProcess = Start-Process -FilePath "cmd.exe" `
+                             -ArgumentList "/c cd /d `"$neo4jBin`" && .\neo4j console" `
+                             -NoNewWindow:$false `
+                             -PassThru
 
-# -------------------- Neo4j 8GB configuration Benchmark --------------------
+if ($neo4jProcess -ne $null) {
+    Write-Output "Neo4j process started with PID: $($neo4jProcess.Id)"
+} else {
+    Write-Error "Failed to start the Neo4j console."
+    exit 1
+}
+
+$neo4jPid = $neo4jProcess.Id
+
+Start-Sleep -Seconds 60
+
+# Run Jmeter
+jmeter -n -t "../../inputs/jmetter_concurrent_neo4j.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+# Find and terminate all child processes of the Neo4j cmd process
+$childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
+foreach ($child in $childProcesses) {
+    Stop-Process -Id $child.ProcessId -Force
+}
+
+Stop-Process -Id $neo4jPid -Force
+
+Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+
+Start-Sleep -Seconds 40
+#endregion
+
+#region -------------------- Neo4j 8GB configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "8GB.csv"
 
@@ -314,7 +490,7 @@ if ($neo4jProcess -ne $null) {
 
 $neo4jPid = $neo4jProcess.Id
 
-Start-Sleep -Seconds 40
+Start-Sleep -Seconds 60
 
 # Run Jmeter
 jmeter -n -t "../../inputs/jmetter_neo4j.jmx" -l $FullOutputDir  `
@@ -340,3 +516,49 @@ Stop-Process -Id $neo4jPid -Force
 Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
 
 Start-Sleep -Seconds 40
+
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "8GB_parallel.csv"
+
+# Start the Neo4j console in a new terminal and capture the process
+$neo4jProcess = Start-Process -FilePath "cmd.exe" `
+                             -ArgumentList "/c cd /d `"$neo4jBin`" && .\neo4j console" `
+                             -NoNewWindow:$false `
+                             -PassThru
+
+if ($neo4jProcess -ne $null) {
+    Write-Output "Neo4j process started with PID: $($neo4jProcess.Id)"
+} else {
+    Write-Error "Failed to start the Neo4j console."
+    exit 1
+}
+
+$neo4jPid = $neo4jProcess.Id
+
+Start-Sleep -Seconds 60
+
+# Run Jmeter
+jmeter -n -t "../../inputs/jmetter_concurrent_neo4j.jmx" -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4 neo4j.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+# Find and terminate all child processes of the Neo4j cmd process
+$childProcesses = Get-CimInstance Win32_Process | Where-Object { $_.ParentProcessId -eq $neo4jPid }
+foreach ($child in $childProcesses) {
+    Stop-Process -Id $child.ProcessId -Force
+}
+
+Stop-Process -Id $neo4jPid -Force
+
+Get-Process -Name java -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.Id -Force }
+
+Start-Sleep -Seconds 40
+#endregion

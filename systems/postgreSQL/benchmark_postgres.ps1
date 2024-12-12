@@ -30,7 +30,7 @@ if($user -eq "Rafael") {
 $OutputDir = "../../csv_results/$user/postgres/dataset $dataset" 
 
 
-# -------------------- Default PostgreSQL configuration Benchmark --------------------
+#region -------------------- Default PostgreSQL configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "default.csv"
 
@@ -57,9 +57,32 @@ jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv9="../../inputs/dataset $dataset/9.csv" `
     -Jcsv10="../../inputs/dataset $dataset/10.csv"
     
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "default_parallel.csv"
 
+Restart-Service -Name "postgresql-x64-17"
 
-# -------------------- 1GB PostgreSQL configuration Benchmark --------------------
+Start-Sleep -Seconds 3 
+
+# Run Jmeter concurrent version
+jmeter -n -t "../../inputs/jmetter_concurrent_postgres.jmx"  -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+    
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3
+#endregion
+
+#region -------------------- 1GB PostgreSQL configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "1GB.csv"
 
@@ -85,8 +108,32 @@ jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv9="../../inputs/dataset $dataset/9.csv" `
     -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "1GB_parallel.csv"
 
-# -------------------- 2GB PostgreSQL configuration Benchmark --------------------
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3 
+
+# Run Jmeter concurrent version
+jmeter -n -t "../../inputs/jmetter_concurrent_postgres.jmx"  -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3
+#endregion
+
+#region -------------------- 2GB PostgreSQL configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "2GB.csv"
 
@@ -112,8 +159,32 @@ jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv9="../../inputs/dataset $dataset/9.csv" `
     -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "2GB_parallel.csv"
 
-# -------------------- 4GB PostgreSQL configuration Benchmark --------------------
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3 
+
+# Run Jmeter concurrent version
+jmeter -n -t "../../inputs/jmetter_concurrent_postgres.jmx"  -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3
+#endregion
+
+#region -------------------- 4GB PostgreSQL configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "4GB.csv"
 
@@ -140,8 +211,32 @@ jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv10="../../inputs/dataset $dataset/10.csv"
 
 
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "4GB_parallel.csv"
 
-# -------------------- 8GB PostgreSQL configuration Benchmark --------------------
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3 
+
+# Run Jmeter concurrent version
+jmeter -n -t "../../inputs/jmetter_concurrent_postgres.jmx"  -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3
+#endregion
+
+#region -------------------- 8GB PostgreSQL configuration Benchmark --------------------
 $FullOutputDir = Resolve-Path -Path $OutputDir
 $FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "8GB.csv"
 
@@ -166,3 +261,29 @@ jmeter -n -t "../../inputs/jmetter_postgres.jmx" -l $FullOutputDir  `
     -Jcsv8="../../inputs/dataset $dataset/8.csv" `
     -Jcsv9="../../inputs/dataset $dataset/9.csv" `
     -Jcsv10="../../inputs/dataset $dataset/10.csv"
+
+
+############### Concurrent version ###############
+$FullOutputDir = Resolve-Path -Path $OutputDir
+$FullOutputDir = Join-Path -Path $FullOutputDir.Path -ChildPath "8GB_parallel.csv"
+
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3 
+
+# Run Jmeter concurrent version
+jmeter -n -t "../../inputs/jmetter_concurrent_postgres.jmx"  -l $FullOutputDir  `
+    -Jcsv1="../../inputs/dataset $dataset/parallel_1.csv" `
+    -Jcsv2="../../inputs/dataset $dataset/parallel_2.csv" `
+    -Jcsv3="../../inputs/dataset $dataset/parallel_3.csv" `
+    -Jcsv4="../../inputs/dataset $dataset/parallel_4.csv" `
+    -Jcsv5="../../inputs/dataset $dataset/parallel_5.csv" `
+    -Jcsv7="../../inputs/dataset $dataset/parallel_7.csv" `
+    -Jcsv8="../../inputs/dataset $dataset/parallel_8.csv" `
+    -Jcsv9="../../inputs/dataset $dataset/parallel_9.csv" `
+    -Jcsv10="../../inputs/dataset $dataset/parallel_10.csv"
+
+Restart-Service -Name "postgresql-x64-17"
+
+Start-Sleep -Seconds 3
+#endregion
