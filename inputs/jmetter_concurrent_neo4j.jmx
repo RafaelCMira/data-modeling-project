@@ -7,76 +7,48 @@
       </elementProp>
     </TestPlan>
     <hashTree>
-      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group">
+      <kg.apc.jmeter.threads.UltimateThreadGroup guiclass="kg.apc.jmeter.threads.UltimateThreadGroupGui" testclass="kg.apc.jmeter.threads.UltimateThreadGroup" testname="jp@gc - Ultimate Thread Group com csv em vars">
         <collectionProp name="ultimatethreadgroupdata">
-          <collectionProp name="-1630665033">
-            <stringProp name="1567">10</stringProp>
+          <collectionProp name="517143461">
+            <stringProp name="52">4</stringProp>
             <stringProp name="48">0</stringProp>
             <stringProp name="1567">10</stringProp>
+            <stringProp name="54453">720</stringProp>
+            <stringProp name="1567">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-1457699130">
+            <stringProp name="52">4</stringProp>
+            <stringProp name="48687">120</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="53430">600</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-2061586788">
+            <stringProp name="56">8</stringProp>
+            <stringProp name="49710">240</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="51756">480</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="1848949581">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="50733">360</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="50733">360</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="-322881404">
+            <stringProp name="1573">16</stringProp>
+            <stringProp name="51756">480</stringProp>
+            <stringProp name="1567">10</stringProp>
+            <stringProp name="49710">240</stringProp>
+            <stringProp name="10">10</stringProp>
+          </collectionProp>
+          <collectionProp name="1984881734">
+            <stringProp name="1573">16</stringProp>
             <stringProp name="53430">600</stringProp>
             <stringProp name="1567">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-887342737">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="1722">60</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="52593">540</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="658728566">
-            <stringProp name="1567">10</stringProp>
             <stringProp name="48687">120</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="51756">480</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-1552865843">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="48873">180</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="51570">420</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-54803178">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="49710">240</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="50733">360</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-1166878134">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="50547">300</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="50547">300</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="168958614">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="50733">360</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="49710">240</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="948698765">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="51570">420</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="48873">180</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="-1286067338">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="51756">480</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="48687">120</stringProp>
-            <stringProp name="10">10</stringProp>
-          </collectionProp>
-          <collectionProp name="38873647">
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="52593">540</stringProp>
-            <stringProp name="1567">10</stringProp>
-            <stringProp name="1722">60</stringProp>
             <stringProp name="10">10</stringProp>
           </collectionProp>
         </collectionProp>
@@ -89,99 +61,12 @@
       <hashTree>
         <BoltConnectionElement guiclass="TestBeanGUI" testclass="BoltConnectionElement" testname="Bolt Connection Configuration">
           <stringProp name="boltUri">bolt://localhost:7687</stringProp>
-          <intProp name="maxConnectionPoolSize">100</intProp>
+          <intProp name="maxConnectionPoolSize">64</intProp>
           <stringProp name="password">neo4j</stringProp>
           <stringProp name="username">neo4j</stringProp>
         </BoltConnectionElement>
         <hashTree/>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="1 - Transitive friends - step 3">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..3]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-          <stringProp name="params"></stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">${__P(csv1)}</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,personName</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4" enabled="true">
-          <stringProp name="accessMode">READ</stringProp>
-          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..4]-&gt;(p:Person)
-WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
-WITH p, min(length(path)) AS distance
-OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
-WITH p, distance, collect(company.name) AS workplaces
-OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
-WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
-OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
-RETURN 
-    p.person_id AS id,
-    p.person_last_name,
-    distance,
-    p.person_birthday,
-    p.person_created_at,
-    p.person_gender,
-    p.person_browser_used,
-    p.person_location_ip,
-    city.name,
-    workplaces,
-    placesOfStudy
-ORDER BY distance, p.person_last_name, id
-LIMIT 20;</stringProp>
-          <stringProp name="params">{
-&quot;personIdParam&quot;: &quot;3648&quot;,
-&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
-}</stringProp>
-          <boolProp name="recordQueryResults">false</boolProp>
-          <intProp name="txTimeout">420</intProp>
-        </BoltSampler>
-        <hashTree>
-          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
-            <stringProp name="delimiter">,</stringProp>
-            <stringProp name="fileEncoding"></stringProp>
-            <stringProp name="filename">${__P(csv2)}</stringProp>
-            <boolProp name="ignoreFirstLine">false</boolProp>
-            <boolProp name="quotedData">true</boolProp>
-            <boolProp name="recycle">true</boolProp>
-            <stringProp name="shareMode">shareMode.all</stringProp>
-            <boolProp name="stopThread">false</boolProp>
-            <stringProp name="variableNames">personId,personName</stringProp>
-          </CSVDataSet>
-          <hashTree/>
-        </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="3 - Transitive friends - step 5" enabled="false">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..5]-&gt;(p:Person)
 WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
@@ -226,7 +111,7 @@ LIMIT 20;</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="4 - Friends and fof that have been to countries">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">WITH ${personId} AS personIdParam, ${countryXname} AS countryXNameParam, ${countryYname} AS countryYNameParam, datetime(${startDate}) AS startDateParam, duration({days: ${days}}) AS durationParam
 MATCH (start:Person {person_id: personIdParam})-[:KNOWS*1..2]-&gt;(otherPerson:Person)
@@ -282,7 +167,7 @@ LIMIT 20;</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="5 - Shortest path" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="5 - Shortest path">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">MATCH p = shortestPath(
     (p1:Person {person_id: ${startId}})-[:KNOWS*]-(p2:Person {person_id: ${endId}})
@@ -306,7 +191,7 @@ RETURN [n IN nodes(p) | n.person_id] AS person_ids</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="7 - Forum of a message" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="7 - Forum of a message">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">MATCH (message:Message {message_id: ${messageId}})
 OPTIONAL MATCH path = (message)-[:REPLY_OF*]-&gt;(post:Post)
@@ -345,7 +230,49 @@ RETURN
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="8 - Recent messages by your friends" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="1 - Transitive friends - step 3">
+          <stringProp name="accessMode">READ</stringProp>
+          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..3]-&gt;(p:Person)
+WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
+WITH p, min(length(path)) AS distance
+OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
+WITH p, distance, collect(company.name) AS workplaces
+OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
+WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
+OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
+RETURN 
+    p.person_id AS id,
+    p.person_last_name,
+    distance,
+    p.person_birthday,
+    p.person_created_at,
+    p.person_gender,
+    p.person_browser_used,
+    p.person_location_ip,
+    city.name,
+    workplaces,
+    placesOfStudy
+ORDER BY distance, p.person_last_name, id
+LIMIT 20;</stringProp>
+          <stringProp name="params"></stringProp>
+          <boolProp name="recordQueryResults">false</boolProp>
+          <intProp name="txTimeout">420</intProp>
+        </BoltSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${__P(csv1)}</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">personId,personName</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="8 - Recent messages by your friends">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">WITH ${personId} AS personIdParam, datetime(${dateParam}) AS dateParam
 MATCH (p:Person {person_id:personIdParam})-[:KNOWS]-&gt;(f:Person)&lt;-[:POSTED_BY]-(m:Message)
@@ -377,7 +304,7 @@ LIMIT 20;</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="9 - Friends recommendation" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="9 - Friends recommendation">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">WITH ${month} AS monthParam, ${personId} AS personIdParam
 MATCH (p:Person {person_id: personIdParam})-[:KNOWS*2..2]-&gt;(foaf:Person)
@@ -431,7 +358,52 @@ LIMIT 10;</stringProp>
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation" enabled="true">
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="2 - Transitive friends - step 4">
+          <stringProp name="accessMode">READ</stringProp>
+          <stringProp name="cypher">MATCH path = (start:Person {person_id: ${personId}})-[:KNOWS*1..4]-&gt;(p:Person)
+WHERE p.person_first_name = ${personName} AND p.person_id &lt;&gt; ${personId}
+WITH p, min(length(path)) AS distance
+OPTIONAL MATCH (p)-[:WORKS_AT]-&gt;(company:Company)
+WITH p, distance, collect(company.name) AS workplaces
+OPTIONAL MATCH (p)-[:STUDIES_AT]-&gt;(university:University)
+WITH p, distance, workplaces, collect(university.name) AS placesOfStudy
+OPTIONAL MATCH (p)-[:LOCATED_IN]-&gt;(city:City)
+RETURN 
+    p.person_id AS id,
+    p.person_last_name,
+    distance,
+    p.person_birthday,
+    p.person_created_at,
+    p.person_gender,
+    p.person_browser_used,
+    p.person_location_ip,
+    city.name,
+    workplaces,
+    placesOfStudy
+ORDER BY distance, p.person_last_name, id
+LIMIT 20;</stringProp>
+          <stringProp name="params">{
+&quot;personIdParam&quot;: &quot;3648&quot;,
+&quot;personFirstNameParam&quot;: &quot;Arjun&quot;
+}</stringProp>
+          <boolProp name="recordQueryResults">false</boolProp>
+          <intProp name="txTimeout">420</intProp>
+        </BoltSampler>
+        <hashTree>
+          <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
+            <stringProp name="delimiter">,</stringProp>
+            <stringProp name="fileEncoding"></stringProp>
+            <stringProp name="filename">${__P(csv2)}</stringProp>
+            <boolProp name="ignoreFirstLine">false</boolProp>
+            <boolProp name="quotedData">true</boolProp>
+            <boolProp name="recycle">true</boolProp>
+            <stringProp name="shareMode">shareMode.all</stringProp>
+            <boolProp name="stopThread">false</boolProp>
+            <stringProp name="variableNames">personId,personName</stringProp>
+          </CSVDataSet>
+          <hashTree/>
+        </hashTree>
+        <BoltSampler guiclass="TestBeanGUI" testclass="BoltSampler" testname="10 - Friends recommendation">
           <stringProp name="accessMode">READ</stringProp>
           <stringProp name="cypher">MATCH (creator:Person)&lt;-[:POSTED_BY]-(m:Message {message_id: ${messageId}})&lt;-[:REPLY_OF]-(c:Comment)-[:POSTED_BY]-&gt;(replyAuthor:Person)
 RETURN 
