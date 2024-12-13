@@ -61,7 +61,7 @@
         <stringProp name="ThreadGroup.on_sample_error">stoptest</stringProp>
       </kg.apc.jmeter.threads.UltimateThreadGroup>
       <hashTree>
-        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="poolMax">64</stringProp>
           <stringProp name="timeout">10000</stringProp>
@@ -577,7 +577,7 @@ LIMIT 10;
           </CSVDataSet>
           <hashTree/>
         </hashTree>
-        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4" enabled="true">
+        <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4" enabled="false">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="queryType">Prepared Select Statement</stringProp>
           <stringProp name="query">WITH RECURSIVE knows_path AS (
