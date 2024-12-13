@@ -20,7 +20,7 @@
         </elementProp>
       </ThreadGroup>
       <hashTree>
-        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration">
+        <JDBCDataSource guiclass="TestBeanGUI" testclass="JDBCDataSource" testname="JDBC Connection Configuration" enabled="true">
           <stringProp name="dataSource">bss</stringProp>
           <stringProp name="poolMax">1</stringProp>
           <stringProp name="timeout">10000</stringProp>
@@ -39,11 +39,11 @@
           <stringProp name="connectionProperties"></stringProp>
         </JDBCDataSource>
         <hashTree/>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 1" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1 - Transitive friends - step 3">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="1 - Transitive friends - step 3" enabled="true">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -117,7 +117,7 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 1 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv1)}</stringProp>
@@ -131,11 +131,11 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 2" enabled="false">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="2 - Transitive friends - step 4" enabled="true">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">WITH RECURSIVE knows_path AS (
@@ -209,7 +209,7 @@ LIMIT 20;</stringProp>
             <stringProp name="resultSetHandler">Store as String</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 2 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv2)}</stringProp>
@@ -223,7 +223,7 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 3" enabled="false">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -315,7 +315,7 @@ LIMIT 20;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 4" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -402,7 +402,7 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 5" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -443,11 +443,11 @@ JOIN person p ON p.person_id = path.node;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 6" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="6 - k Shortest paths">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="6 - k Shortest paths" enabled="true">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">WITH path AS (
@@ -488,11 +488,11 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 7" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
-          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="7 - Forum of a message">
+          <JDBCSampler guiclass="TestBeanGUI" testclass="JDBCSampler" testname="7 - Forum of a message" enabled="true">
             <stringProp name="dataSource">bss</stringProp>
             <stringProp name="queryType">Prepared Select Statement</stringProp>
             <stringProp name="query">SELECT * FROM get_forum_and_moderator(${messageId});</stringProp>
@@ -505,7 +505,7 @@ ORDER BY path.path_id;</stringProp>
             <stringProp name="resultSetHandler">Count Records</stringProp>
           </JDBCSampler>
           <hashTree>
-            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params">
+            <CSVDataSet guiclass="TestBeanGUI" testclass="CSVDataSet" testname="Query 7 - dataset 0.3 GB - params" enabled="true">
               <stringProp name="delimiter">,</stringProp>
               <stringProp name="fileEncoding"></stringProp>
               <stringProp name="filename">${__P(csv7)}</stringProp>
@@ -519,7 +519,7 @@ ORDER BY path.path_id;</stringProp>
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 8" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -566,7 +566,7 @@ LIMIT 20;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 9" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
@@ -668,7 +668,7 @@ LIMIT 10;
             <hashTree/>
           </hashTree>
         </hashTree>
-        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10">
+        <LoopController guiclass="LoopControlPanel" testclass="LoopController" testname="Loop controller - Query 10" enabled="true">
           <stringProp name="LoopController.loops">16</stringProp>
         </LoopController>
         <hashTree>
