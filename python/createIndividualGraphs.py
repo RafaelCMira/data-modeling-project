@@ -188,23 +188,12 @@ def iterate_and_generate_graphs(
 user = "rafael"
 
 generate_graph(
-    "10 - Friends recommendation.csv",
-    "neo4j",
-    "3",
-    user,
-    0,
-    260,
-    30,
-    True,
-)
-
-generate_graph(
-    "10 - Replies of a message.csv",
+    "9 - Friend recommendation.csv",
     "postgres",
-    "3",
+    "1",
     user,
     0,
-    260,
-    30,
+    13000,
+    2000,
     False,
 )
