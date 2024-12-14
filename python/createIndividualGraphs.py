@@ -50,10 +50,13 @@ def get_file_path(user: str, dbms: str, dataset: str, file_name: str):
 
     return file_path
 
-def generate_graph(file_name: str, dbms: str, dataset: str, user: str, yMin: int, yMax: int):
+
+def generate_graph(
+    file_name: str, dbms: str, dataset: str, user: str, yMin: int, yMax: int
+):
     # Get the file path
     file_path = get_file_path(user, dbms, dataset, file_name)
-    
+
     # If the file path is None, do not proceed with graph generation
     if file_path is None:
         print(f"File '{file_name}' not found. Skipping graph generation.")
@@ -70,7 +73,7 @@ def generate_graph(file_name: str, dbms: str, dataset: str, user: str, yMin: int
     y_axis_max = yMax  # Set to None for auto-scaling
 
     # Generate the graph
-    plt.figure(figsize=(10, 6))
+    plt.figure(figsize=(10, 6))  # se nao funcnonar bem usar 7,4
 
     for experiment in visible_experiments:
         experiment_df = df_filtered[df_filtered["experiment"] == experiment]
@@ -90,17 +93,43 @@ def generate_graph(file_name: str, dbms: str, dataset: str, user: str, yMin: int
         # Connect dots in groups of 4
         for i in range(0, len(x_axis), 4):
             plt.plot(
-                x_axis[i:i + 4],
-                y_axis.iloc[i:i + 4],
+                x_axis[i : i + 4],
+                y_axis.iloc[i : i + 4],
                 color=colors.get(experiment, "black"),
             )
 
     # Add a title and labels
-    plt.title(f"{file_name} - {dbms} - {dataset}")
+    # plt.title(f"{file_name} - {dbms} - {dataset}")
 
     # Add axis labels
     plt.xlabel("Experiments")
     plt.ylabel("Response time (ms)")
+
+    global_avg = df_filtered["elapsed"].mean()
+    global_p99 = df_filtered["elapsed"].quantile(0.99)
+    global_p95 = df_filtered["elapsed"].quantile(0.95)
+
+    # Config para 190 no eixo Y
+    # text_y = y_axis_max - 35
+
+    # Config para 3500 no eixo Y
+    text_x = 13.3
+    text_y = y_axis_max - 620
+    stats_text = (
+        f"Avg:  {global_avg:>8.0f} ms\n"
+        f"P95: {global_p95:>8.0f} ms\n"
+        f"P99: {global_p99:>8.0f} ms"
+    )
+
+    plt.text(
+        text_x,
+        text_y,
+        stats_text,
+        fontsize=10,
+        color="black",
+        bbox=dict(facecolor="white", edgecolor="gray", alpha=0.8),
+        ha="left",  # Align text block to the left (values inside align right)
+    )
 
     plt.legend(
         title="Configuration",
@@ -119,15 +148,15 @@ def generate_graph(file_name: str, dbms: str, dataset: str, user: str, yMin: int
 
     # Show the graph
     plt.tight_layout()
-    #plt.show()
+    # plt.show()
 
-    #Optionally, save the graph (uncomment to enable saving)
+    # Optionally, save the graph (uncomment to enable saving)
     plt.savefig(
         file_name.replace(".csv", "") + f" - {dbms} - dataset {dataset} - {user}.pdf",
         format="pdf",
     )
 
-    
+
 def iterate_and_generate_graphs(file_names, dbms_list, datasets, user):
     for file_name in file_names:
         for dataset in datasets:
@@ -151,10 +180,13 @@ def iterate_and_generate_graphs(file_names, dbms_list, datasets, user):
 #               "9 - Friends recommendation.csv",
 #               "10 - Friends recommendation.csv"]
 
-file_names = ["6 - k Shortest paths.csv",]
+file_names = [
+    "6 - k Shortest paths.csv",
+]
 dbms_list = ["neo4j", "postgres"]
 datasets = ["0.3", "1", "3"]
 user = "jose"
 
 generate_graph("1 - Transitive friends - step 3.csv", "neo4j", "0.3", "jose", 0, 130)
 generate_graph("1 - Transitive friends - step 3.csv", "postgres", "0.3", "jose", 0, 130)
+
