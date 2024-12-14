@@ -44,45 +44,33 @@ def get_file_path(user: str, dbms: str, dataset: str, file_name: str):
     # Define the file to process
     file_path = os.path.join(samples_dir, file_name)
 
+    # Check if the file exists, if not return None
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"File '{file_name}' does not exist in '{samples_dir}'")
+        return None  # Return None instead of raising an exception
 
     return file_path
 
-
-def generate_graph():
-    file_name = "1 - Transitive friends - step 3.csv"
-    dbms = "neo4j"
-    dataset = "0.3"
-    user = "jose"
+def generate_graph(file_name: str, dbms: str, dataset: str, user: str):
+    # Get the file path
     file_path = get_file_path(user, dbms, dataset, file_name)
+    
+    # If the file path is None, do not proceed with graph generation
+    if file_path is None:
+        print(f"File '{file_name}' not found. Skipping graph generation.")
+        return
 
+    # Read the CSV file
     df = pd.read_csv(file_path)
 
+    # Filter the dataframe based on visible experiments
     df_filtered = df[df["experiment"].isin(visible_experiments)]
 
     # Define optional axis limits
-    y_axis_min = 0  # Set to None for auto-scaling
-    y_axis_max = 190  # Set to None for auto-scaling
+    y_axis_min = None  # Set to None for auto-scaling
+    y_axis_max = None  # Set to None for auto-scaling
 
     # Generate the graph
     plt.figure(figsize=(10, 6))
-
-    # specific_value = 100  # The Y value where the line and marker are added
-    # plt.axhline(
-    #     y=specific_value, color="green", linestyle=(0, (5, 5)), linewidth=1, alpha=0.7
-    # )  # Horizontal line
-
-    # # Add a horizontal marker on the Y-axis
-    # plt.text(
-    #     x=-0.17,  # Slightly to the left of the Y-axis
-    #     y=specific_value,  # Align with the horizontal line
-    #     s=specific_value,
-    #     color="black",
-    #     ha="center",  # Horizontal alignment
-    #     va="center",  # Vertical alignment
-    #     fontsize=10,  # Size of the value
-    # )
 
     for experiment in visible_experiments:
         experiment_df = df_filtered[df_filtered["experiment"] == experiment]
@@ -90,7 +78,7 @@ def generate_graph():
         x_axis = experiment_df["experiment_index"]
         y_axis = experiment_df["elapsed"]
 
-        # Plot dots
+        # Plot dots for each experiment
         plt.scatter(
             x_axis,
             y_axis,
@@ -102,13 +90,13 @@ def generate_graph():
         # Connect dots in groups of 4
         for i in range(0, len(x_axis), 4):
             plt.plot(
-                x_axis[i : i + 4],
-                y_axis.iloc[i : i + 4],
+                x_axis[i:i + 4],
+                y_axis.iloc[i:i + 4],
                 color=colors.get(experiment, "black"),
             )
 
     # Add a title and labels
-    plt.title("Response Time by Experiment")
+    plt.title(f"{file_name} - {dbms} - {dataset}")
 
     # Add axis labels
     plt.xlabel("Experiments")
@@ -129,16 +117,44 @@ def generate_graph():
     # Apply axis limits
     plt.ylim(y_axis_min, y_axis_max)
 
-    # Show the graph as a window
+    # Show the graph
     plt.tight_layout()
-    # plt.show()
-    # plt.savefig("output_graph.pdf", format="pdf")
-    plt.savefig(
-        file_name.replace(".csv", "") + f" - {dbms} - dataset {dataset} - {user}.pdf",
-        format="pdf",
-    )
+    plt.show()
+
+    # Optionally, save the graph (uncomment to enable saving)
+    # plt.savefig(
+    #     file_name.replace(".csv", "") + f" - {dbms} - dataset {dataset} - {user}.pdf",
+    #     format="pdf",
+    # )
+
+    
+def iterate_and_generate_graphs(file_names, dbms_list, datasets, user):
+    for file_name in file_names:
+        for dataset in datasets:
+            for dbms in dbms_list:
+                generate_graph(file_name, dbms, dataset, user)
+
+
+# Example usage:
+file_names = ["1 - Transitive friends - step 3.csv",
+              "2 - Transitive friends - step 4.csv",
+              "3 - Transitive friends - step 5.csv",
+              "4 - Friends and fof that have been to countries.csv",
+              "5 - Shortest path.csv",
+              "6 - k Shortest paths",
+              "6 - K shortest paths - Create graph.csv",
+              "6.0 - K shortest paths - Create graph.csv",
+              "6.1 - K shortest paths.csv",
+              "6.2 - K Shortest paths - Drop graph.csv",
+              "7 - Forum of a message.csv",
+              "8 - Recent messages by your friends.csv",
+              "9 - Friends recommendation.csv",
+              "10 - Friends recommendation.csv"]
+dbms_list = ["neo4j", "postgres"]
+datasets = ["0.3", "1", "3"]
+user = "rafael"
 
 
 # Example usage
 if __name__ == "__main__":
-    generate_graph()
+    iterate_and_generate_graphs(file_names, dbms_list, datasets, user)
