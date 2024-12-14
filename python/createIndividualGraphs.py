@@ -52,7 +52,14 @@ def get_file_path(user: str, dbms: str, dataset: str, file_name: str):
 
 
 def generate_graph(
-    file_name: str, dbms: str, dataset: str, user: str, yMin: int, yMax: int
+    file_name: str,
+    dbms: str,
+    dataset: str,
+    user: str,
+    yMin: int = None,
+    yMax: int = None,
+    yMinus: int = 0,
+    add_space: bool = False,
 ):
     # Get the file path
     file_path = get_file_path(user, dbms, dataset, file_name)
@@ -113,12 +120,22 @@ def generate_graph(
     # text_y = y_axis_max - 35
 
     # Config para 3500 no eixo Y
-    text_x = 13.3
-    text_y = y_axis_max - 620
+    text_x = 14.4
+    text_y = 0
+    if y_axis_max is None:
+        text_y = df["elapsed"].max()
+    else:
+        text_y = y_axis_max - yMinus
+
+    avg_string = ""
+
+    if add_space:
+        avg_string = f"Avg:   {global_avg:>8.0f} ms\n"
+    else:
+        avg_string = f"Avg:  {global_avg:>8.0f} ms\n"
+
     stats_text = (
-        f"Avg:  {global_avg:>8.0f} ms\n"
-        f"P95: {global_p95:>8.0f} ms\n"
-        f"P99: {global_p99:>8.0f} ms"
+        avg_string + f"P95:  {global_p95:>8.0f} ms\n" + f"P99:  {global_p99:>8.0f} ms"
     )
 
     plt.text(
@@ -150,43 +167,44 @@ def generate_graph(
     plt.tight_layout()
     # plt.show()
 
-    # Optionally, save the graph (uncomment to enable saving)
     plt.savefig(
-        file_name.replace(".csv", "") + f" - {dbms} - dataset {dataset} - {user}.pdf",
+        file_name.replace(" - ", " - ")[0].replace(".csv", "")
+        + f" - {dbms} - dataset {dataset} - {user}.pdf",
         format="pdf",
     )
 
 
-def iterate_and_generate_graphs(file_names, dbms_list, datasets, user):
+def iterate_and_generate_graphs(
+    file_names, dbms_list, datasets, user, yMin, yMax, yMinus
+):
     for file_name in file_names:
         for dataset in datasets:
             for dbms in dbms_list:
-                generate_graph(file_name, dbms, dataset, user)
+                generate_graph(file_name, dbms, dataset, user, yMin, yMax, yMinus)
 
 
-# Example usage:
-# file_names = ["1 - Transitive friends - step 3.csv",
-#               "2 - Transitive friends - step 4.csv",
-#               "3 - Transitive friends - step 5.csv",
-#               "4 - Friends and fof that have been to countries.csv",
-#               "5 - Shortest path.csv",
-#               "6 - k Shortest paths.csv",
-#               "6 - K shortest paths - Create graph.csv",
-#               "6.0 - K shortest paths - Create graph.csv",
-#               "6.1 - K shortest paths.csv",
-#               "6.2 - K Shortest paths - Drop graph.csv",
-#               "7 - Forum of a message.csv",
-#               "8 - Recent messages by your friends.csv",
-#               "9 - Friends recommendation.csv",
-#               "10 - Friends recommendation.csv"]
+# TODO -> Query 3 de novo com segundos ou mintuos
 
-file_names = [
-    "6 - k Shortest paths.csv",
-]
-dbms_list = ["neo4j", "postgres"]
-datasets = ["0.3", "1", "3"]
-user = "jose"
+user = "rafael"
 
+generate_graph(
+    "10 - Friends recommendation.csv",
+    "neo4j",
+    "3",
+    user,
+    0,
+    260,
+    30,
+    True,
+)
 
-generate_graph("1 - Transitive friends - step 3.csv", "neo4j", "0.3", "jose", 0, 130)
-generate_graph("1 - Transitive friends - step 3.csv", "postgres", "0.3", "jose", 0, 130)
+generate_graph(
+    "10 - Replies of a message.csv",
+    "postgres",
+    "3",
+    user,
+    0,
+    260,
+    30,
+    False,
+)
