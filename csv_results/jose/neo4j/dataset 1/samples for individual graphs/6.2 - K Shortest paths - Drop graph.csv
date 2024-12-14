@@ -1,0 +1,6 @@
+experiment_index,elapsed,label,experiment
+1,34,6.2 - K Shortest paths - Drop graph,default
+1,46,6.2 - K Shortest paths - Drop graph,1GB
+1,29,6.2 - K Shortest paths - Drop graph,2GB
+1,27,6.2 - K Shortest paths - Drop graph,4GB
+1,29,6.2 - K Shortest paths - Drop graph,8GB

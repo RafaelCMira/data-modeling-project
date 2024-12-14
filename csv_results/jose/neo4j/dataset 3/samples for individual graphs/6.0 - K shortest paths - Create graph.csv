@@ -1,0 +1,6 @@
+experiment_index,elapsed,label,experiment
+1,8676,6.0 - K shortest paths - Create graph,default
+1,1823,6.0 - K shortest paths - Create graph,1GB
+1,1146,6.0 - K shortest paths - Create graph,2GB
+1,1300,6.0 - K shortest paths - Create graph,4GB
+1,1242,6.0 - K shortest paths - Create graph,8GB

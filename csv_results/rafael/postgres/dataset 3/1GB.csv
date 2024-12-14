@@ -15,6 +15,29 @@ timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success
 1734119856082,89,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,1963,0,1,1,null,88,0,0
 1734119856171,88,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,1963,0,1,1,null,87,0,0
 1734119856259,90,1 - Transitive friends - step 3,200,OK,Postgres 1-1,text,true,,1963,0,1,1,null,90,0,0
+1734111732538,28646,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,28645,0,0
+1734111761184,29317,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,29317,0,0
+1734111790502,29067,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,29067,0,0
+1734111819569,29030,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,29029,0,0
+1734111848598,7832,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,7832,0,0
+1734111856431,7339,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,7339,0,0
+1734111863769,7247,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,7246,0,0
+1734111871044,7297,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,7296,0,0
+1734111878341,8105,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,379,0,1,1,null,8105,0,0
+1734111886446,8101,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,379,0,1,1,null,8100,0,0
+1734111894547,8172,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,379,0,1,1,null,8172,0,0
+1734111902720,8110,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,379,0,1,1,null,8109,0,0
+1734111910830,2123,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2312,0,1,1,null,2123,0,0
+1734111912954,2096,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2312,0,1,1,null,2096,0,0
+1734111915051,2302,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2312,0,1,1,null,2301,0,0
+1734111917354,2093,2 - Transitive friends - step 4,200,OK,Postgres 1-1,text,true,,2312,0,1,1,null,2093,0,0
+1734111919511,1032838,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,1032837,0,0
+1734112952350,1288113,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,1288113,0,0
+1734114240464,1363096,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,1363096,0,0
+1734115603559,1160417,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,2843,0,1,1,null,1160417,0,0
+1734116763979,145077,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,145077,0,0
+1734116909055,141350,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,141350,0,0
+1734117050407,143201,3 - Transitive friends - step 5,200,OK,Postgres 1-1,text,true,,3317,0,1,1,null,143201,0,0
 1734119856350,735,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,192,0,1,1,null,735,0,0
 1734119857086,778,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,192,0,1,1,null,778,0,0
 1734119857864,740,4 - Friends and fof that have been to countries,200,OK,Postgres 1-1,text,true,,192,0,1,1,null,740,0,0
