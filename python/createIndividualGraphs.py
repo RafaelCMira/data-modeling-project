@@ -156,7 +156,5 @@ dbms_list = ["neo4j", "postgres"]
 datasets = ["0.3", "1", "3"]
 user = "jose"
 
-
 generate_graph("1 - Transitive friends - step 3.csv", "neo4j", "0.3", "jose", 0, 130)
 generate_graph("1 - Transitive friends - step 3.csv", "postgres", "0.3", "jose", 0, 130)
-
