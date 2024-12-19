@@ -59,7 +59,7 @@ def generate_graph(
     yMin: int = None,
     yMax: int = None,
     yMinus: int = 0,
-    add_space: bool = False,
+    units: str = "ms",
 ):
     # Get the file path
     file_path = get_file_path(user, dbms, dataset, file_name)
@@ -74,6 +74,16 @@ def generate_graph(
 
     # Filter the dataframe based on visible experiments
     df_filtered = df[df["experiment"].isin(visible_experiments)]
+
+    # Convert time based on units
+    if units == "min":
+        df_filtered["elapsed"] = df_filtered["elapsed"] / 60000  # Convert ms to minutes
+        y_axis_label = "Response time (minutes)"
+    elif units == "s":
+        df_filtered["elapsed"] = df_filtered["elapsed"] / 1000  # Convert ms to seconds
+        y_axis_label = "Response time (seconds)"
+    else:
+        y_axis_label = "Response time (ms)"  # Default to milliseconds
 
     # Define optional axis limits
     y_axis_min = yMin  # Set to None for auto-scaling
@@ -110,7 +120,7 @@ def generate_graph(
 
     # Add axis labels
     plt.xlabel("Experiments")
-    plt.ylabel("Response time (ms)")
+    plt.ylabel(y_axis_label)
 
     global_avg = df_filtered["elapsed"].mean()
     global_p99 = df_filtered["elapsed"].quantile(0.99)
@@ -128,15 +138,29 @@ def generate_graph(
         text_y = y_axis_max - yMinus
 
     avg_string = ""
+    p95_string = ""
 
-    if add_space:
-        avg_string = f"Avg:   {global_avg:>8.0f} ms\n"
+    if len(str(int(global_avg))) < len(str(int(global_p95))):
+        avg_string = f"Avg:   {global_avg:>8.0f} {units}\n"
+    elif (
+        len(str(int(global_avg))) == len(str(int(global_p99)))
+        and len(str(int(global_avg))) != 3
+    ):
+        avg_string = f"Avg:   {global_avg:>8.0f} {units}\n"
+    elif (
+        len(str(int(global_avg))) == len(str(int(global_p99)))
+        and len(str(int(global_avg))) == 4
+    ):
+        avg_string = f"Avg:     {global_avg:>8.0f} {units}\n"
     else:
-        avg_string = f"Avg:  {global_avg:>8.0f} ms\n"
+        avg_string = f"Avg:  {global_avg:>8.0f} {units}\n"
 
-    stats_text = (
-        avg_string + f"P95:  {global_p95:>8.0f} ms\n" + f"P99:  {global_p99:>8.0f} ms"
-    )
+    if len(str(int(global_p95))) < len(str(int(global_p99))):
+        p95_string = f"P95:   {global_p95:>8.0f} {units}\n"
+    else:
+        p95_string = f"P95:  {global_p95:>8.0f} {units}\n"
+
+    stats_text = avg_string + p95_string + f"P99:  {global_p99:>8.0f} {units}"
 
     plt.text(
         text_x,
@@ -183,17 +207,74 @@ def iterate_and_generate_graphs(
                 generate_graph(file_name, dbms, dataset, user, yMin, yMax, yMinus)
 
 
-# TODO -> Query 3 de novo com segundos ou mintuos
-
 user = "rafael"
+# file = "10 - Friends recommendation.csv"
+file = "10 - Replies of a message.csv"
+yMin = 0
+yMax = 300
+scale = 50
+
+system = "postgres"
 
 generate_graph(
-    "9 - Friend recommendation.csv",
-    "postgres",
+    file,
+    system,
+    "0.3",
+    user,
+    yMin,
+    yMax,
+    scale,
+)
+
+generate_graph(
+    file,
+    system,
     "1",
     user,
-    0,
-    13000,
-    2000,
-    False,
+    yMin,
+    yMax,
+    scale,
+)
+
+generate_graph(
+    file,
+    system,
+    "3",
+    user,
+    yMin,
+    yMax,
+    scale,
+)
+
+system = "neo4j"
+
+
+generate_graph(
+    file,
+    system,
+    "0.3",
+    user,
+    yMin,
+    yMax,
+    scale,
+)
+
+generate_graph(
+    file,
+    system,
+    "1",
+    user,
+    yMin,
+    yMax,
+    scale,
+)
+
+generate_graph(
+    file,
+    system,
+    "3",
+    user,
+    yMin,
+    yMax,
+    scale,
 )

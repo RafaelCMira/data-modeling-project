@@ -282,8 +282,6 @@ RETURN batches, total;
 
 
 
-
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/message_tags.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
@@ -297,17 +295,6 @@ RETURN batches, total;
 
 
 CALL apoc.periodic.iterate(
-'LOAD CSV WITH HEADERS FROM "file:///C:/temp/message.csv" AS row FIELDTERMINATOR "|" RETURN row',
-'MATCH (message:Message {message_id: toInteger(row.message_id)})
- MATCH (person:Person {person_id: toInteger(row.person_id)})
- CREATE (message)-[:POSTED_BY]->(person);',
-{batchSize: 5000, parallel: false, retries: 3}
-)
-YIELD batches, total
-RETURN batches, total;
-
-
-CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/likes.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
 MATCH (person:Person {person_id: toInteger(row.person_id)})
@@ -317,13 +304,12 @@ CREATE (message)-[:LIKED_BY {created_at: datetime(row.created_at)}]->(person)',
 YIELD batches, total
 RETURN batches, total;
 
-
 CALL apoc.periodic.iterate(
 'LOAD CSV WITH HEADERS FROM "file:///C:/temp/message.csv" AS row FIELDTERMINATOR "|" RETURN row',
 'MATCH (message:Message {message_id: toInteger(row.message_id)})
  MATCH (person:Person {person_id: toInteger(row.person_id)})
  CREATE (message)-[:POSTED_BY]->(person);',
-{batchSize: 100000, parallel: false}
+{batchSize: 5000, parallel: false, retries: 3}
 )
 YIELD batches, total
 RETURN batches, total;
